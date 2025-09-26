@@ -1,0 +1,38 @@
+/* 自定义样式 */
+.md-header {
+  box-shadow: 0 0 0.2rem rgba(0,0,0,.1), 0 0.2rem 0.4rem rgba(0,0,0,.2);
+}
+
+.md-typeset h1 {
+  color: var(--md-primary-fg-color);
+}
+
+/* 代码块样式优化 */
+.md-typeset .highlight {
+  margin: 1em 0;
+}
+
+/* 表格样式 */
+.md-typeset table:not([class]) {
+  border-radius: 0.2rem;
+  overflow: hidden;
+  box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
+}
+
+/* 链接样式 */
+.md-typeset a {
+  transition: color 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* 自定义容器样式 */
+.custom-block {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.2rem;
+  border-left: 0.2rem solid var(--md-primary-fg-color);
+  background-color: var(--md-code-bg-color);
+}
