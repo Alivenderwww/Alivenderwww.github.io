@@ -10,9 +10,6 @@ theme:
   icon:
     repo: fontawesome/brands/github #右上角图标
     logo: logo
-  font:
-    text: LXGW WenKai Screen
-    code: Roboto Mono
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -60,6 +57,7 @@ markdown_extensions: #详见https://squidfunk.github.io/mkdocs-material/setup/ex
   - abbr
   - attr_list
   - admonition
+  - mdx_truly_sane_lists # 多级列表
   - def_list
   - footnotes
   - md_in_html
@@ -101,12 +99,36 @@ nav:
   - 首页: index.md
   - DJIflight:
     - blogs/DJIflight/index.md
-    - 算法流程和问题: blogs/DJIflight/algorithm-flow-and-problems.md
+    - blogs/DJIflight/algorithm-flow-and-problems.md
+  - FPGAWeblab:
+    - blogs/FPGA_Weblab/index.md
+    - blogs/FPGA_Weblab/01water_led.md
+    - blogs/FPGA_Weblab/02key.md
+    - blogs/FPGA_Weblab/03led_display.md
+    - blogs/FPGA_Weblab/04matrixkey.md
+    - blogs/FPGA_Weblab/05pwm.md
+    - blogs/FPGA_Weblab/06hdmi.md
+    - blogs/FPGA_Weblab/11_password_lock.md
+    - blogs/FPGA_Weblab/12_sfp.md
+    - blogs/FPGA_Weblab/13_frequency_meter.md
   - 友链: flinks/index.md
 
 
 # Plugins
 plugins:
+  - caption
+  - glightbox:
+       touchNavigation: true
+       loop: false
+       effect: zoom
+       slide_effect: slide
+       width: 100%
+       height: auto
+       zoomable: true
+       draggable: true
+       shadow: true
+       manual: false
+       preload: true
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
 
@@ -122,17 +144,19 @@ extra:
 extra_javascript:
   # - javascripts/extra.js #自定义javascript
   - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/javascripts/extra.js  # extra的cdn
-  - javascripts/mathjax.js #Latex支持
-  - https://polyfill.io/v3/polyfill.min.js?features=es6 #Latex支持
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js #Latex支持
   # - ckplayer/js/ckplayer.js #播放器配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js  #gitalk支持
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js
   - https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/add-html-label-6e56ed67.min.js #忘了
 
 extra_css:
   - stylesheets/extra.css # 自定义CSS
   - stylesheets/link.css #友链配置
   - stylesheets/customize.css # 搜索圆角优化
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css #gitalk支持
@@ -140,7 +164,8 @@ extra_css:
   # - https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css # font-awesome表情支持
   # - https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css  #分享支持
 
-  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css #字体
-  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css #字体
-  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css  #字体
+  - https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css # JetBrains Mono 字体
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css #字体
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.css #字体
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.7.0/style.css  #字体
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体

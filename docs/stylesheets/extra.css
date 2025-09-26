@@ -36,3 +36,91 @@
   border-left: 0.2rem solid var(--md-primary-fg-color);
   background-color: var(--md-code-bg-color);
 }
+
+code {
+      font-family: "JetBrains Mono";
+    }
+
+p, ol{
+      font-family: "LXGW WenKai", sans-serif;
+    }
+
+li, header{
+      font-family: "LXGW WenKai Screen", sans-serif;
+    }
+
+.katex {
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e075;
+      border-left: 4px solid #279decc4;
+      background-color: light-dark(#f8fbfd, #292d38);
+    }
+
+h1,h2,h3,h4,h5,h6 {
+      font-family: "LXGW WenKai Screen", sans-serif;
+    }
+
+
+/* 修改代码块行号(数字)的字体大小 */
+.highlighttable .linenos {
+  /* font-size: 0.93em; */
+  font-size: .85em;
+}
+
+@media screen and (min-width: 960px) {
+  html {
+    font-size: 137.5%;
+  }
+}
+
+@media screen and (min-width: 100em) {
+  html {
+    font-size: 137.5%;
+  }
+}
+
+@media screen and (min-width: 125em) {
+  html {
+    font-size: 137.5%;
+  }
+}
+.md-typeset h1, .md-typeset h2 {
+  font-weight: 600;
+}
+
+.md-typeset h3 {
+  font-weight: 500;
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  letter-spacing: 0;
+}
+
+.md-typeset {
+  font-size: .75rem;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+}
+
+.md-typeset code:not(pre code) {
+  font-size: initial;
+}
+
+@media screen and (max-width: 59.9375em) {
+  .md-nav__source {
+    background-color: var(--md-primary-fg-color);
+  }
+}
+
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background-color: var(--md-primary-fg-color);
+  }
+}
+
+.md-typeset pre {
+  line-height: 1.6;
+}
