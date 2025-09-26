@@ -37,15 +37,17 @@
   background-color: var(--md-code-bg-color);
 }
 
-code {
-      font-family: "JetBrains Mono";
-    }
+:root {
+  --md-text-font: "LXGW WenKai Screen"; 
+  --md-code-font: "JetBrains Mono", "Noto Serif SC";
+}
 
 p, ol{
       font-family: "LXGW WenKai", sans-serif;
     }
 
-li, header{
+.md-typeset li, header{
+      font-weight: 550;
       font-family: "LXGW WenKai Screen", sans-serif;
     }
 
