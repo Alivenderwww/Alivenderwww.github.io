@@ -1,0 +1,25 @@
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/Ubuntu Mono derivative Powerline.ttf");
+}
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: normal;
+    src: url("fonts/Ubuntu Mono derivative Powerline Italic.ttf");
+}
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: bolder;
+    src: url("fonts/Ubuntu Mono derivative Powerline Bold.ttf");
+}
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: bolder;
+    src: url("fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf");
+}
