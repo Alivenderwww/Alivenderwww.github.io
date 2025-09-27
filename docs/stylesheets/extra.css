@@ -1,6 +1,34 @@
 /* 自定义样式 */
-.md-header {
-  box-shadow: 0 0 0.2rem rgba(0,0,0,.1), 0 0.2rem 0.4rem rgba(0,0,0,.2);
+
+[data-md-color-primary=mycolor_light] {
+    --md-primary-top-color: #454d6d;
+    --md-primary-fg-color: #425a7e;
+    --md-primary-fg-color--light: #f5f9fd;
+    --md-primary-fg-color--dark: #282e46;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: #ffffffb3;
+    --md-primary-bg-color--dark: #ffffffb3;
+    --md-primary-blue: #5fbeeb;
+    --md-primary-blue--light: #ffffff;
+    --md-primary-blue--dark: #166d96;
+    --md-primary-text: #000000DE;
+    --md-primary-text--color: #282e46;
+
+}
+
+[data-md-color-primary=mycolor_dark] {
+    --md-primary-top-color: #2b3044;
+    --md-primary-fg-color: #f1f8ff;
+    --md-primary-fg-color--light: #232733;
+    --md-primary-fg-color--dark: #283346;
+    --md-primary-bg-color: #fff;
+    --md-primary-bg-color--light: #ffffffb3;
+    --md-primary-bg-color--dark: #ffffffb3;
+    --md-primary-blue: #5bb7e2;
+    --md-primary-blue--light: #1E2129;
+    --md-primary-blue--dark: #2C3A4F;
+    --md-primary-text: #FFFFFFDE;
+    --md-primary-text--color: #e0e0e0;
 }
 
 .md-typeset h1 {
@@ -57,37 +85,6 @@ p, ol{
       border: 1px solid #e0e0e075;
       border-left: 4px solid var(--md-primary-blue);
     }
-
-[data-md-color-primary=mycolor_light] {
-    --md-primary-top-color: #454d6d;
-    --md-primary-fg-color: #425a7e;
-    --md-primary-fg-color--light: #f5f9fd;
-    --md-primary-fg-color--dark: #282e46;
-    --md-primary-bg-color: #fff;
-    --md-primary-bg-color--light: #ffffffb3;
-    --md-primary-bg-color--dark: #ffffffb3;
-    --md-primary-blue: #5fbeeb;
-    --md-primary-blue--light: #ffffff;
-    --md-primary-blue--dark: #166d96;
-    --md-primary-text: #000000DE;
-    --md-primary-text--color: #282e46;
-
-}
-
-[data-md-color-primary=mycolor_dark] {
-    --md-primary-top-color: #2b3044;
-    --md-primary-fg-color: #f1f8ff;
-    --md-primary-fg-color--light: #232733;
-    --md-primary-fg-color--dark: #283346;
-    --md-primary-bg-color: #fff;
-    --md-primary-bg-color--light: #ffffffb3;
-    --md-primary-bg-color--dark: #ffffffb3;
-    --md-primary-blue: #5bb7e2;
-    --md-primary-blue--light: #1E2129;
-    --md-primary-blue--dark: #2C3A4F;
-    --md-primary-text: #FFFFFFDE;
-    --md-primary-text--color: #e0e0e0;
-}
 
 .md-header{
     background-color: var(--md-primary-top-color);
