@@ -24,9 +24,17 @@ comment: True
 
 ![LED扩展板](images/01_1.png)
 
+/// figure-caption
+LED扩展板
+///
+
 通过原理图可以得知，本试验箱的LED灯为高电平时点亮。
 
 ![LED扩展板原理图](images/01_2.png)
+
+/// figure-caption
+LED扩展板原理图
+///
 
 ### 1.3.3程序设计
 
@@ -37,6 +45,10 @@ comment: True
 | sysclk | 1Bit | Input | 输入时钟，频率27M |
 | rstn | 1Bit | Input | 复位信号，低电平有效 |
 | led | 8Bit | Output | LED控制信号 |
+
+/// table-caption
+模块端口列表
+///
 
 
 为了使灯点亮0.5s，我们应该设计一个计数器或者是分频器，先将板载27M高频时钟降速。在27M时钟下计数0.5s，需要计数器计数13_500_000个数，也就是计数器从0开始计数到13_499_999。所以我们定义一个寄存器cnt，每一次时钟上升沿cnt就加1，当计数到13_499_999时，led的状态改变，同时cnt归零重新开始计数。
@@ -118,7 +130,15 @@ endmodule
 
 ![流水灯仿真波形（一）](images/01_3.png)
 
+/// figure-caption
+流水灯仿真波形（一）
+///
+
 ![流水灯仿真波形（二）](images/01_4.png)
+
+/// figure-caption
+流水灯仿真波形（二）
+///
 
 从图3我们可以看到，端口信号led的值经过一定时间之后就进行了左移，并且在图4中我们也可以发现，当cnt的值等于CNT_MAX的时候led进行左移，与我们设计的目标相符合，可以进行下一步上板验证了。
 
@@ -138,6 +158,10 @@ endmodule
 | led[5] | Output |  | LED |
 | led[6] | Output |  | LED |
 | led[7] | Output |  | LED |
+
+/// table-caption
+端口与管脚对应列表
+///
 
 管脚分配可以直接编写.fdc文件，也可以使用PDS内置的工具进行分配。
 

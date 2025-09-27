@@ -47,6 +47,11 @@
   box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
 }
 
+th {
+  background-color: var(--md-primary-fg-color--light);
+  border-bottom: 2px solid var(--md-primary-blue);
+}
+
 /* 链接样式 */
 .md-typeset a {
   transition: color 0.2s ease;
@@ -67,11 +72,11 @@
 
 :root {
   --md-text-font: "LXGW WenKai Screen"; 
-  --md-code-font: "JetBrains Mono", "Noto Serif SC";
+  --md-code-font: "Ubuntu Mono derivative Powerline", "Noto Serif SC";
 }
 
 p, ol{
-      font-family: "LXGW WenKai", sans-serif;
+      font-family: "Ubuntu Mono derivative Powerline", "LXGW WenKai", sans-serif;
     }
 
 .md-typeset li, header{
@@ -114,7 +119,7 @@ p, ol{
 
 .md-tabs{
     background-color: var(--md-primary-fg-color--light);
-    font-family: "JetBrains Mono", "LXGW WenKai Screen", sans-serif;
+    font-family: "Ubuntu Mono derivative Powerline", "LXGW WenKai Screen", sans-serif;
     font-weight: 600;
     color: var(--md-primary-text--color);
 }
@@ -160,6 +165,10 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .md-typeset {
+  font-size: .85rem;
+}
+
+.md-nav {
   font-size: .75rem;
 }
 
