@@ -14,4 +14,8 @@ updated: 2024-03-21
 
     Web, IoT, ML, Cybersecurity and Graphics developer.
 
+- __[Briteny's blog](https://briteny-pwn.github.io/)__
+
+    Briteny-pwn.
+
 </div>
