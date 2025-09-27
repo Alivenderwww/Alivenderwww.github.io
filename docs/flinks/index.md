@@ -18,4 +18,8 @@ updated: 2024-03-21
 
     Briteny-pwn.
 
+- __[Lentinel's blog](https://lentinel.link/)__
+
+    网络工程专业本科在读；NAOSI 网络与开源协会成员、Scr1w 网络安全战队成员
+
 </div>
