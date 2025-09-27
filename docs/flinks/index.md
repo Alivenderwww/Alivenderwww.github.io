@@ -2,6 +2,8 @@
 title: 友情链接
 date: 2023-07-24
 updated: 2024-03-21
+home: true
+template: flinks.html
 ---
 
 <div class="grid cards flinks" markdown>

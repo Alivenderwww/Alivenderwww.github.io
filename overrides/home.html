@@ -2,13 +2,17 @@
 
 {% block extrahead %}
   <style>
-    body {
-      background-image: url(/assets/images/home/light.png);
-      background-size: cover;
-    }
-    body[data-md-color-scheme="slate"] {
-      background-image: url(/assets/images/home/dark.png);
-      background-size: cover;
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(/assets/images/home/background.jpg);
+        background-size: cover;
+        opacity: 0.4; /* 统一透明度 */
+        z-index: -1;
     }
     .md-tabs, .md-footer, .md-footer-meta {
       background-color: transparent;
@@ -33,7 +37,6 @@
       flex-direction: column;
     }
     .md-main__inner {
-      flex: 1;
       display: flex;
       margin-top: 1.5rem;
       flex-direction: column;

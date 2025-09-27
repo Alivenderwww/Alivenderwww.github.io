@@ -1,0 +1,78 @@
+{% extends "main.html" %}
+
+{% block extrahead %}
+  <style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(/assets/images/flinks/background.jpg);
+        background-size: cover;
+        opacity: 0.4; /* 统一透明度 */
+        z-index: -1;
+    }
+    .md-tabs, .md-footer, .md-footer-meta {
+      background-color: transparent;
+    }
+    .sidebar_nav {
+        height: 0 !important;
+    }
+    #app {
+      position: absolute;
+      right: calc(35% - 320px / 2);
+      top: calc(50% - 445.68px / 2);
+    }
+    @media (max-width: 960px) {
+      #app {
+        display: none;
+      }
+    }
+    .md-main {
+      display: flex;
+      flex-direction: column;
+    }
+    .md-main__inner {
+      display: flex;
+      margin-top: 1.5rem;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+    .md-content {
+      flex-grow: initial;
+    }
+    .md-content__inner {
+      margin: 0 !important;
+    }
+    .md-header--shadow {
+      box-shadow: none !important;
+    }
+  </style>
+{% endblock %}
+
+{% block site_nav %}
+  <div style="flex-grow: 1;">
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap sidebar_nav">
+        <div class="md-sidebar__inner">
+          {% include "partials/nav.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="app"></div>
+  <div class="md-typeset" style="display: block; background-color: transparent; font-size: 125%;">
+    <div class="md-grid">
+      <div style="margin-left: 0.8rem;">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
