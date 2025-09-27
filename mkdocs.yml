@@ -6,6 +6,7 @@ site_author: Alivender
 # Theme
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   icon:
     repo: fontawesome/brands/github #右上角图标
@@ -14,16 +15,16 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: teal
+      primary: mycolor_light
+      accent: mycolor_light
       toggle:
         icon: material/brightness-7
         name: 切换到深色模式
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue grey
-      accent: blue grey
+      primary: mycolor_dark
+      accent: mycolor_dark
       toggle:
         icon: material/brightness-4
         name: 切换到浅色模式
@@ -117,18 +118,22 @@ nav:
 # Plugins
 plugins:
   - caption
+  - heti:
+      disable_serve: false
+  - statistics:
+      page_check_metadata: comment
   - glightbox:
-       touchNavigation: true
-       loop: false
-       effect: zoom
-       slide_effect: slide
-       width: 100%
-       height: auto
-       zoomable: true
-       draggable: true
-       shadow: true
-       manual: false
-       preload: true
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      shadow: true
+      manual: false
+      preload: true
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
 

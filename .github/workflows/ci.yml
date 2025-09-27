@@ -29,4 +29,6 @@ jobs:
       - run: pip install mdx_truly_sane_lists
       - run: pip install mkdocs-caption
       - run: pip install mkdocs-glightbox
+      - run: pip install  pip install mkdocs-heti-plugin
+      - run: pip install mkdocs-statistics-plugin
       - run: mkdocs gh-deploy --force

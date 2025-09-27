@@ -1,6 +1,7 @@
 ---
 title: '基础-6-HDMI显示'
 date: '2025-06-28'
+comment: True
 ---
 
 ## 6.1 章节导读

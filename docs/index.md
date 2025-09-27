@@ -1,4 +1,14 @@
-# Alivender's Blog
+---
+hide:
+    - date
+    - footer
+home: true
+template: home.html
+---
+
+# Ciallo～(∠・ω< )⌒★
+
+## Alivender's Blog
 
 <!-- #### [:fontawesome-solid-blog:]( ) [My Homepage]( ) -->
 
