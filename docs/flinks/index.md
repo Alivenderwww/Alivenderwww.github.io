@@ -6,8 +6,12 @@ updated: 2024-03-21
 
 <div class="grid cards flinks" markdown>
 
-- __[xxx's blog](xxx)__
+- __[Hitorikoishi's blog](https://hitorikoishi.github.io/)__
 
-    111
+    芝士哈基曼波
+
+- __[Saurlax's blog](https://saurlax.com/)__
+
+    Web, IoT, ML, Cybersecurity and Graphics developer.
 
 </div>
