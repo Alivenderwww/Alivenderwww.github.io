@@ -79,7 +79,7 @@ p, ol{
       font-family: "LXGW WenKai Screen", sans-serif;
     }
 
-.katex {
+.katex-display {
       padding: 20px;
       border-radius: 6px;
       border: 1px solid #e0e0e075;

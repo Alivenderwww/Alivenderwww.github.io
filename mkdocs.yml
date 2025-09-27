@@ -101,17 +101,29 @@ nav:
   - DJIflight:
     - blogs/DJIflight/index.md
     - blogs/DJIflight/algorithm-flow-and-problems.md
+  - MathNote:
+    - 大学物理:
+      - blogs/MathNote/大学物理/从零开始的Python速切大物实验.md
+      - blogs/MathNote/大学物理/物理笔记.md
+      - blogs/MathNote/大学物理/静电场高斯定理.md
+    - 高等数学:
+      - blogs/MathNote/高等数学/多元函数的基本概念.md
+      - blogs/MathNote/高等数学/多元数量值函数积分学及其应用.md
+      - blogs/MathNote/高等数学/二次型与二次曲面.md
+      - blogs/MathNote/高等数学/向量值函数的曲线积分与曲面积分.md
+    - 电路理论:
+      - blogs/MathNote/电路理论/电路理论.md
   - FPGAWeblab:
-    - blogs/FPGA_Weblab/index.md
-    - blogs/FPGA_Weblab/01water_led.md
-    - blogs/FPGA_Weblab/02key.md
-    - blogs/FPGA_Weblab/03led_display.md
-    - blogs/FPGA_Weblab/04matrixkey.md
-    - blogs/FPGA_Weblab/05pwm.md
-    - blogs/FPGA_Weblab/06hdmi.md
-    - blogs/FPGA_Weblab/11_password_lock.md
-    - blogs/FPGA_Weblab/12_sfp.md
-    - blogs/FPGA_Weblab/13_frequency_meter.md
+    - blogs/FPGAWeblab/index.md
+    - blogs/FPGAWeblab/01water_led.md
+    - blogs/FPGAWeblab/02key.md
+    - blogs/FPGAWeblab/03led_display.md
+    - blogs/FPGAWeblab/04matrixkey.md
+    - blogs/FPGAWeblab/05pwm.md
+    - blogs/FPGAWeblab/06hdmi.md
+    - blogs/FPGAWeblab/11_password_lock.md
+    - blogs/FPGAWeblab/12_sfp.md
+    - blogs/FPGAWeblab/13_frequency_meter.md
   - 友链: flinks/index.md
 
 
