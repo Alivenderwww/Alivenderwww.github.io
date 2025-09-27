@@ -1,6 +1,6 @@
 /* 自定义样式 */
 
-[data-md-color-primary=mycolor_light] {
+[data-md-color-primary="mycolor_light"] {
     --md-primary-top-color: #454d6d;
     --md-primary-fg-color: #425a7e;
     --md-primary-fg-color--light: #f5f9fd;
@@ -16,7 +16,7 @@
 
 }
 
-[data-md-color-primary=mycolor_dark] {
+[data-md-color-primary="mycolor_dark"] {
     --md-primary-top-color: #2b3044;
     --md-primary-fg-color: #f1f8ff;
     --md-primary-fg-color--light: #232733;
