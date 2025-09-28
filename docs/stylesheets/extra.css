@@ -12,6 +12,7 @@
     --md-primary-blue--light: #ffffff;
     --md-primary-blue--dark: #166d96;
     --md-primary-text: #4C5866;
+    --md-primary-text-rgb: 84, 92, 107;
     --md-primary-text--color: #282e46;
 
 }
@@ -27,7 +28,8 @@
     --md-primary-blue: #5bb7e2;
     --md-primary-blue--light: #1E2129;
     --md-primary-blue--dark: #2C3A4F;
-    --md-primary-text: #FFFFFFDE;
+    --md-primary-text: #e0eaf5;
+    --md-primary-text-rgb: 226, 231, 240;
     --md-primary-text--color: #e0e0e0;
 }
 
@@ -174,6 +176,10 @@ h1,h2,h3,h4,h5,h6 {
     color: var(--md-primary-text);
 }
 
+span.filename {
+    color: var(--md-primary-text);
+}
+
 .md-typeset code:not(pre code) {
     font-family: "Ubuntu Mono derivative Powerline";
     color: var(--md-primary-text);
@@ -185,6 +191,14 @@ h1,h2,h3,h4,h5,h6 {
 .md-typeset pre code {
     font-family: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
     font-weight: 300;
+}
+
+.linenodiv pre span.normal {
+    color: var(--md-primary-text);
+}
+
+.glightbox img {
+  box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2);
 }
 
 .md-sidebar__inner, .md-sidebar__scrollwrap {
