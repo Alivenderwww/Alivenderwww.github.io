@@ -25,6 +25,10 @@ DJI 无人机拍摄的图片中包含以下有助于标定的信息：
 | `FlightPitchDegree` | 无人机Pitch角 | - |
 | `DewarpData` | 相机内参和畸变参数 | [fx,fy,cx,cy,k1,k2,p1,p2,k3] |
 
+/// table-caption
+DJI 无人机图像标定参数表
+///
+
 ## 推算信息
 
 基于已知参数可以推算出以下信息：
@@ -37,18 +41,18 @@ hA               拍摄地平面的高程 推算为 absoluteAltitude - relativeA
 
 ## 未知信息和问题
 
-### 1. 相机标定问题
+### 相机标定问题
 
 相机**内参矩阵**和**畸变矩阵**矫正方式不明确。目前参考了[此链接](https://zhuanlan.zhihu.com/p/68269214)的计算方式，但转换需要理论依据，且开启矫正和关闭对精度帮助不明显。
 
-### 2. 坐标系问题
+### 坐标系问题
 
 在**姿态角均为0下（初始状态）**图像方位与北东地参考系的关系不明确：
 
 - 图像右指和下指分别指向北、东、地的正向还是反向？
 - 当前方案选为**图像右指**对应西向，**图像下指**对应天向
 
-### 3. 旋转中心问题
+### 旋转中心问题
 
 `rotateCenter(x,y,z)` 云台姿态角旋转中心不明确：
 
@@ -57,7 +61,7 @@ hA               拍摄地平面的高程 推算为 absoluteAltitude - relativeA
 
 算法中计算结果差距没有明显优劣。
 
-### 4. 欧拉旋转问题
+### 欧拉旋转问题
 
 执行欧拉旋转函数时 `GimbalxxxDegree` 和 `FlightxxxDegree` 与实际云台旋转关系不明确。
 
@@ -112,6 +116,7 @@ hA               拍摄地平面的高程 推算为 absoluteAltitude - relativeA
 9. **相对偏移**：`(intersectionNorth, intersectionEast, intersectionDown)` 为相对于标定点无人机的偏移量
 
 10. **最终坐标**：通过已知无人机经纬度高程和北东地偏移，使用以下函数求得标定点坐标：
+
     ```c
     lla_offset_to_lla(
         double lonA, double latA, double hA,

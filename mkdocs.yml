@@ -84,6 +84,7 @@ markdown_extensions: #详见https://squidfunk.github.io/mkdocs-material/setup/ex
       generic: true
   - toc:
       permalink: true # 固定标题位置为当前位置
+      toc_depth: 4
   - pymdownx.highlight: # 代码块高亮
       anchor_linenums: true
       linenums: true # 显示行号
@@ -171,6 +172,7 @@ extra_javascript:
 extra_css:
   - stylesheets/font.css # 自定义CSS
   - stylesheets/extra.css # 自定义CSS
+  - stylesheets/toc.css # 目录CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
@@ -178,8 +180,3 @@ extra_css:
   # - ckplayer/css/ckplayer.css   #播放器配置
   # - https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css # font-awesome表情支持
   # - https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css  #分享支持
-
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css #字体
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.7.0/style.css #字体
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.7.0/style.css  #字体
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体

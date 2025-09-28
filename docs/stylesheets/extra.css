@@ -11,7 +11,7 @@
     --md-primary-blue: #5fbeeb;
     --md-primary-blue--light: #ffffff;
     --md-primary-blue--dark: #166d96;
-    --md-primary-text: #000000DE;
+    --md-primary-text: #4C5866;
     --md-primary-text--color: #282e46;
 
 }
@@ -31,8 +31,16 @@
     --md-primary-text--color: #e0e0e0;
 }
 
-.md-typeset h1 {
-  color: var(--md-primary-text);
+/* 隐藏滚动条的同时仍能滚动 */
+.js-focus-visible {
+    overflow: auto; /* 启用滚动功能 */
+    -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
+    scrollbar-width: none; /* 适用于 Firefox */
+}
+
+/* Webkit 浏览器 */
+.js-focus-visible::-webkit-scrollbar {
+    display: none; /* 隐藏滚动条 */
 }
 
 /* 代码块样式优化 */
@@ -44,6 +52,7 @@
 .md-typeset table:not([class]) {
   border-radius: 0.2rem;
   overflow: hidden;
+  color: var(--md-primary-text);
   box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
 }
 
@@ -71,25 +80,62 @@ th {
 }
 
 :root {
-  --md-text-font: "LXGW WenKai Screen"; 
-  --md-code-font: "Ubuntu Mono derivative Powerline", "Noto Serif SC";
+  --md-text-font: "FZLanTYJW"; 
+  --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
 }
 
 p, ol{
-      font-family: "Ubuntu Mono derivative Powerline", "LXGW WenKai", sans-serif;
+      font-weight: 300;
+      font-family: "FZLanTYJW";
+      color: var(--md-primary-text);
+      -webkit-font-smoothing: subpixel-antialiased;
     }
+
+h1,h2,h3,h4,h5,h6 {
+      font-family: "FZLanTYJW";
+      color: var(--md-primary-text) !important;
+    }
+
+.md-typeset h1{
+  font-weight: 800;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+}
 
 .md-typeset li, header{
-      font-weight: 550;
-      font-family: "LXGW WenKai Screen", sans-serif;
+      font-weight: 400;
+      font-family: "FZLanTYJW";
     }
 
-.katex-display .katex{
+.katex-display{
+      position: relative;  
       padding: 20px;
       border-radius: 6px;
       border: 1px solid #e0e0e075;
       border-left: 4px solid var(--md-primary-blue);
     }
+.katex-display:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(/assets/images/icon/math.png);
+    background-size: 75px;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -1;
+}
 
 .flinks ul li{
     position: relative;
@@ -114,20 +160,36 @@ p, ol{
     border-bottom-style:solid;
     border-color: var(--md-primary-blue);
     border-width:2px;
+    font-family:  "FZLanTYJW";
+    font-size: 1.5rem;
+    font-weight: 600;
     box-shadow: none;
 }
 
 .md-tabs{
     background-color: var(--md-primary-fg-color--light);
-    font-family: "Ubuntu Mono derivative Powerline", "LXGW WenKai Screen", sans-serif;
+    font-family:  "FZLanTYJW";
+    font-size: 1rem;
     font-weight: 600;
-    color: var(--md-primary-text--color);
+    color: var(--md-primary-text);
 }
 
-h1,h2,h3,h4,h5,h6 {
-      font-family: "LXGW WenKai Screen", sans-serif;
-    }
+.md-typeset code:not(pre code) {
+    font-family: "Ubuntu Mono derivative Powerline";
+    color: var(--md-primary-text);
+    border-radius: .2rem;
+    padding: .1rem .3rem;
+    font-weight: 700;
+}
 
+.md-typeset pre code {
+    font-family: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
+    font-weight: 300;
+}
+
+.md-sidebar__inner, .md-sidebar__scrollwrap {
+  color: var(--md-primary-text);
+}
 
 /* 修改代码块行号(数字)的字体大小 */
 .highlighttable .linenos {
@@ -137,27 +199,20 @@ h1,h2,h3,h4,h5,h6 {
 
 @media screen and (min-width: 960px) {
   html {
-    font-size: 137.5%;
+    font-size: 135%;
   }
 }
 
 @media screen and (min-width: 100em) {
   html {
-    font-size: 137.5%;
+    font-size: 135%;
   }
 }
 
 @media screen and (min-width: 125em) {
   html {
-    font-size: 137.5%;
+    font-size: 135%;
   }
-}
-.md-typeset h1, .md-typeset h2 {
-  font-weight: 600;
-}
-
-.md-typeset h3 {
-  font-weight: 500;
 }
 
 .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
@@ -169,15 +224,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .md-nav {
-  font-size: .75rem;
-}
-
-.md-typeset h3 {
-  font-weight: 600;
-}
-
-.md-typeset code:not(pre code) {
-  font-size: initial;
+  font-size: .65rem;
 }
 
 @media screen and (max-width: 59.9375em) {

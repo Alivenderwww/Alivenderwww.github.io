@@ -6,6 +6,8 @@ home: true
 template: home.html
 ---
 
+<div class="toc-disable" markdown>
+
 # Ciallo～(∠・ω< )⌒★
 
 ## Alivender's Blog
@@ -19,3 +21,5 @@ template: home.html
 <!-- #### [:fontawesome-brands-telegram:]( ) [My Telegram]( )  -->
 
 #### [:material-email:](mailto:dppp@mail.dlut.edu.cn) [My Gmail](mailto:dppp@mail.dlut.edu.cn)
+
+</div>

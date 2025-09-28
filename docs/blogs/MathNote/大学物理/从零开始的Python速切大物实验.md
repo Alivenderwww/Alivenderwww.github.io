@@ -22,9 +22,17 @@ comment: True
 
 ![image-20231109221050288](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109221050288.png)
 
+/// figure-caption
+image-20231109221050288
+///
+
 安装很快，随后就会弹出这样的界面：
 
 ![image-20231109221143640](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109221143640.png)
+
+/// figure-caption
+image-20231109221143640
+///
 
 选改变语言并重启。VScode就是中文界面了。
 
@@ -32,15 +40,27 @@ comment: True
 
 ![image-20231109221430188](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109221430188.png)
 
+/// figure-caption
+image-20231109221430188
+///
+
 注意哈，这个Python是让VS code能对Python文件有高亮，提示等功能而已，并不是安装了python。
 
 现在你可以在电脑盘里挑选一个**没有空格和中文的**路径新建文件夹，并右键 通过 Code 打开。
 
 ![image-20231109222501829](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109222501829.png)
 
+/// figure-caption
+image-20231109222501829
+///
+
 在里面创建一个 xxx.py 文件。
 
 ![image-20231109222546713](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109222546713.png)
+
+/// figure-caption
+image-20231109222546713
+///
 
 编一个简单的程序：
 
@@ -64,11 +84,19 @@ print("Hello, World!")
 
 ![image-20231109225126941](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109225126941.png)
 
+/// figure-caption
+image-20231109225126941
+///
+
 记住表格所处的行列位置：在上面的例子中是 23-28行，1-11行。
 
 后续数据处理，将统一按照如下的格式输入数据：
 
 ![image-20231109225419713](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231109225419713.png)
+
+/// figure-caption
+image-20231109225419713
+///
 
 ### pandas
 
@@ -193,6 +221,10 @@ plt.show()
 
 ![image-20231110002409718](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110002409718.png)
 
+/// figure-caption
+image-20231110002409718
+///
+
 来自网站 [Anatomy of a figure — Matplotlib 3.8.1 documentation](https://matplotlib.org/stable/gallery/showcase/anatomy.html#sphx-glr-gallery-showcase-anatomy-py) 的设计：
 
 ```py
@@ -294,6 +326,10 @@ plt.show()
 ```
 
 ![image-20231110002514868](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110002514868.png)
+
+/// figure-caption
+image-20231110002514868
+///
 
 来自网站 [The double pendulum problem — Matplotlib 3.8.1 documentation](https://matplotlib.org/stable/gallery/animation/double_pendulum.html#sphx-glr-gallery-animation-double-pendulum-py) 的设计：
 
@@ -397,6 +433,10 @@ plt.show()
 
 ![image-20231110002150365](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110002150365.png)
 
+/// figure-caption
+image-20231110002150365
+///
+
 来自网站 [3D errorbars — Matplotlib 3.8.1 documentation](https://matplotlib.org/stable/gallery/mplot3d/errorbar3d.html#sphx-glr-gallery-mplot3d-errorbar3d-py) 的设计：
 
 ```py
@@ -424,6 +464,10 @@ plt.show()
 ```
 
 ![image-20231110003211331](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110003211331.png)
+
+/// figure-caption
+image-20231110003211331
+///
 
 可以将上面的代码复制自己运行一下。
 
@@ -520,6 +564,10 @@ ax.set_title(r"图4 $GMR$梯度传感器角位移$α-U_0$曲线")
 
 ![image-20231110012057169](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110012057169.png)
 
+/// figure-caption
+image-20231110012057169
+///
+
 ### 浮点数转换为字符串同时保留指定有效数字
 
 ```python
@@ -538,6 +586,10 @@ ax.plot(
 ```
 
 ![image-20231110012753543](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110012753543.png)
+
+/// figure-caption
+image-20231110012753543
+///
 
 ## 大物实验例子
 
@@ -609,6 +661,10 @@ plt.show()
 ```
 
 ![image-20231110012931100](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110012931100.png)
+
+/// figure-caption
+image-20231110012931100
+///
 
 ```python
 #-*- coding: utf-8 -*-
@@ -776,3 +832,7 @@ plt.show()
 ```
 
 ![image-20231110013040836](https://alivender-assets.oss-cn-beijing.aliyuncs.com/wp-content/uploads/img/PicGoimage-20231110013040836.png)
+
+/// figure-caption
+image-20231110013040836
+///
