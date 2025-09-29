@@ -2,25 +2,25 @@
     font-family: 'Ubuntu Mono derivative Powerline';
     font-style: normal;
     font-weight: 400;
-    src: url("/fonts/Ubuntu Mono derivative Powerline.ttf");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline.ttf");
 }
 @font-face {
     font-family: 'Ubuntu Mono derivative Powerline';
     font-style: italic;
     font-weight: 400;
-    src: url("/fonts/Ubuntu Mono derivative Powerline Italic.ttf");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline%20Italic.ttf");
 }
 @font-face {
     font-family: 'Ubuntu Mono derivative Powerline';
     font-style: normal;
     font-weight: 700;
-    src: url("/fonts/Ubuntu Mono derivative Powerline Bold.ttf");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline%20Bold.ttf");
 }
 @font-face {
     font-family: 'Ubuntu Mono derivative Powerline';
     font-style: italic;
     font-weight: 700;
-    src: url("/fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline%20Bold%20Italic.ttf");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 纤*/
@@ -34,47 +34,47 @@
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 200;
-    src: url("/fonts/FZLanTYJW_Xi.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Xi.woff2");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 准*/
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 300;
-    src: url("/fonts/FZLanTYJW_Zhun.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Zhun.woff2");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 中*/
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 400;
-    src: url("/fonts/FZLanTYJW_Zhong.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Zhong.woff2");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 中粗*/
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 500;
-    src: url("/fonts/FZLanTYJW_ZhongCu.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_ZhongCu.woff2");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 粗*/
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 600;
-    src: url("/fonts/FZLanTYJW_Cu.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Cu.woff2");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 大*/
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 700;
-    src: url("/fonts/FZLanTYJW_Da.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Da.woff2");
 }
 
 @font-face { /*方正兰亭圆简体 Blue Archive字体 特*/
     font-family: 'FZLanTYJW';
     font-style: normal;
     font-weight: 800;
-    src: url("/fonts/FZLanTYJW_Te.woff2");
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Te.woff2");
 }

@@ -127,6 +127,8 @@ nav:
     - blogs/FPGAWeblab/12_sfp.md
     - blogs/FPGAWeblab/13_frequency_meter.md
   - 友链: flinks/index.md
+  - Blog:
+    - blog/index.md
 
 
 # Plugins
@@ -148,6 +150,19 @@ plugins:
       manual: false
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - git-revision-date-localized:
+      type: timeago #时间类型
+      custom_format: "%d. %B %Y"  # 时间格式
+      timezone: Asia/Shanghai #时区
+      locale: en #首选语言
+      fallback_to_build_date: false #许回退到git 不可用时mkdocs build执行的时间
+      enable_creation_date: true #是否启用创建时间
+      exclude:  #排除的页面
+          - index.md
+          - tags.md
+          - flinks/index.md
+      enabled: true #是否启用
+      strict: true
 
 # Extra
 extra:
@@ -173,6 +188,7 @@ extra_css:
   - stylesheets/font.css # 自定义CSS
   - stylesheets/extra.css # 自定义CSS
   - stylesheets/toc.css # 目录CSS
+  - stylesheets/comments.css # 评论CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
