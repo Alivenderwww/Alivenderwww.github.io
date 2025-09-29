@@ -104,17 +104,18 @@ nav:
     - blogs/DJIflight/index.md
     - blogs/DJIflight/algorithm-flow-and-problems.md
   - MathNote:
-    - 大学物理:
-      - blogs/MathNote/大学物理/从零开始的Python速切大物实验.md
-      - blogs/MathNote/大学物理/物理笔记.md
-      - blogs/MathNote/大学物理/静电场高斯定理.md
-    - 高等数学:
-      - blogs/MathNote/高等数学/多元函数的基本概念.md
-      - blogs/MathNote/高等数学/多元数量值函数积分学及其应用.md
-      - blogs/MathNote/高等数学/二次型与二次曲面.md
-      - blogs/MathNote/高等数学/向量值函数的曲线积分与曲面积分.md
-    - 电路理论:
-      - blogs/MathNote/电路理论/电路理论.md
+    - blogs/MathNote/index.md
+    - Daxuewuli:
+      - blogs/MathNote/Daxuewuli/1.md
+      - blogs/MathNote/Daxuewuli/2.md
+      - blogs/MathNote/Daxuewuli/3.md
+    - Gaodengshuxue:
+      - blogs/MathNote/Gaodengshuxue/1.md
+      - blogs/MathNote/Gaodengshuxue/2.md
+      - blogs/MathNote/Gaodengshuxue/3.md
+      - blogs/MathNote/Gaodengshuxue/4.md
+    - Dianlulilun:
+      - blogs/MathNote/Dianlulilun/1.md
   - FPGAWeblab:
     - blogs/FPGAWeblab/index.md
     - blogs/FPGAWeblab/01water_led.md

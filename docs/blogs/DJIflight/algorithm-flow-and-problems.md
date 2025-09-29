@@ -2,6 +2,7 @@
 title: 'DJI 飞行算法流程和问题'
 date: '2025-06-28'
 comment: True
+comments: true
 ---
 
 ## 图像标定信息

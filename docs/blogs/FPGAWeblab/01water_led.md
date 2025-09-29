@@ -2,7 +2,7 @@
 title: '基础-1-流水灯'
 date: '2025-06-28'
 comment: True
-comments: true  #默认不开启评论
+comments: true
 ---
 
 ## 章节导读
