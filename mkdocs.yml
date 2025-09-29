@@ -189,7 +189,6 @@ extra_css:
   - stylesheets/font.css # 自定义CSS
   - stylesheets/extra.css # 自定义CSS
   - stylesheets/toc.css # 目录CSS
-  - stylesheets/comments.css # 评论CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置

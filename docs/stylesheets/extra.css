@@ -256,3 +256,11 @@ span.filename {
 .md-typeset pre {
   line-height: 1.6;
 }
+
+.md-footer-meta {
+  background-color: var(--md-primary-fg-color--light);
+}
+
+.md-social__link svg {
+  fill: var(--md-primary-text);
+}
