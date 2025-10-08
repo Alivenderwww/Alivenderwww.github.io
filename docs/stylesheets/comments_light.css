@@ -182,11 +182,11 @@ main {
 }
 
 main .pagination-loader-container {
-    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/loading.gif)
+    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/icons/loading.gif)
 }
 
 main .gsc-loading-image {
-    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/loading.gif)
+    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/icons/loading.gif)
 }
 
 :host,

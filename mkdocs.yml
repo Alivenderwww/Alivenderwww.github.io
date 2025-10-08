@@ -100,6 +100,9 @@ markdown_extensions: #详见https://squidfunk.github.io/mkdocs-material/setup/ex
 # Navigation
 nav:
   - 首页: index.md
+  - 社会实践:
+      - blogs/Shehuishijian/1.md
+      - blogs/Shehuishijian/2.md
   - DJIflight:
     - blogs/DJIflight/index.md
     - blogs/DJIflight/algorithm-flow-and-problems.md
@@ -190,6 +193,7 @@ extra_css:
   - stylesheets/extra.css # 自定义CSS
   - stylesheets/toc.css # 目录CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css #gitalk支持

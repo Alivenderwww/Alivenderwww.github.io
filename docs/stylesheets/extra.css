@@ -132,11 +132,19 @@ h1,h2,h3,h4,h5,h6 {
     right: 0;
     bottom: 0;
     left: 0;
-    background-image: url(/assets/images/icon/math.png);
+    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/icons/math.png);
     background-size: 75px;
     background-repeat: no-repeat;
     opacity: 0.6;
     z-index: -1;
+}
+
+.poetry{
+      position: relative;  
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e075;
+      font-family: "LXGW WenKai Screen";
 }
 
 .flinks ul li{
