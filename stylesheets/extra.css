@@ -1,0 +1,279 @@
+/* 自定义样式 */
+
+[data-md-color-primary="mycolor_light"] {
+    --md-primary-top-color: #454d6d;
+    --md-primary-fg-color: #425a7e;
+    --md-primary-fg-color--light: #f5f9fd;
+    --md-primary-fg-color--dark: #282e46;
+    --md-primary-blue: #5fbeeb;
+    --md-primary-blue--light: #ffffff;
+    --md-primary-blue--dark: #166d96;
+    --md-primary-text: #4C5866;
+    --md-primary-text-light: #e0eaf5;
+    --md-primary-text-dark: #4C5866;
+    --md-primary-text-reverse: #e0eaf5;
+    --md-primary-text-rgb: 84, 92, 107;
+    --md-primary-text--color: #282e46;
+
+}
+
+[data-md-color-primary="mycolor_dark"] {
+    --md-primary-top-color: #2b3044;
+    --md-primary-fg-color: #f1f8ff;
+    --md-primary-fg-color--light: #232733;
+    --md-primary-fg-color--dark: #283346;
+    --md-primary-blue: #5bb7e2;
+    --md-primary-blue--light: #1E2129;
+    --md-primary-blue--dark: #2C3A4F;
+    --md-primary-text: #e0eaf5;
+    --md-primary-text-light: #e0eaf5;
+    --md-primary-text-dark: #4C5866;
+    --md-primary-text-reverse: #4C5866;
+    --md-primary-text-rgb: 226, 231, 240;
+    --md-primary-text--color: #e0e0e0;
+}
+
+/* 隐藏滚动条的同时仍能滚动 */
+.js-focus-visible {
+    overflow: auto; /* 启用滚动功能 */
+    -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
+    scrollbar-width: none; /* 适用于 Firefox */
+}
+
+/* Webkit 浏览器 */
+.js-focus-visible::-webkit-scrollbar {
+    display: none; /* 隐藏滚动条 */
+}
+
+/* 代码块样式优化 */
+.md-typeset .highlight {
+  margin: 1em 0;
+}
+
+/* 表格样式 */
+.md-typeset table:not([class]) {
+  border-radius: 0.2rem;
+  overflow: hidden;
+  color: var(--md-primary-text);
+  box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
+}
+
+th {
+  background-color: var(--md-primary-fg-color--light);
+  border-bottom: 2px solid var(--md-primary-blue);
+}
+
+/* 链接样式 */
+.md-typeset a {
+  transition: color 0.2s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* 自定义容器样式 */
+.custom-block {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.2rem;
+  border-left: 0.2rem solid var(--md-primary-fg-color);
+  background-color: var(--md-code-bg-color);
+}
+
+:root {
+  --md-text-font: "FZLanTYJW"; 
+  --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
+}
+
+p, ol{
+      font-weight: 300;
+      font-family: "FZLanTYJW";
+      color: var(--md-primary-text);
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+h1,h2,h3,h4,h5,h6 {
+      font-family: "FZLanTYJW";
+      color: var(--md-primary-text) !important;
+    }
+
+.md-typeset h1{
+  font-weight: 800;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+}
+
+.md-typeset li, header{
+      font-weight: 400;
+      font-family: "FZLanTYJW";
+    }
+
+.katex-display{
+      position: relative;  
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e075;
+      border-left: 4px solid var(--md-primary-blue);
+    }
+.katex-display:after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/icons/math.png);
+    background-size: 75px;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.poetry{
+      position: relative;  
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e075;
+      font-family: "LXGW WenKai Screen";
+}
+
+.flinks ul li{
+    position: relative;
+    /* 清除原有背景色 */
+    background-color: transparent;
+}
+
+.flinks ul li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--md-primary-fg-color--light);
+    opacity: 0.6;
+    z-index: -1; /* 确保在内容后面 */
+}
+
+.md-header{
+    background-color: var(--md-primary-top-color);
+    border-bottom-style:solid;
+    border-color: var(--md-primary-blue);
+    border-width:2px;
+    font-family:  "FZLanTYJW";
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.md-tabs{
+    background-color: var(--md-primary-fg-color--light);
+    font-family:  "FZLanTYJW";
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--md-primary-text);
+}
+
+span.filename {
+    color: var(--md-primary-text);
+}
+
+.md-typeset code:not(pre code) {
+    font-family: "Ubuntu Mono derivative Powerline";
+    color: var(--md-primary-text);
+    border-radius: .2rem;
+    padding: .1rem .3rem;
+    font-weight: 700;
+}
+
+.md-typeset pre code {
+    font-family: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
+    font-weight: 300;
+}
+
+.linenodiv pre span.normal {
+    color: var(--md-primary-text);
+}
+
+.glightbox img {
+  box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2);
+}
+
+.md-sidebar__inner, .md-sidebar__scrollwrap {
+  color: var(--md-primary-text);
+}
+
+/* 修改代码块行号(数字)的字体大小 */
+.highlighttable .linenos {
+  /* font-size: 0.93em; */
+  font-size: .85em;
+}
+
+@media screen and (min-width: 960px) {
+  html {
+    font-size: 135%;
+  }
+}
+
+@media screen and (min-width: 100em) {
+  html {
+    font-size: 135%;
+  }
+}
+
+@media screen and (min-width: 125em) {
+  html {
+    font-size: 135%;
+  }
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  letter-spacing: 0;
+}
+
+.md-typeset {
+  font-size: .85rem;
+}
+
+.md-nav {
+  font-size: .65rem;
+}
+
+@media screen and (max-width: 59.9375em) {
+  .md-nav__source {
+    background-color: var(--md-primary-text);
+  }
+}
+
+@media screen and (max-width: 76.1875em) {
+  .md-nav--primary .md-nav__title {
+    background-color: var(--md-primary-top-color);
+  }
+}
+
+.md-nav .md-nav__title:not(.md-nav--secondary .md-nav__title) {
+  background-color: var(--md-primary-top-color);
+  color: var(--md-primary-text-light);
+}
+
+.md-typeset pre {
+  line-height: 1.6;
+}
+
+.md-footer-meta {
+  background-color: var(--md-primary-fg-color--light);
+}
+
+.md-social__link svg {
+  fill: var(--md-primary-text);
+}
