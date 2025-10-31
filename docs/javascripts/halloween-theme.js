@@ -73,7 +73,7 @@
             '--md-primary-text-rgb': '255, 228, 179',
             '--md-primary-text--color': '#ffcc99'
         },
-        homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/halloween-background.jpg'
+        homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/halloween-background2.jpg'
     };
     
     // 检查当前日期是否为10月31日
