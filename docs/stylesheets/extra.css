@@ -1,37 +1,8 @@
 /* 自定义样式 */
 
-[data-md-color-primary="mycolor_light"] {
-    --md-primary-top-color: #454d6d;
-    --md-primary-fg-color: #425a7e;
-    --md-primary-fg-color--light: #f5f9fd;
-    --md-primary-fg-color--dark: #282e46;
-    --md-primary-blue: #5fbeeb;
-    --md-primary-blue--light: #ffffff;
-    --md-primary-blue--dark: #166d96;
-    --md-primary-text: #4C5866;
-    --md-primary-text-light: #e0eaf5;
-    --md-primary-text-dark: #4C5866;
-    --md-primary-text-reverse: #e0eaf5;
-    --md-primary-text-rgb: 84, 92, 107;
-    --md-primary-text--color: #282e46;
+/* 主题颜色变量现在由 halloween-theme.js 动态管理 */
+/* 支持默认主题和万圣节主题的自动切换 */
 
-}
-
-[data-md-color-primary="mycolor_dark"] {
-    --md-primary-top-color: #2b3044;
-    --md-primary-fg-color: #f1f8ff;
-    --md-primary-fg-color--light: #232733;
-    --md-primary-fg-color--dark: #283346;
-    --md-primary-blue: #5bb7e2;
-    --md-primary-blue--light: #1E2129;
-    --md-primary-blue--dark: #2C3A4F;
-    --md-primary-text: #e0eaf5;
-    --md-primary-text-light: #e0eaf5;
-    --md-primary-text-dark: #4C5866;
-    --md-primary-text-reverse: #4C5866;
-    --md-primary-text-rgb: 226, 231, 240;
-    --md-primary-text--color: #e0e0e0;
-}
 
 /* 隐藏滚动条的同时仍能滚动 */
 .js-focus-visible {
