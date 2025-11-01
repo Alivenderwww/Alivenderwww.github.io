@@ -3,6 +3,28 @@
 /* 主题颜色变量现在由 halloween-theme.js 动态管理 */
 /* 支持默认主题和万圣节主题的自动切换 */
 
+/* 页面过渡动画 - 防止内容闪烁 */
+/* 这些样式会在页面加载时立即生效，防止在JavaScript执行前出现闪烁 */
+body.page-transition-active {
+    overflow: hidden !important;
+}
+
+body.page-transition-active > *:not(script):not(style):not(#page-transition-overlay) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+body.page-transition-active::after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: var(--md-primary-fg-color, #425a7e) !important;
+    z-index: 99999 !important;
+    pointer-events: none !important;
+}
 
 /* 隐藏滚动条的同时仍能滚动 */
 .js-focus-visible {
