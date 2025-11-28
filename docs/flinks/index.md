@@ -24,4 +24,8 @@ template: flinks.html
 
     网络工程专业本科在读；NAOSI 网络与开源协会成员、Scr1w 网络安全战队成员
 
+- __[Zenith's blog](https://smallgoodgood.top/)__
+
+    未经审视的人生是不值得过的人生
+
 </div>
