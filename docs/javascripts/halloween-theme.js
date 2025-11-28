@@ -128,9 +128,9 @@ ${darkVars}
         const bgStyleElement = document.createElement('style');
         bgStyleElement.id = 'dynamic-background';
         bgStyleElement.textContent = `
-body::before {
-    background-image: url(${theme.homeBackground}) !important;
-}
+        body::before {
+            background-image: url(${theme.homeBackground}) !important;
+        }
         `;
         document.head.appendChild(bgStyleElement);
         

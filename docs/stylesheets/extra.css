@@ -136,6 +136,16 @@ h1,h2,h3,h4,h5,h6 {
     z-index: -1; /* 确保在内容后面 */
 }
 
+/* 友链头像样式 */
+.flink-avatar {
+    position: absolute;
+    top: 0px;
+    right: 0%;
+    width: 141.75px;
+    mask-image: linear-gradient(100deg, transparent 15%, black 110%);
+    z-index: -1;
+}
+
 .md-header{
     background-color: var(--md-primary-top-color);
     border-bottom-style:solid;
@@ -174,10 +184,6 @@ span.filename {
 
 .linenodiv pre span.normal {
     color: var(--md-primary-text);
-}
-
-.glightbox img {
-  box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2);
 }
 
 .md-sidebar__inner, .md-sidebar__scrollwrap {

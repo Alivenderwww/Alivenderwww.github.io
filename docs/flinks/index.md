@@ -8,23 +8,33 @@ template: flinks.html
 
 <div class="grid cards flinks" markdown>
 
-- __[Hitorikoishi's blog](https://hitorikoishi.github.io/)__
+- <img src="https://avatars.githubusercontent.com/u/138760562?v=4" class="flink-avatar" />
+  
+  __[Hitorikoishi's blog](https://hitorikoishi.github.io/)__
 
     芝士哈基曼波
 
-- __[Saurlax's blog](https://saurlax.com/)__
+- <img src="https://avatars.githubusercontent.com/u/49343742?v=4" class="flink-avatar" />
+  
+  __[Saurlax's blog](https://saurlax.com/)__
 
     Web, IoT, ML, Cybersecurity and Graphics developer.
 
-- __[Briteny's blog](https://briteny-pwn.github.io/)__
+- <img src="https://briteny-pwn.github.io/img/cat.jpg" class="flink-avatar" />
+  
+  __[Briteny's blog](https://briteny-pwn.github.io/)__
 
     Briteny-pwn.
 
-- __[Lentinel's blog](https://lentinel.link/)__
+- <img src="https://avatars.githubusercontent.com/u/113000289?v=4" class="flink-avatar" />
+  
+  __[Lentinel's blog](https://lentinel.link/)__
 
     网络工程专业本科在读；NAOSI 网络与开源协会成员、Scr1w 网络安全战队成员
 
-- __[Zenith's blog](https://smallgoodgood.top/)__
+- <img src="https://smallgoodgood.top/favicon.ico" class="flink-avatar" />
+  
+  __[Zenith's blog](https://smallgoodgood.top/)__
 
     未经审视的人生是不值得过的人生
 
