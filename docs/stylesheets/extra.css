@@ -21,6 +21,10 @@
   margin: 1em 0;
 }
 
+*,:after,:before {
+    box-sizing: border-box;
+}
+
 /* 表格样式 */
 .md-typeset table:not([class]) {
   border-radius: 0.2rem;
@@ -152,7 +156,6 @@ h1,h2,h3,h4,h5,h6 {
     border-color: var(--md-primary-blue);
     border-width:2px;
     font-family:  "FZLanTYJW";
-    font-size: 1.5rem;
     font-weight: 600;
     box-shadow: none;
 }
