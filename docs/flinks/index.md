@@ -38,4 +38,10 @@ template: flinks.html
 
     未经审视的人生是不值得过的人生
 
+- <img src="https://avatars.githubusercontent.com/u/121593203?v=4" class="flink-avatar" />
+  
+  __[Aliveriver's blog](https://aliveriver.xyz/)__
+
+    查无此人
+
 </div>
