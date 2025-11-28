@@ -1,7 +1,7 @@
 site_name: Alivender's Blog
 site_description: 一个技术博客，分享编程和技术心得
 site_author: Alivender
-# site_url: https://alivenderwww.github.io/
+site_url: https://alivenderwww.github.io/
 
 # Theme
 theme:
