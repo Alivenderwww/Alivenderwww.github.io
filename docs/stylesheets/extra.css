@@ -126,6 +126,9 @@ h1,h2,h3,h4,h5,h6 {
     position: relative;
     /* 清除原有背景色 */
     background-color: transparent;
+    padding-right: 160px; /* 为图片预留空间 */
+    min-height: 80px;
+    overflow: hidden; /* 防止内容溢出 */
 }
 
 .flinks ul li::before {
@@ -145,7 +148,9 @@ h1,h2,h3,h4,h5,h6 {
     position: absolute;
     top: 0px;
     right: 0%;
-    width: 141.75px;
+    min-height: 100%; /* 垂直方向铺满 */
+    width: 150px; /* 固定宽度 */
+    object-fit: cover; /* 关键：保持比例同时填充容器 */
     mask-image: linear-gradient(100deg, transparent 15%, black 110%);
     z-index: -1;
 }
