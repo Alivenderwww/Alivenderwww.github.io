@@ -22,4 +22,6 @@ template: home.html
 
 #### [:material-email:](mailto:dppp@mail.dlut.edu.cn) [My Gmail](mailto:dppp@mail.dlut.edu.cn)
 
+#### [:fontawesome-solid-camera:](https://dpp-alivender.afilmory.art) [My Photo Wall](https://dpp-alivender.afilmory.art)
+
 </div>

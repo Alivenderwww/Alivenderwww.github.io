@@ -125,6 +125,7 @@ nav:
       - blogs/MathNote/Dianlulilun/1.md
   - FPGAWeblab:
     - blogs/FPGAWeblab/index.md
+    - blogs/FPGAWeblab/document.md
     - blogs/FPGAWeblab/01water_led.md
     - blogs/FPGAWeblab/02key.md
     - blogs/FPGAWeblab/03led_display.md
@@ -134,6 +135,9 @@ nav:
     - blogs/FPGAWeblab/11_password_lock.md
     - blogs/FPGAWeblab/12_sfp.md
     - blogs/FPGAWeblab/13_frequency_meter.md
+  - GEMM:
+    - blogs/GEMM/cal_full_conv.md
+  - 画廊: https://dpp-alivender.afilmory.art/
   - 友链: flinks/index.md
   - Blog:
     - blog/index.md

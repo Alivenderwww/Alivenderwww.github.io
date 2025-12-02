@@ -33,6 +33,11 @@
   box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
 }
 
+.md-typeset table:not([class]) td:not([align]),.md-typeset table:not([class]) th:not([align]) {
+    text-align: left;
+    vertical-align: middle;
+}
+
 th {
   background-color: var(--md-primary-fg-color--light);
   border-bottom: 2px solid var(--md-primary-blue);
