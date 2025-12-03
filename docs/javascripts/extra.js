@@ -140,3 +140,50 @@
 // }
 
 /*背景end*/
+
+/* 页面加载进度监测 - 同步 MkDocs Material 内置进度条到 header 边框 */
+(function() {
+    const header = document.querySelector('.md-header');
+    const progressBar = document.querySelector('.md-progress[data-md-component="progress"]');
+    
+    if (!header) return;
+    
+    // 监听进度条变化
+    function syncProgress() {
+        if (progressBar) {
+            const progressValue = progressBar.style.getPropertyValue('--md-progress-value');
+            if (progressValue) {
+                const progress = parseFloat(progressValue);
+                header.style.setProperty('--load-progress', `${progress}%`);
+            }
+        }
+    }
+    
+    // 使用 MutationObserver 监听进度条的 style 变化
+    if (progressBar) {
+        const observer = new MutationObserver(() => {
+            syncProgress();
+        });
+        
+        observer.observe(progressBar, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+        
+        // 初始同步
+        syncProgress();
+    }
+    
+    // 也可以使用定时器轮询(备用方案)
+    const intervalId = setInterval(() => {
+        syncProgress();
+    }, 500);
+    
+    // 页面加载完成后清理定时器
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            clearInterval(intervalId);
+            header.style.setProperty('--load-progress', '100%');
+        }, 500);
+    });
+})();

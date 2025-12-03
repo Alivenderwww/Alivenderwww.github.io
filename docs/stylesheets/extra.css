@@ -165,10 +165,17 @@ h1,h2,h3,h4,h5,h6 {
 .md-header{
     background-color: var(--md-primary-top-color);
     border-bottom-style:solid;
-    border-color: var(--md-primary-blue);
     border-width:2px;
     font-weight: 600;
     box-shadow: none;
+    --load-progress: 0%;
+    border-image: linear-gradient(
+        to right, 
+        var(--md-primary-blue) 0%,
+        var(--md-primary-blue) var(--load-progress),
+        transparent var(--load-progress),
+        transparent 100%
+    ) 1;
 }
 
 .md-tabs{
