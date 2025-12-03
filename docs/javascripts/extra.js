@@ -154,7 +154,8 @@
             const progressValue = progressBar.style.getPropertyValue('--md-progress-value');
             if (progressValue) {
                 const progress = parseFloat(progressValue);
-                header.style.setProperty('--load-progress', `${progress}%`);
+                header.style.setProperty('--load-progress', `${progress}`);
+                header.style.setProperty('--load-progress_noanime', `${progress}`);
             }
         }
     }
@@ -183,7 +184,8 @@
     window.addEventListener('load', () => {
         setTimeout(() => {
             clearInterval(intervalId);
-            header.style.setProperty('--load-progress', '100%');
+            header.style.setProperty('--load-progress', '100');
+            header.style.setProperty('--load-progress_noanime', '100');
         }, 500);
     });
 })();

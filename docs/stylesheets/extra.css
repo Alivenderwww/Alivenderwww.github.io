@@ -66,6 +66,13 @@ th {
   --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
 }
 
+/* 注册自定义属性以支持动画 */
+@property --load-progress {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
 /* 日文字符字体 */
 .jp-char {
   font-family: "Blueaka", sans-serif;
@@ -168,14 +175,16 @@ h1,h2,h3,h4,h5,h6 {
     border-width:2px;
     font-weight: 600;
     box-shadow: none;
-    --load-progress: 0%;
+    --load-progress: 0;
+    --load-progress_noanime: 0;
     border-image: linear-gradient(
         to right, 
         var(--md-primary-blue) 0%,
-        var(--md-primary-blue) var(--load-progress),
-        transparent var(--load-progress),
+        var(--md-primary-blue) calc((clamp(0, var(--load-progress), var(--load-progress_noanime))) * 1%),
+        transparent calc(clamp(0, var(--load-progress), var(--load-progress_noanime)) * 1%),
         transparent 100%
     ) 1;
+    transition: --load-progress 0.3s ease-out;
 }
 
 .md-tabs{
