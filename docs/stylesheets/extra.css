@@ -66,15 +66,18 @@ th {
   --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
 }
 
+/* 日文字符字体 */
+.jp-char {
+  font-family: "Blueaka", sans-serif;
+}
+
 p, ol{
       font-weight: 300;
-      font-family: "FZLanTYJW";
       color: var(--md-primary-text);
       -webkit-font-smoothing: subpixel-antialiased;
     }
 
 h1,h2,h3,h4,h5,h6 {
-      font-family: "FZLanTYJW";
       color: var(--md-primary-text) !important;
     }
 
@@ -92,7 +95,6 @@ h1,h2,h3,h4,h5,h6 {
 
 .md-typeset li, header{
       font-weight: 400;
-      font-family: "FZLanTYJW";
     }
 
 .katex-display{
@@ -165,14 +167,12 @@ h1,h2,h3,h4,h5,h6 {
     border-bottom-style:solid;
     border-color: var(--md-primary-blue);
     border-width:2px;
-    font-family:  "FZLanTYJW";
     font-weight: 600;
     box-shadow: none;
 }
 
 .md-tabs{
     background-color: var(--md-primary-fg-color--light);
-    font-family:  "FZLanTYJW";
     font-size: 1rem;
     font-weight: 600;
     color: var(--md-primary-text);

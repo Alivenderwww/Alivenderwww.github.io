@@ -50,7 +50,7 @@ template: flinks.html
 
 - <img src="https://blog.linyang.ink/images/avatar.jpg" class="flink-avatar" />
   
-  __[你不定积分没加CのBlog](https://blog.linyang.ink/)__
+  __[你不定积分没加C <span class="jp-char">の</span> Blog](https://blog.linyang.ink/)__
 
     大连理工大学软件工程本科在读
 

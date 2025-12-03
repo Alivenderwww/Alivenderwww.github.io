@@ -203,6 +203,7 @@ extra_css:
   - stylesheets/toc.css # 目录CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体
+  - https://font.kivo.wiki/Blueaka/Blueaka.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css #gitalk支持
