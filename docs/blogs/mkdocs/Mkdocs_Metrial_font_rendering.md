@@ -1,5 +1,5 @@
 ---
-title: '关于Mkdocs自定义字体渲染和优化'
+title: '关于Mkdocs Metrial自定义字体渲染和优化'
 date: 2025-12-04 15:53
 comment: True
 comments: true

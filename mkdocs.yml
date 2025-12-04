@@ -109,7 +109,7 @@ nav:
   #     - blogs/Shehuishijian/5.md
   - mkdocs:
     - blogs/mkdocs/index.md
-    - blogs/mkdocs/1.md
+    - blogs/mkdocs/Mkdocs_Metrial_font_rendering.md
   - DJIflight:
     - blogs/DJIflight/index.md
     - blogs/DJIflight/algorithm-flow-and-problems.md
