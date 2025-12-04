@@ -3,6 +3,16 @@
 /* 主题颜色变量现在由 halloween-theme.js 动态管理 */
 /* 支持默认主题和万圣节主题的自动切换 */
 
+/* 自定义文字选中背景色 */
+::selection {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+::-moz-selection {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
 
 /* 隐藏滚动条的同时仍能滚动 */
 .js-focus-visible {

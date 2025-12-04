@@ -26,69 +26,7 @@
     src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf");
 }
 
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 纤*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 100;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Xian.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 细*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 200;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Xi.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 准*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 300;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Zhun.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 中*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 400;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Zhong.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 中粗*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 500;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_ZhongCu.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 粗*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 600;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Cu.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 大*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 700;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Da.woff2");
-}
-
-@font-face {
-    /*方正兰亭圆简体 Blue Archive字体 特*/
-    font-family: 'FZLanTYJW';
-    font-style: normal;
-    font-weight: 800;
-    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTYJW_Te.woff2");
-}
+@import url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css");
 
 /*! MIT License
  * Copyright (c) 2018 GitHub Inc.
@@ -191,7 +129,7 @@ main .gsc-loading-image {
 
 :host,
 html {
-    --font-family-sans: "FZLanTYJW";
+    --font-family-sans: "FZLanTY";
     --font-family-monospace: "Ubuntu Mono derivative Powerline";
     --font-family-default: var(--font-family-sans);
 }
