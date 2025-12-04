@@ -1,3 +1,5 @@
+@import url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css");
+
 @font-face {
     font-family: 'Ubuntu Mono derivative Powerline';
     font-style: normal;
@@ -22,9 +24,6 @@
     font-weight: 700;
     src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf");
 }
-
-@import url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css");
-
 
 main {
     --color-prettylights-syntax-comment: #838ba7;
