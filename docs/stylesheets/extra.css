@@ -62,8 +62,8 @@ th {
 }
 
 :root {
-  --md-text-font: "FZLanTYJW"; 
-  --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
+  --md-text-font: "FZLanTY", "Blueaka";
+  --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTY";
 }
 
 /* 注册自定义属性以支持动画 */
@@ -207,7 +207,7 @@ span.filename {
 }
 
 .md-typeset pre code {
-    font-family: "Ubuntu Mono derivative Powerline", "FZLanTYJW";
+    font-family: "Ubuntu Mono derivative Powerline", "FZLanTY";
     font-weight: 300;
 }
 

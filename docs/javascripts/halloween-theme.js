@@ -2,6 +2,27 @@
 (function() {
     'use strict';
     
+    // 动态导入动画模块（如果需要）
+    let animationModule = null;
+    
+    // 尝试加载动画模块
+    async function loadAnimationModule() {
+        if (!animationModule) {
+            try {
+                // 检查动画脚本是否已加载
+                if (window.playThemeSwitchAnimation) {
+                    animationModule = {
+                        playThemeSwitchAnimation: window.playThemeSwitchAnimation,
+                        getThemeColor: window.getThemeColor
+                    };
+                }
+            } catch (e) {
+                console.log('Animation module not available');
+            }
+        }
+        return animationModule;
+    }
+    
     // 默认主题配置（蓝色）
     const defaultTheme = {
         light: {
@@ -162,8 +183,8 @@ ${darkVars}
         `;
     }
     
-    // 应用主题
-    function applyTheme() {
+    // 应用主题（实际执行主题切换的函数）
+    function applyThemeInternal() {
         const theme = getCurrentTheme();
         
         // 移除旧的主题样式
@@ -204,6 +225,46 @@ ${darkVars}
         }
     }
     
+    // 应用主题（带动画的包装函数）
+    async function applyTheme(withAnimation = false) {
+        // 如果不需要动画或动画模块不可用，直接切换
+        if (!withAnimation) {
+            applyThemeInternal();
+            return;
+        }
+        
+        // 尝试加载动画模块
+        const animation = await loadAnimationModule();
+        
+        if (!animation) {
+            // 动画模块不可用，直接切换
+            applyThemeInternal();
+            return;
+        }
+        
+        // 获取目标主题色
+        const themeColor = getThemeColorForAnimation();
+        
+        // 播放动画并在动画中切换主题
+        try {
+            await animation.playThemeSwitchAnimation(themeColor, () => {
+                applyThemeInternal();
+            });
+        } catch (e) {
+            console.error('Animation error:', e);
+            // 动画失败，直接切换主题
+            applyThemeInternal();
+        }
+    }
+    
+    // 获取当前主题对应的颜色（用于动画）
+    function getThemeColorForAnimation() {
+        if (isHalloween()) {
+            return '#ff8c00'; // 橙色（万圣节）
+        }
+        return currentColorScheme === 'purple' ? '#a569bd' : '#5fbeeb'; // 紫色或蓝色
+    }
+    
     // 替换首页欢迎语
     function replaceHomeGreeting() {
         // 查找首页的h1标题
@@ -237,12 +298,13 @@ ${darkVars}
         const toggleButton = document.getElementById('theme-toggle-btn');
         
         if (toggleButton) {
-            toggleButton.addEventListener('click', () => {
+            toggleButton.addEventListener('click', async () => {
                 if (!isHalloween()) {
                     // 切换主题
                     const newScheme = currentColorScheme === 'blue' ? 'purple' : 'blue';
                     saveColorSchemePreference(newScheme);
-                    applyTheme();
+                    // 带动画地应用主题
+                    await applyTheme(true);
                 }
             });
         }
