@@ -203,7 +203,7 @@ extra_css:
   - stylesheets/extra.css # 自定义CSS
   - stylesheets/toc.css # 目录CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
-  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体
+  # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体
   - https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css
   - https://font.kivo.wiki/Blueaka/Blueaka.css
   # - assets/stylesheets/portfolio.css
