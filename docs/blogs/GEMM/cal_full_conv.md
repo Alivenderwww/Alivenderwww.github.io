@@ -1,6 +1,6 @@
 ---
 title: '脉动阵列计算全连接层'
-date: '2025-12-2'
+date: 2025-12-01 13:28
 comment: True
 comments: true
 ---

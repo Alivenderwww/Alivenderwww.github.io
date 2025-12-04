@@ -78,8 +78,7 @@ th {
   font-family: "Blueaka", sans-serif;
 }
 
-p, ol{
-      font-weight: 300;
+p, ol, dt, dd{
       color: var(--md-primary-text);
       -webkit-font-smoothing: subpixel-antialiased;
     }
@@ -208,7 +207,7 @@ span.filename {
 
 .md-typeset pre code {
     font-family: "Ubuntu Mono derivative Powerline", "FZLanTY";
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .linenodiv pre span.normal {
@@ -223,6 +222,10 @@ span.filename {
 .highlighttable .linenos {
   /* font-size: 0.93em; */
   font-size: .85em;
+}
+
+.glightbox img {
+  box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2);
 }
 
 @media screen and (min-width: 960px) {

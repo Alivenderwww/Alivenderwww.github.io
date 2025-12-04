@@ -1,6 +1,6 @@
 ---
 title: '基于紫光同创FPGA的远程实验室-系统设计报告'
-date: '2025-11-30'
+date: 2025-11-30 11:15
 comment: True
 comments: true
 ---

@@ -1,6 +1,6 @@
 ---
 title: 'DJI 飞行算法流程和问题'
-date: '2025-06-28'
+date: 2025-09-26 16:15
 comment: True
 comments: true
 ---

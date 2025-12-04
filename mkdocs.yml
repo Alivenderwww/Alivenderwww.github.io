@@ -107,6 +107,9 @@ nav:
   #     - blogs/Shehuishijian/3.md
   #     - blogs/Shehuishijian/4.md
   #     - blogs/Shehuishijian/5.md
+  - mkdocs:
+    - blogs/mkdocs/index.md
+    - blogs/mkdocs/1.md
   - DJIflight:
     - blogs/DJIflight/index.md
     - blogs/DJIflight/algorithm-flow-and-problems.md
@@ -146,7 +149,7 @@ nav:
 # Plugins
 plugins:
   - heti:
-      disable_serve: false
+      disable_serve: true
   - statistics:
       page_check_metadata: comment
   - glightbox:
@@ -162,6 +165,14 @@ plugins:
       manual: false
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - rss:
+      match_path: "blogs/[^/]+/(?!index\\.md$).+\\.md$"
+      date_from_meta:
+        as_creation: date
+      comments_path: "#__comments"
+      categories:
+        - categories
+        - tags 
   - git-revision-date-localized:
       type: timeago #时间类型
       custom_format: "%d. %B %Y"  # 时间格式
@@ -178,12 +189,14 @@ plugins:
 
 # Extra
 extra:
-  generator: false #是否删除页脚显示“使用 MkDocs 材料制造”
+  generator: false #是否删除页脚显示"使用 MkDocs Metrial制造"
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Alivenderwww
     - icon: fontawesome/solid/envelope
       link: mailto:dppp@mail.dlut.edu.cn
+    - icon: fontawesome/solid/rss
+      link: /feed_rss_created.xml
 
 extra_javascript:
   - javascripts/extra.js #自定义javascript
