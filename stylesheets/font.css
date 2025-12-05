@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline.ttf");
+}
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: 400;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline%20Italic.ttf");
+}
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline%20Bold.ttf");
+}
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: 700;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu%20Mono%20derivative%20Powerline%20Bold%20Italic.ttf");
+}
