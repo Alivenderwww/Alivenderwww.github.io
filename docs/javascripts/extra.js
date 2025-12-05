@@ -148,14 +148,28 @@
     
     if (!header) return;
     
+    let lastProgress = 0;
+    
     // 监听进度条变化
     function syncProgress() {
         if (progressBar) {
-            const progressValue = progressBar.style.getPropertyValue('--md-progress-value');
+            const progressValue = Math.min(parseFloat(progressBar.style.getPropertyValue('--md-progress-value')) || 0, 100);
             if (progressValue) {
                 const progress = parseFloat(progressValue);
-                header.style.setProperty('--load-progress', `${progress}`);
-                header.style.setProperty('--load-progress_noanime', `${progress}`);
+                
+                if (progress < lastProgress) {
+                    // 降低：移除动画，瞬间更新
+                    header.style.transition = 'none';
+                    header.style.setProperty('--load-progress', `${progress}`);
+                    // 强制重排以应用无动画更新
+                    header.offsetHeight;
+                } else {
+                    // 升高：添加缓动动画
+                    header.style.transition = '--load-progress 0.3s ease-out';
+                    header.style.setProperty('--load-progress', `${progress}`);
+                }
+                
+                lastProgress = progress;
             }
         }
     }

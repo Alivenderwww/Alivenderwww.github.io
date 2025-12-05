@@ -185,15 +185,13 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: 600;
     box-shadow: none;
     --load-progress: 0;
-    --load-progress_noanime: 0;
     border-image: linear-gradient(
         to right, 
         var(--md-primary-blue) 0%,
-        var(--md-primary-blue) calc((clamp(0, var(--load-progress), var(--load-progress_noanime))) * 1%),
-        transparent calc(clamp(0, var(--load-progress), var(--load-progress_noanime)) * 1%),
+        var(--md-primary-blue) calc(var(--load-progress) * 1%),
+        transparent calc(var(--load-progress) * 1%),
         transparent 100%
     ) 1;
-    transition: --load-progress 0.3s ease-out;
 }
 
 .md-tabs{
