@@ -44,7 +44,7 @@
 }
 
 /* 隐藏滚动条的同时仍能滚动 */
-.js-focus-visible {
+.js-focus-visible{
     overflow: auto; /* 启用滚动功能 */
     -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
     scrollbar-width: none; /* 适用于 Firefox */
@@ -55,13 +55,34 @@
     display: none; /* 隐藏滚动条 */
 }
 
+.md-sidebar__scrollwrap{
+    overflow: auto; /* 启用滚动功能 */
+    -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
+    scrollbar-width: none; /* 适用于 Firefox */
+}
+
+/* Webkit 浏览器 */
+.md-sidebar__scrollwrap::-webkit-scrollbar {
+    display: none; /* 隐藏滚动条 */
+}
+
 /* 代码块样式优化 */
 .md-typeset .highlight {
   margin: 1em 0;
 }
 
+/* 鼠标样式配置 - 隐藏系统鼠标，由 JS 实现自定义鼠标 */
+* {
+    cursor: none !important;
+}
+
 *,:after,:before {
     box-sizing: border-box;
+}
+
+/* 恢复 iframe 的光标，防止自定义光标在 iframe 上卡住时无法交互 */
+iframe {
+    cursor: auto !important;
 }
 
 /* 表格样式 */
@@ -340,14 +361,12 @@ span.filename {
     height: 12px;
     border-radius: 50%;
     background: var(--md-accent-fg-color, var(--md-primary-fg-color));
-    cursor: pointer;
 }
 #spectrum-config-menu input[type=range]::-moz-range-thumb {
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background: var(--md-accent-fg-color, var(--md-primary-fg-color));
-    cursor: pointer;
 }
 #spectrum-config-menu input[type=range]::-moz-range-track {
     width: 100%;
@@ -367,7 +386,6 @@ span.filename {
 
 /* 频谱按钮 */
 #spectrum-button {
-  cursor: pointer;
   background: none;
   border: none;
   transition: color 0.3s;
