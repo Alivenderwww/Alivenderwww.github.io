@@ -1,17 +1,46 @@
-/* 自定义样式 */
+[data-md-color-primary="mycolor_light"] {
+  --md-primary-top-color: #454d6d;
+  --md-primary-fg-color: #425a7e;
+  --md-accent-fg-color: #166d96;
+  --md-primary-fg-color--light: #f5f9fd;
+  --md-primary-fg-color--dark: #282e46;
+  --md-primary-blue: #5fbeeb;
+  --md-primary-blue--light: #ffffff;
+  --md-primary-blue--dark: #166d96;
+  --md-primary-text: #4C5866;
+  --md-primary-text-light: #e0eaf5;
+  --md-primary-text-dark: #4C5866;
+  --md-primary-text-reverse: #e0eaf5;
+  --md-primary-text-rgb: 84, 92, 107;
+  --md-primary-text--color: #282e46;
+}
 
-/* 主题颜色变量现在由 halloween-theme.js 动态管理 */
-/* 支持默认主题和万圣节主题的自动切换 */
+[data-md-color-primary="mycolor_dark"] {
+  --md-primary-top-color: #2b3044;
+  --md-primary-fg-color: #f1f8ff;
+  --md-accent-fg-color: #5bb7e2;
+  --md-primary-fg-color--light: #232733;
+  --md-primary-fg-color--dark: #283346;
+  --md-primary-blue: #5bb7e2;
+  --md-primary-blue--light: #1E2129;
+  --md-primary-blue--dark: #2C3A4F;
+  --md-primary-text: #e0eaf5;
+  --md-primary-text-light: #e0eaf5;
+  --md-primary-text-dark: #4C5866;
+  --md-primary-text-reverse: #4C5866;
+  --md-primary-text-rgb: 226, 231, 240;
+  --md-primary-text--color: #e0e0e0;
+}
 
 /* 自定义文字选中背景色 */
 ::selection {
   background-color: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
+  color: var(--md-primary-fg-color--light);
 }
 
 ::-moz-selection {
   background-color: var(--md-primary-fg-color);
-  color: var(--md-primary-bg-color);
+  color: var(--md-primary-fg-color--light);
 }
 
 /* 隐藏滚动条的同时仍能滚动 */
@@ -293,4 +322,83 @@ span.filename {
 
 .md-social__link svg {
   fill: var(--md-primary-text);
+}
+
+#spectrum-config-menu input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--md-default-fg-color--lightest);
+    border-radius: 2px;
+    outline: none;
+}
+#spectrum-config-menu input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--md-accent-fg-color, var(--md-primary-fg-color));
+    cursor: pointer;
+}
+#spectrum-config-menu input[type=range]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--md-accent-fg-color, var(--md-primary-fg-color));
+    cursor: pointer;
+}
+#spectrum-config-menu input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    background: transparent;
+}
+
+/* 频谱按钮激活状态 */
+#spectrum-button[data-spectrum-active] {
+  color: var(--md-primary-blue);
+}
+
+/* 频谱按钮容器 */
+#spectrum-button-container {
+  position: relative;
+}
+
+/* 频谱按钮 */
+#spectrum-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s;
+}
+
+/* 配置菜单容器 */
+#spectrum-config-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: var(--md-default-bg-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 100;
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  font-size: 12px;
+  color: var(--md-primary-text);
+}
+
+/* 配置菜单的可编辑值输入框 */
+.spectrum-editable-value {
+  width: 50px;
+  background: var(--md-default-bg-color);
+  color: var(--md-primary-text);
+  font-size: 12px;
+  text-align: right;
+  outline: none;
+  border: none;
 }

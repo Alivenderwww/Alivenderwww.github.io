@@ -219,7 +219,8 @@ extra_javascript:
   # - ckplayer/js/ckplayer.js #播放器配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js  #gitalk支持
   - javascripts/theme-switch-animation.js  # 主题切换动画
-  - javascripts/halloween-theme.js  # 万圣节主题切换
+  - javascripts/theme.js  # 主题切换
+  - javascripts/audio-spectrum.js  # 音频频谱捕获
   - javascripts/katex.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js
@@ -234,6 +235,9 @@ extra_css:
   # - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css  #字体
   - https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css
   - https://font.kivo.wiki/Blueaka/Blueaka.css
+  - https://font.kivo.wiki/Blueaka_Bold/Blueaka_Bold.css
+  - https://blog.dpp-alivender.life/stylesheets/comments_light.css
+  - https://blog.dpp-alivender.life/stylesheets/comments_dark.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css #gitalk支持
