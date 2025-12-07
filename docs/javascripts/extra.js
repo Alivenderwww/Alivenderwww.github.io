@@ -207,6 +207,11 @@
 
 /* 鼠标样式修改 */
 (function() {
+    // 移动端/触摸设备检测：如果设备不支持悬停（如手机/平板），则不启用自定义鼠标
+    if (window.matchMedia && window.matchMedia("(hover: none)").matches) {
+        return;
+    }
+
     var wrapperId = "custom-cursor-wrapper";
     var mouseX = -100, mouseY = -100;
     var isVisible = false;
@@ -303,6 +308,11 @@
             isVisible = false;
         }
     });
+
+    // 触摸开始时隐藏自定义光标，防止在触摸设备上出现
+    document.addEventListener("touchstart", function() {
+        isVisible = false;
+    }, { passive: true });
 
     // 鼠标移动
     document.addEventListener("mousemove", function(e) {

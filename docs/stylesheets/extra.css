@@ -72,8 +72,11 @@
 }
 
 /* 鼠标样式配置 - 隐藏系统鼠标，由 JS 实现自定义鼠标 */
-* {
-    cursor: none !important;
+/* 仅在支持悬停的设备（如PC）上隐藏系统鼠标 */
+@media (hover: hover) {
+    * {
+        cursor: none !important;
+    }
 }
 
 *,:after,:before {
