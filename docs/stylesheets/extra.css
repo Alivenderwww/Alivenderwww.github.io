@@ -44,25 +44,14 @@
 }
 
 /* 隐藏滚动条的同时仍能滚动 */
-.js-focus-visible{
+.js-focus-visible, .arithmatex, .md-sidebar__scrollwrap{
     overflow: auto; /* 启用滚动功能 */
     -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
     scrollbar-width: none; /* 适用于 Firefox */
 }
 
 /* Webkit 浏览器 */
-.js-focus-visible::-webkit-scrollbar {
-    display: none; /* 隐藏滚动条 */
-}
-
-.md-sidebar__scrollwrap{
-    overflow: auto; /* 启用滚动功能 */
-    -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
-    scrollbar-width: none; /* 适用于 Firefox */
-}
-
-/* Webkit 浏览器 */
-.md-sidebar__scrollwrap::-webkit-scrollbar {
+.js-focus-visible::-webkit-scrollbar, .arithmatex::-webkit-scrollbar, .md-sidebar__scrollwrap::-webkit-scrollbar{
     display: none; /* 隐藏滚动条 */
 }
 
@@ -81,6 +70,10 @@
 
 *,:after,:before {
     box-sizing: border-box;
+}
+
+body {
+  background-color: var(--md-primary-blue--light);
 }
 
 /* 恢复 iframe 的光标，防止自定义光标在 iframe 上卡住时无法交互 */
@@ -104,6 +97,14 @@ iframe {
 th {
   background-color: var(--md-primary-fg-color--light);
   border-bottom: 2px solid var(--md-primary-blue);
+}
+
+td {
+  background-color: var(--md-primary-blue--light);
+}
+
+ul {
+  color: var(--md-primary-text--color);
 }
 
 /* 链接样式 */

@@ -39,7 +39,16 @@
             '--md-primary-text-dark': '#4C5866',
             '--md-primary-text-reverse': '#e0eaf5',
             '--md-primary-text-rgb': '84, 92, 107',
-            '--md-primary-text--color': '#282e46'
+            '--md-primary-text--color': '#282e46',
+            '--md-default-bg-color': 'var(--md-primary-blue--light)',
+            '--md-code-bg-color': '#f5f5f5',
+            '--md-code-hl-color': '#5fbeeb',
+            '--md-code-hl-color--light': '#5fbeeb1a',
+            '--md-code-hl-function-color': '#166d96',
+            '--md-code-hl-constant-color': '#425a7e',
+            '--md-code-hl-keyword-color': '#166d96',
+            '--md-code-hl-string-color': '#5fbeeb',
+            '--md-typeset-a-color': 'var(--md-primary-blue--dark)',
         },
         dark: {
             '--md-primary-top-color': '#2b3044',
@@ -55,7 +64,16 @@
             '--md-primary-text-dark': '#4C5866',
             '--md-primary-text-reverse': '#4C5866',
             '--md-primary-text-rgb': '226, 231, 240',
-            '--md-primary-text--color': '#e0e0e0'
+            '--md-primary-text--color': '#e0e0e0',
+            '--md-default-bg-color': 'var(--md-primary-blue--light)',
+            '--md-code-bg-color': '#232733',
+            '--md-code-hl-color': '#5bb7e2',
+            '--md-code-hl-color--light': '#5bb7e21a',
+            '--md-code-hl-function-color': '#5bb7e2',
+            '--md-code-hl-constant-color': '#f1f8ff',
+            '--md-code-hl-keyword-color': '#5bb7e2',
+            '--md-code-hl-string-color': '#8caaee',
+            '--md-typeset-a-color': 'var(--md-primary-blue)',
         },
         homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/arona.jpg'
     };
@@ -76,7 +94,9 @@
             '--md-primary-text-dark': '#3a2846',
             '--md-primary-text-reverse': '#ebe0f5',
             '--md-primary-text-rgb': '92, 72, 102',
-            '--md-primary-text--color': '#3a2846'
+            '--md-primary-text--color': '#3a2846',
+            '--md-code-bg-color': '#f5f5f5',
+            '--md-default-bg-color': 'var(--md-primary-blue--light)',
         },
         dark: {
             '--md-primary-top-color': '#363042ff',
@@ -85,14 +105,16 @@
             '--md-primary-fg-color--light': '#252135ff',
             '--md-primary-fg-color--dark': '#3a2846',
             '--md-primary-blue': '#bb7ae2',
-            '--md-primary-blue--light': '#1a1529',
+            '--md-primary-blue--light': '#1d1a29',
             '--md-primary-blue--dark': '#3a2a4f',
             '--md-primary-text': '#f1ecf7',
             '--md-primary-text-light': '#ebe0f5',
             '--md-primary-text-dark': '#5c4866',
             '--md-primary-text-reverse': '#5c4866',
             '--md-primary-text-rgb': '235, 224, 245',
-            '--md-primary-text--color': '#d8b3ff'
+            '--md-primary-text--color': '#d8b3ff',
+            '--md-code-bg-color': '#241e2b',
+            '--md-default-bg-color': 'var(--md-primary-blue--light)',
         },
         homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/plana.jpg'
     };
@@ -136,6 +158,17 @@
     
     // 主题切换状态管理
     let currentColorScheme = 'blue'; // 'blue' 或 'purple'
+    let isGiscusReady = false; // Giscus 是否已加载完成
+
+    // 监听 Giscus 消消息
+    window.addEventListener('message', function(event) {
+        if (event.origin === 'https://giscus.app') {
+            if (!isGiscusReady) {
+                isGiscusReady = true;
+                updateGiscusTheme();
+            }
+        }
+    });
     
     // 获取当前主题偏好
     function getColorSchemePreference() {
@@ -183,6 +216,52 @@ ${darkVars}
         `;
     }
     
+    // 更新Giscus主题
+    async function updateGiscusTheme() {
+        if (!isGiscusReady) return;
+
+        const theme = getCurrentTheme();
+        let isSlate = false;
+        
+        if (window.__md_get) {
+            const palette = window.__md_get("__palette");
+            if (palette && palette.color && palette.color.scheme) {
+                isSlate = palette.color.scheme === "slate";
+            }
+        }
+        
+        const cssUrl = isSlate 
+            ? "/stylesheets/comments_dark.css"
+            : "/stylesheets/comments_light.css";
+            
+        try {
+            const response = await fetch(cssUrl);
+            const cssText = await response.text();
+            
+            const themeVars = isSlate ? theme.dark : theme.light;
+            const cssVars = Object.entries(themeVars)
+                .map(([key, value]) => `${key}: ${value};`)
+                .join('\n');
+            
+            // 将变量定义放在最后，以确保 @import 语句（如果在 cssText 开头）保持在文件最前面
+            const injectedCss = `${cssText}\n:root {\n${cssVars}\n}`;
+            
+            // Use Data URI instead of Blob URL because Giscus (cross-origin) cannot read Blob URL
+            const base64Css = btoa(unescape(encodeURIComponent(injectedCss)));
+            const dataUrl = `data:text/css;base64,${base64Css}`;
+            
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme: dataUrl } } },
+                    'https://giscus.app'
+                );
+            }
+        } catch (e) {
+            console.error('Failed to update Giscus theme:', e);
+        }
+    }
+
     // 应用主题（实际执行主题切换的函数）
     function applyThemeInternal() {
         const theme = getCurrentTheme();
@@ -223,6 +302,9 @@ ${darkVars}
         if (isHalloween()) {
             console.log('Happy Halloween!');
         }
+
+        // 更新Giscus主题
+        updateGiscusTheme();
     }
     
     // 应用主题（带动画的包装函数）
@@ -347,6 +429,14 @@ ${darkVars}
         
         // 绑定主题切换按钮事件
         bindThemeToggleEvents();
+
+        // 绑定MkDocs调色板切换事件
+        const paletteSwitch = document.querySelector("[data-md-component=palette]");
+        if (paletteSwitch) {
+            paletteSwitch.addEventListener("change", () => {
+                setTimeout(applyTheme, 100); // 稍微延迟以确保palette状态已更新
+            });
+        }
     }
     
     // 页面加载完成后应用主题
