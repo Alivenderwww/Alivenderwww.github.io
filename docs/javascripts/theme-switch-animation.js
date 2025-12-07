@@ -274,22 +274,25 @@ function createAndAnimateFlashLogo(delay) {
     
     // 强制重绘
     container.offsetHeight;
+
+    const intime = 100;
+    const outtime = 300;
     
     setTimeout(() => {
       // 淡入
-      container.style.transition = 'opacity 50ms linear';
+      container.style.transition = `opacity ${intime}ms linear`;
       container.style.opacity = '0.3';
       
       setTimeout(() => {
         // 淡出
-        container.style.transition = 'opacity 150ms ease-out';
+        container.style.transition = `opacity ${outtime}ms ease-out`;
         container.style.opacity = '0';
         
         setTimeout(() => {
           container.remove();
           resolve();
-        }, 150);
-      }, 50); // 50ms 后开始淡出
+        }, outtime);
+      }, intime); // 50ms 后开始淡出
     }, delay);
   });
 }
@@ -340,7 +343,7 @@ function createAndAnimateXO(delay) {
     
     setTimeout(() => {
       // 位移动画
-      const moveTransition = 'left 0.35s cubic-bezier(.09,.76,.21,1)';
+      const moveTransition = 'left 0.5s cubic-bezier(.09,.76,.21,1)';
       
       // 目标位置
       const targetX1 = window.innerWidth * 0.4 - size1 / 2;
@@ -351,8 +354,8 @@ function createAndAnimateXO(delay) {
       
       // 透明度闪烁动画
       let elapsedTime = 0;
-      const flickerInterval = 10;
-      const flickerDuration = 200;
+      const flickerInterval = 5;
+      const flickerDuration = 300;
       
       const intervalId = setInterval(() => {
         elapsedTime += flickerInterval;
@@ -362,8 +365,8 @@ function createAndAnimateXO(delay) {
         
         // 更新 transition 和 opacity
         // 注意：需要保留 left 的 transition
-        el1.style.transition = `${moveTransition}, opacity 10ms linear`;
-        el2.style.transition = `${moveTransition}, opacity 10ms linear`;
+        el1.style.transition = `${moveTransition}, opacity ${flickerInterval}ms linear`;
+        el2.style.transition = `${moveTransition}, opacity ${flickerInterval}ms linear`;
         
         el1.style.opacity = randomOpacity;
         el2.style.opacity = randomOpacity;
@@ -383,14 +386,14 @@ function createAndAnimateXO(delay) {
               el1.remove();
               el2.remove();
               resolve();
-            }, 200);
-          }, 10); // 等待最后一次闪烁完成
+            }, flickerDuration);
+          }, flickerInterval); // 等待最后一次闪烁完成
         }
       }, flickerInterval);
       
       // 立即执行第一次闪烁
-      el1.style.transition = `${moveTransition}, opacity 10ms linear`;
-      el2.style.transition = `${moveTransition}, opacity 10ms linear`;
+      el1.style.transition = `${moveTransition}, opacity ${flickerInterval}ms linear`;
+      el2.style.transition = `${moveTransition}, opacity ${flickerInterval}ms linear`;
       el1.style.opacity = Math.random() * 0.5;
       el2.style.opacity = Math.random() * 0.5;
       

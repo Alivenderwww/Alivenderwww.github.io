@@ -14,8 +14,6 @@ class AudioSpectrumCapture {
         this.sourceNode = null;
         this.container = null;
         this.canvas = null;
-        this.frameCounter = 0;  // 用于控制绘制间隔
-        this.drawInterval = 1;  // 默认每帧绘制，可设置为 2、3、5 等
         
         // 历史帧数据：存储最近三帧的频谱数据用于变化检测
         this.bandValuesHistory = [];  // 存储最近三帧的 bandValues
@@ -161,15 +159,6 @@ class AudioSpectrumCapture {
     }
 
     /**
-     * 设置绘制间隔
-     * @param {number} interval - 每隔多少帧绘制一次，1 表示每帧绘制，2 表示隔 1 帧绘制等
-     */
-    setDrawInterval(interval) {
-        this.drawInterval = Math.max(1, Math.floor(interval));
-        console.log(`setDrawInterval: ${this.drawInterval} frames`);
-    }
-
-    /**
      * 绘制频谱柱状图（使用对数坐标）- 竖排版本
      * @param {number} startFreq - 起始频率 (Hz)，默认 20
      * @param {number} endFreq - 结束频率 (Hz)，默认 20000
@@ -242,7 +231,7 @@ class AudioSpectrumCapture {
                 max = (this.frequencyData[bin] > max)?(this.frequencyData[bin]):(max);
             }
             bandValues[i] = sum / band.binCount;
-            bandValues[i] = max;
+            // bandValues[i] = max;
         }
 
         // 平滑处理：对每个值取其自身和周围四个值（左三右三）的加权平均值
@@ -366,11 +355,7 @@ class AudioSpectrumCapture {
 
             this.analyser.getByteFrequencyData(this.frequencyData);
 
-            // 按照间隔绘制频谱
-            if (this.frameCounter % this.drawInterval === 0) {
-                this.drawSpectrum(40, 12000, this.settings.segments);
-            }
-            this.frameCounter++;
+            this.drawSpectrum(40, 12000, this.settings.segments);
 
             this.animationId = requestAnimationFrame(captureFrame);
         };

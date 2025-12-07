@@ -362,9 +362,6 @@ ${darkVars}
         applyTheme();
     });
     
-    // 作为后备方案，也监听常规的导航事件
-    window.addEventListener('popstate', applyTheme);
-    
     // 监听pushState和replaceState
     const originalPushState = history.pushState;
     const originalReplaceState = history.replaceState;
