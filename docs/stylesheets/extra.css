@@ -1,4 +1,6 @@
-[data-md-color-primary="mycolor_light"] {
+/* Blue Theme (Default) */
+[data-custom-theme="blue"][data-md-color-scheme="default"],
+body:not([data-custom-theme])[data-md-color-scheme="default"] {
   --md-primary-top-color: #454d6d;
   --md-primary-fg-color: #425a7e;
   --md-accent-fg-color: #166d96;
@@ -13,9 +15,19 @@
   --md-primary-text-reverse: #e0eaf5;
   --md-primary-text-rgb: 84, 92, 107;
   --md-primary-text--color: #282e46;
+  --md-code-bg-color: #f5f5f5;
+  --md-code-hl-color: #5fbeeb;
+  --md-code-hl-color--light: #5fbeeb1a;
+  --md-code-hl-function-color: #166d96;
+  --md-code-hl-constant-color: #425a7e;
+  --md-code-hl-keyword-color: #166d96;
+  --md-code-hl-string-color: #5fbeeb;
+  --md-typeset-a-color: var(--md-primary-blue--dark);
+  --md-default-bg-color: var(--md-primary-blue--light);
 }
 
-[data-md-color-primary="mycolor_dark"] {
+[data-custom-theme="blue"][data-md-color-scheme="slate"],
+body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-top-color: #2b3044;
   --md-primary-fg-color: #f1f8ff;
   --md-accent-fg-color: #5bb7e2;
@@ -30,6 +42,133 @@
   --md-primary-text-reverse: #4C5866;
   --md-primary-text-rgb: 226, 231, 240;
   --md-primary-text--color: #e0e0e0;
+  --md-code-bg-color: #232733;
+  --md-code-hl-color: #5bb7e2;
+  --md-code-hl-color--light: #5bb7e21a;
+  --md-code-hl-function-color: #5bb7e2;
+  --md-code-hl-constant-color: #f1f8ff;
+  --md-code-hl-keyword-color: #5bb7e2;
+  --md-code-hl-string-color: #8caaee;
+  --md-typeset-a-color: var(--md-primary-blue);
+  --md-default-bg-color: var(--md-primary-blue--light);
+}
+
+/* Purple Theme */
+[data-custom-theme="purple"][data-md-color-scheme="default"] {
+  --md-primary-top-color: #423e4eff;
+  --md-primary-fg-color: #6a4c93;
+  --md-accent-fg-color: #8e44ad;
+  --md-primary-fg-color--light: #f8f5fd;
+  --md-primary-fg-color--dark: #3a2846;
+  --md-primary-blue: #a569bd;
+  --md-primary-blue--light: #ffffff;
+  --md-primary-blue--dark: #6a4c93;
+  --md-primary-text: #594e5f;
+  --md-primary-text-light: #ebe0f5;
+  --md-primary-text-dark: #3a2846;
+  --md-primary-text-reverse: #ebe0f5;
+  --md-primary-text-rgb: 92, 72, 102;
+  --md-primary-text--color: #3a2846;
+  --md-code-bg-color: #f5f5f5;
+  --md-code-hl-color: #a569bd;
+  --md-code-hl-color--light: #a569bd1a;
+  --md-code-hl-function-color: #6a4c93;
+  --md-code-hl-constant-color: #6a4c93;
+  --md-code-hl-keyword-color: #6a4c93;
+  --md-code-hl-string-color: #a569bd;
+  --md-typeset-a-color: var(--md-primary-blue--dark);
+  --md-default-bg-color: var(--md-primary-blue--light);
+}
+
+[data-custom-theme="purple"][data-md-color-scheme="slate"] {
+  --md-primary-top-color: #363042ff;
+  --md-primary-fg-color: #e6cfff;
+  --md-accent-fg-color: #bb7ae2;
+  --md-primary-fg-color--light: #252135ff;
+  --md-primary-fg-color--dark: #3a2846;
+  --md-primary-blue: #bb7ae2;
+  --md-primary-blue--light: #1a1529;
+  --md-primary-blue--dark: #3a2a4f;
+  --md-primary-text: #f1ecf7;
+  --md-primary-text-light: #ebe0f5;
+  --md-primary-text-dark: #5c4866;
+  --md-primary-text-reverse: #5c4866;
+  --md-primary-text-rgb: 235, 224, 245;
+  --md-primary-text--color: #eee2fa;
+  --md-code-bg-color: #252135ff;
+  --md-code-hl-color: #bb7ae2;
+  --md-code-hl-color--light: #bb7ae21a;
+  --md-code-hl-function-color: #bb7ae2;
+  --md-code-hl-constant-color: #e6cfff;
+  --md-code-hl-keyword-color: #bb7ae2;
+  --md-code-hl-string-color: #bb7ae2;
+  --md-typeset-a-color: var(--md-primary-blue);
+  --md-default-bg-color: var(--md-primary-blue--light);
+}
+
+/* Halloween Theme */
+[data-custom-theme="halloween"][data-md-color-scheme="default"] {
+  --md-primary-top-color: #2d1b00;
+  --md-primary-fg-color: #8b4513;
+  --md-accent-fg-color: #cf5300;
+  --md-primary-fg-color--light: #fff5e6;
+  --md-primary-fg-color--dark: #1a0d00;
+  --md-primary-blue: #ff8c00;
+  --md-primary-blue--light: #fff0e0;
+  --md-primary-blue--dark: #cc7000;
+  --md-primary-text: #4a2c0a;
+  --md-primary-text-light: #ffe4b3;
+  --md-primary-text-dark: #2d1b00;
+  --md-primary-text-reverse: #ffe4b3;
+  --md-primary-text-rgb: 74, 44, 10;
+  --md-primary-text--color: #2d1b00;
+  --md-code-bg-color: #f5f5f5;
+  --md-code-hl-color: #ff8c00;
+  --md-code-hl-color--light: #ff8c001a;
+  --md-code-hl-function-color: #cc7000;
+  --md-code-hl-constant-color: #8b4513;
+  --md-code-hl-keyword-color: #cc7000;
+  --md-code-hl-string-color: #ff8c00;
+  --md-typeset-a-color: var(--md-primary-blue--dark);
+}
+
+[data-custom-theme="halloween"][data-md-color-scheme="slate"] {
+  --md-primary-top-color: #1a0d00;
+  --md-primary-fg-color: #ffb366;
+  --md-accent-fg-color: #ff7f32;
+  --md-primary-fg-color--light: #0d0600;
+  --md-primary-fg-color--dark: #2d1b00;
+  --md-primary-blue: #ff8c00;
+  --md-primary-blue--light: #1a0d00;
+  --md-primary-blue--dark: #4a2c0a;
+  --md-primary-text: #ffe4b3;
+  --md-primary-text-light: #ffe4b3;
+  --md-primary-text-dark: #4a2c0a;
+  --md-primary-text-reverse: #4a2c0a;
+  --md-primary-text-rgb: 255, 228, 179;
+  --md-primary-text--color: #ffcc99;
+  --md-code-bg-color: #0d0600;
+  --md-code-hl-color: #ff8c00;
+  --md-code-hl-color--light: #ff8c001a;
+  --md-code-hl-function-color: #ff8c00;
+  --md-code-hl-constant-color: #ffb366;
+  --md-code-hl-keyword-color: #ff8c00;
+  --md-code-hl-string-color: #ff7f32;
+  --md-typeset-a-color: var(--md-primary-blue);
+}
+
+/* Homepage Background Images */
+body[data-custom-theme="blue"]::before,
+body:not([data-custom-theme])::before {
+  background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/arona.jpg') !important;
+}
+
+body[data-custom-theme="purple"]::before {
+  background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/plana.jpg') !important;
+}
+
+body[data-custom-theme="halloween"]::before {
+  background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/halloween-background2.jpg') !important;
 }
 
 /* 自定义文字选中背景色 */
@@ -103,7 +242,7 @@ td {
   background-color: var(--md-primary-blue--light);
 }
 
-ul {
+ul:not(.md-source__facts) {
   color: var(--md-primary-text--color);
 }
 
@@ -401,7 +540,7 @@ span.filename {
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-10px);
-  background: var(--md-default-bg-color);
+  background: var(--md-primary-top-color);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding: 10px;
@@ -411,14 +550,14 @@ span.filename {
   visibility: hidden;
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   font-size: 12px;
-  color: var(--md-primary-text);
+  color: var(--md-primary-text-light);
 }
 
 /* 配置菜单的可编辑值输入框 */
 .spectrum-editable-value {
   width: 50px;
-  background: var(--md-default-bg-color);
-  color: var(--md-primary-text);
+  background: var(---md-primary-top-color);
+  color: var(--md-primary-text-light);
   font-size: 12px;
   text-align: right;
   outline: none;

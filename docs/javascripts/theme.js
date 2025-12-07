@@ -23,144 +23,11 @@
         return animationModule;
     }
     
-    // 默认主题配置（蓝色）
-    const defaultTheme = {
-        light: {
-            '--md-primary-top-color': '#454d6d',
-            '--md-primary-fg-color': '#425a7e',
-            '--md-accent-fg-color': '#166d96',
-            '--md-primary-fg-color--light': '#f5f9fd',
-            '--md-primary-fg-color--dark': '#282e46',
-            '--md-primary-blue': '#5fbeeb',
-            '--md-primary-blue--light': '#ffffff',
-            '--md-primary-blue--dark': '#166d96',
-            '--md-primary-text': '#4C5866',
-            '--md-primary-text-light': '#e0eaf5',
-            '--md-primary-text-dark': '#4C5866',
-            '--md-primary-text-reverse': '#e0eaf5',
-            '--md-primary-text-rgb': '84, 92, 107',
-            '--md-primary-text--color': '#282e46',
-            '--md-default-bg-color': 'var(--md-primary-blue--light)',
-            '--md-code-bg-color': '#f5f5f5',
-            '--md-code-hl-color': '#5fbeeb',
-            '--md-code-hl-color--light': '#5fbeeb1a',
-            '--md-code-hl-function-color': '#166d96',
-            '--md-code-hl-constant-color': '#425a7e',
-            '--md-code-hl-keyword-color': '#166d96',
-            '--md-code-hl-string-color': '#5fbeeb',
-            '--md-typeset-a-color': 'var(--md-primary-blue--dark)',
-        },
-        dark: {
-            '--md-primary-top-color': '#2b3044',
-            '--md-primary-fg-color': '#f1f8ff',
-            '--md-accent-fg-color': '#5bb7e2',
-            '--md-primary-fg-color--light': '#232733',
-            '--md-primary-fg-color--dark': '#283346',
-            '--md-primary-blue': '#5bb7e2',
-            '--md-primary-blue--light': '#1E2129',
-            '--md-primary-blue--dark': '#2C3A4F',
-            '--md-primary-text': '#e0eaf5',
-            '--md-primary-text-light': '#e0eaf5',
-            '--md-primary-text-dark': '#4C5866',
-            '--md-primary-text-reverse': '#4C5866',
-            '--md-primary-text-rgb': '226, 231, 240',
-            '--md-primary-text--color': '#e0e0e0',
-            '--md-default-bg-color': 'var(--md-primary-blue--light)',
-            '--md-code-bg-color': '#232733',
-            '--md-code-hl-color': '#5bb7e2',
-            '--md-code-hl-color--light': '#5bb7e21a',
-            '--md-code-hl-function-color': '#5bb7e2',
-            '--md-code-hl-constant-color': '#f1f8ff',
-            '--md-code-hl-keyword-color': '#5bb7e2',
-            '--md-code-hl-string-color': '#8caaee',
-            '--md-typeset-a-color': 'var(--md-primary-blue)',
-        },
-        homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/arona.jpg'
-    };
-    
-    // 紫色主题配置
-    const purpleTheme = {
-        light: {
-            '--md-primary-top-color': '#423e4eff',
-            '--md-primary-fg-color': '#6a4c93',
-            '--md-accent-fg-color': '#8e44ad',
-            '--md-primary-fg-color--light': '#f8f5fd',
-            '--md-primary-fg-color--dark': '#3a2846',
-            '--md-primary-blue': '#a569bd',
-            '--md-primary-blue--light': '#ffffff',
-            '--md-primary-blue--dark': '#6a4c93',
-            '--md-primary-text': '#594e5f',
-            '--md-primary-text-light': '#ebe0f5',
-            '--md-primary-text-dark': '#3a2846',
-            '--md-primary-text-reverse': '#ebe0f5',
-            '--md-primary-text-rgb': '92, 72, 102',
-            '--md-primary-text--color': '#3a2846',
-            '--md-code-bg-color': '#f5f5f5',
-            '--md-default-bg-color': 'var(--md-primary-blue--light)',
-        },
-        dark: {
-            '--md-primary-top-color': '#363042ff',
-            '--md-primary-fg-color': '#e6cfff',
-            '--md-accent-fg-color': '#bb7ae2',
-            '--md-primary-fg-color--light': '#252135ff',
-            '--md-primary-fg-color--dark': '#3a2846',
-            '--md-primary-blue': '#bb7ae2',
-            '--md-primary-blue--light': '#1d1a29',
-            '--md-primary-blue--dark': '#3a2a4f',
-            '--md-primary-text': '#f1ecf7',
-            '--md-primary-text-light': '#ebe0f5',
-            '--md-primary-text-dark': '#5c4866',
-            '--md-primary-text-reverse': '#5c4866',
-            '--md-primary-text-rgb': '235, 224, 245',
-            '--md-primary-text--color': '#d8b3ff',
-            '--md-code-bg-color': '#241e2b',
-            '--md-default-bg-color': 'var(--md-primary-blue--light)',
-        },
-        homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/plana.jpg'
-    };
-    
-    // 万圣节主题配置
-    const halloweenTheme = {
-        light: {
-            '--md-primary-top-color': '#2d1b00',
-            '--md-primary-fg-color': '#8b4513',
-            '--md-accent-fg-color': '#cf5300',
-            '--md-primary-fg-color--light': '#fff5e6',
-            '--md-primary-fg-color--dark': '#1a0d00',
-            '--md-primary-blue': '#ff8c00',
-            '--md-primary-blue--light': '#fff0e0',
-            '--md-primary-blue--dark': '#cc7000',
-            '--md-primary-text': '#4a2c0a',
-            '--md-primary-text-light': '#ffe4b3',
-            '--md-primary-text-dark': '#2d1b00',
-            '--md-primary-text-reverse': '#ffe4b3',
-            '--md-primary-text-rgb': '74, 44, 10',
-            '--md-primary-text--color': '#2d1b00'
-        },
-        dark: {
-            '--md-primary-top-color': '#1a0d00',
-            '--md-primary-fg-color': '#ffb366',
-            '--md-accent-fg-color': '#ff7f32',
-            '--md-primary-fg-color--light': '#0d0600',
-            '--md-primary-fg-color--dark': '#2d1b00',
-            '--md-primary-blue': '#ff8c00',
-            '--md-primary-blue--light': '#1a0d00',
-            '--md-primary-blue--dark': '#4a2c0a',
-            '--md-primary-text': '#ffe4b3',
-            '--md-primary-text-light': '#ffe4b3',
-            '--md-primary-text-dark': '#4a2c0a',
-            '--md-primary-text-reverse': '#4a2c0a',
-            '--md-primary-text-rgb': '255, 228, 179',
-            '--md-primary-text--color': '#ffcc99'
-        },
-        homeBackground: 'https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/halloween-background2.jpg'
-    };
-    
     // 主题切换状态管理
     let currentColorScheme = 'blue'; // 'blue' 或 'purple'
     let isGiscusReady = false; // Giscus 是否已加载完成
 
-    // 监听 Giscus 消消息
+    // 监听 Giscus 消息
     window.addEventListener('message', function(event) {
         if (event.origin === 'https://giscus.app') {
             if (!isGiscusReady) {
@@ -181,12 +48,12 @@
         currentColorScheme = scheme;
     }
     
-    // 获取当前主题配置
-    function getCurrentTheme() {
+    // 获取当前主题名称
+    function getCurrentThemeName() {
         if (isHalloween()) {
-            return halloweenTheme;
+            return 'halloween';
         }
-        return currentColorScheme === 'purple' ? purpleTheme : defaultTheme;
+        return currentColorScheme;
     }
     
     // 检查当前日期是否为10月31日
@@ -195,34 +62,48 @@
         return today.getMonth() === 9 && today.getDate() === 31; // 月份从0开始，9代表10月
     }
     
-    // 生成CSS样式字符串
-    function generateThemeCSS(theme) {
-        const lightVars = Object.entries(theme.light)
-            .map(([key, value]) => `    ${key}: ${value};`)
-            .join('\n');
-        
-        const darkVars = Object.entries(theme.dark)
-            .map(([key, value]) => `    ${key}: ${value};`)
-            .join('\n');
-        
-        return `
-[data-md-color-primary="mycolor_light"] {
-${lightVars}
-}
-
-[data-md-color-primary="mycolor_dark"] {
-${darkVars}
-}
-        `;
-    }
-    
     // 更新Giscus主题
     async function updateGiscusTheme() {
         if (!isGiscusReady) return;
 
-        const theme = getCurrentTheme();
-        let isSlate = false;
+        // Get computed styles to retrieve current theme variables
+        const computedStyle = getComputedStyle(document.body);
         
+        // List of variables we need to pass to Giscus
+        const variables = [
+            '--md-primary-top-color',
+            '--md-primary-fg-color',
+            '--md-accent-fg-color',
+            '--md-primary-fg-color--light',
+            '--md-primary-fg-color--dark',
+            '--md-primary-blue',
+            '--md-primary-blue--light',
+            '--md-primary-blue--dark',
+            '--md-primary-text',
+            '--md-primary-text-light',
+            '--md-primary-text-dark',
+            '--md-primary-text-reverse',
+            '--md-primary-text-rgb',
+            '--md-primary-text--color',
+            '--md-code-bg-color',
+            '--md-code-hl-color',
+            '--md-code-hl-color--light',
+            '--md-code-hl-function-color',
+            '--md-code-hl-constant-color',
+            '--md-code-hl-keyword-color',
+            '--md-code-hl-string-color',
+            '--md-typeset-a-color'
+        ];
+
+        let cssVars = '';
+        variables.forEach(v => {
+            const value = computedStyle.getPropertyValue(v).trim();
+            if (value) {
+                cssVars += `${v}: ${value};\n`;
+            }
+        });
+
+        let isSlate = false;
         if (window.__md_get) {
             const palette = window.__md_get("__palette");
             if (palette && palette.color && palette.color.scheme) {
@@ -237,11 +118,6 @@ ${darkVars}
         try {
             const response = await fetch(cssUrl);
             const cssText = await response.text();
-            
-            const themeVars = isSlate ? theme.dark : theme.light;
-            const cssVars = Object.entries(themeVars)
-                .map(([key, value]) => `${key}: ${value};`)
-                .join('\n');
             
             // 将变量定义放在最后，以确保 @import 语句（如果在 cssText 开头）保持在文件最前面
             const injectedCss = `${cssText}\n:root {\n${cssVars}\n}`;
@@ -264,34 +140,20 @@ ${darkVars}
 
     // 应用主题（实际执行主题切换的函数）
     function applyThemeInternal() {
-        const theme = getCurrentTheme();
+        const themeName = getCurrentThemeName();
         
-        // 移除旧的主题样式
+        // 设置自定义主题属性
+        document.body.setAttribute('data-custom-theme', themeName);
+        
+        // 移除旧的动态样式元素（如果存在）
         const oldStyle = document.getElementById('dynamic-theme');
         if (oldStyle) {
             oldStyle.remove();
         }
-        
-        // 创建新的样式元素
-        const styleElement = document.createElement('style');
-        styleElement.id = 'dynamic-theme';
-        styleElement.textContent = generateThemeCSS(theme);
-        document.head.appendChild(styleElement);
-        
-        // 更改首页背景图片
         const oldBgStyle = document.getElementById('dynamic-background');
         if (oldBgStyle) {
             oldBgStyle.remove();
         }
-        
-        const bgStyleElement = document.createElement('style');
-        bgStyleElement.id = 'dynamic-background';
-        bgStyleElement.textContent = `
-        body::before {
-            background-image: url(${theme.homeBackground}) !important;
-        }
-        `;
-        document.head.appendChild(bgStyleElement);
         
         // 替换首页欢迎语
         replaceHomeGreeting();
@@ -304,7 +166,8 @@ ${darkVars}
         }
 
         // 更新Giscus主题
-        updateGiscusTheme();
+        // 需要稍微延迟一下，等待CSS变量生效
+        setTimeout(updateGiscusTheme, 50);
     }
     
     // 应用主题（带动画的包装函数）
