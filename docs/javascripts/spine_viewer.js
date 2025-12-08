@@ -1,6 +1,135 @@
 import * as PIXI from 'pixi.js';
 import { Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture } from '@esotericsoftware/spine-pixi-v7';
 
+// kivo.wiki 禁止外域 CORS，直接请求会被拦截并拖慢加载
+const HOSTS_REQUIRE_PROXY = new Set(['api.kivo.wiki', 'static.kivo.wiki']);
+const FETCH_TIMEOUT_MS = 8000;
+const MAX_RETRY_ATTEMPTS = 3;
+const fetchCache = new Map();
+const MAX_PARALLEL_LOADS = 2;
+const loadQueue = [];
+let activeLoads = 0;
+
+const scheduleLoad = async (task) => {
+    if (activeLoads >= MAX_PARALLEL_LOADS) {
+        await new Promise((resolve) => loadQueue.push(resolve));
+    }
+
+    activeLoads++;
+    try {
+        return await task();
+    } finally {
+        activeLoads--;
+        const next = loadQueue.shift();
+        if (next) {
+            next();
+        }
+    }
+};
+
+const buildProxyTargets = (urlObj) => {
+    const href = urlObj.href;
+    return [
+        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(href)}`,
+        `https://corsproxy.io/?${encodeURIComponent(href)}`,
+        `https://r.jina.ai/${href}`
+    ];
+};
+
+const fetchWithTimeout = async (target, type) => {
+    const controller = window.AbortController ? new AbortController() : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS) : null;
+
+    try {
+        const response = await fetch(target, {
+            signal: controller ? controller.signal : undefined,
+            mode: 'cors',
+            credentials: 'omit'
+        });
+
+        if (response.status === 429) {
+            const retryAfter = Math.min(parseInt(response.headers.get('retry-after') || '0', 10), 5);
+            const error = new Error(`HTTP 429`);
+            error.retryAfter = retryAfter > 0 ? retryAfter * 1000 : 0;
+            throw error;
+        }
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        if (type === 'buffer') return await response.arrayBuffer();
+        if (type === 'blob') return await response.blob();
+        if (type === 'json') return await response.json();
+        return await response.text();
+    } finally {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+    }
+};
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const fetchUrl = async (url, type = 'text', attemptIndex = 0) => {
+    const delayMs = 150 * attemptIndex * attemptIndex;
+    if (delayMs > 0) {
+        await delay(Math.min(delayMs, 1000));
+    }
+
+    const urlObj = new URL(url, window.location.href);
+    const cacheKey = `${type}:${urlObj.href}`;
+
+    if (fetchCache.has(cacheKey)) {
+        return fetchCache.get(cacheKey);
+    }
+
+    const needsProxy = HOSTS_REQUIRE_PROXY.has(urlObj.hostname);
+    const targets = needsProxy ? [] : [urlObj.href];
+    const proxyTargets = buildProxyTargets(urlObj);
+    for (const proxyTarget of proxyTargets) {
+        if (!targets.includes(proxyTarget)) {
+            targets.push(proxyTarget);
+        }
+    }
+
+    const promise = (async () => {
+        let lastError = null;
+        let rateLimitWait = 0;
+
+        for (const target of targets) {
+            try {
+                return await fetchWithTimeout(target, type);
+            } catch (err) {
+                lastError = err;
+                if (err.message && err.message.includes('HTTP 429')) {
+                    rateLimitWait = Math.max(rateLimitWait, err.retryAfter || 500);
+                    continue;
+                }
+            }
+        }
+
+        if (rateLimitWait > 0 && attemptIndex < MAX_RETRY_ATTEMPTS) {
+            const wait = Math.min(rateLimitWait + 150 * (attemptIndex + 1) * (attemptIndex + 1), 4000);
+            fetchCache.delete(cacheKey);
+            await delay(wait);
+            return fetchUrl(urlObj.href, type, attemptIndex + 1);
+        }
+
+        if (lastError) {
+            throw lastError;
+        }
+
+        throw new Error(`Failed to load ${urlObj.href}`);
+    })().catch((err) => {
+        fetchCache.delete(cacheKey);
+        throw err;
+    });
+
+    fetchCache.set(cacheKey, promise);
+    return promise;
+};
+
 /**
  * Loads and renders a Spine animation from a Kivo Wiki API endpoint.
  * @param {string} containerId - The ID of the HTML element to render into.
@@ -29,28 +158,6 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
     container.appendChild(app.view);
 
     try {
-        // Unified Fetcher with Proxy Support
-        const fetchUrl = async (url, type = 'text') => {
-            const targets = [
-                url, // Try direct first (for local or allowed domains)
-                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`,
-                `https://corsproxy.io/?${encodeURIComponent(url)}`
-            ];
-
-            for (const target of targets) {
-                try {
-                    const res = await fetch(target);
-                    if (!res.ok) continue;
-                    
-                    if (type === 'buffer') return await res.arrayBuffer();
-                    if (type === 'blob') return await res.blob();
-                    if (type === 'json') return await res.json();
-                    return await res.text();
-                } catch (e) { /* continue */ }
-            }
-            throw new Error(`Failed to load ${url}`);
-        };
-
         // 1. Resolve Source Data
         let data;
         if (typeof source === 'number' || (typeof source === 'string' && /^\d+$/.test(source))) {
@@ -93,20 +200,18 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
         // 4. Parse Atlas & Load Textures
         const atlas = new TextureAtlas(atlasText);
         
-        for (const page of atlas.pages) {
+        await Promise.all(atlas.pages.map(async (page) => {
             const textureUrl = imageUrls.find(url => url.endsWith(page.name));
             if (!textureUrl) {
                 console.warn(`Texture URL not found for page: ${page.name}`);
-                continue;
+                return;
             }
 
             console.log(`Loading texture: ${textureUrl}`);
-            
-            // Always use Blob -> BaseTexture flow for consistency and proxy support
+
             const blob = await fetchUrl(textureUrl, 'blob');
             const blobUrl = URL.createObjectURL(blob);
-            
-            // Default alpha (PMA) to false unless explicitly enabled
+
             const usePma = options.alpha === true;
             const baseTextureOptions = {};
             if (usePma) {
@@ -114,20 +219,29 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
             }
 
             const baseTexture = new PIXI.BaseTexture(blobUrl, baseTextureOptions);
-            
+
+            const revokeUrl = () => URL.revokeObjectURL(blobUrl);
             if (!baseTexture.valid) {
                 await new Promise((resolve, reject) => {
-                    baseTexture.once('loaded', resolve);
-                    baseTexture.once('error', reject);
+                    baseTexture.once('loaded', () => {
+                        revokeUrl();
+                        resolve();
+                    });
+                    baseTexture.once('error', (err) => {
+                        revokeUrl();
+                        reject(err);
+                    });
                 });
+            } else {
+                revokeUrl();
             }
-            
+
             const texture = new PIXI.Texture(baseTexture);
             if (usePma) {
                 page.pma = true;
             }
             page.setTexture(SpineTexture.from(texture.baseTexture));
-        }
+        }));
 
         // 5. Create Spine Instance
         const atlasLoader = new AtlasAttachmentLoader(atlas);
@@ -244,7 +358,7 @@ export function initSpinePlayers() {
             options.alpha = true;
         }
 
-        loadSpineFromApi(container.id, id, options).then(({ spine }) => {
+        scheduleLoad(() => loadSpineFromApi(container.id, id, options)).then(({ spine }) => {
             // Optional: Apply custom animation from data attributes
             if (container.dataset.animation) {
                 const anim = container.dataset.animation;

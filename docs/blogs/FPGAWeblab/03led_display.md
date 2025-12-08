@@ -1,6 +1,6 @@
 ---
 title: '基础-3-数码管实验'
-date: 2025-09-26 17:18
+date: 2025-12-08 22:14
 comment: True
 comments: true
 ---

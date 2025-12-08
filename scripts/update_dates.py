@@ -4,34 +4,113 @@
 格式: YYYY-MM-DD HH:MM
 """
 
+import json
 import os
 import re
+import urllib.error
+import urllib.parse
+import urllib.request
 from datetime import datetime
+from functools import lru_cache
 from pathlib import Path
+from typing import Optional, Set
+
+
+GITHUB_OWNER = os.getenv("GITHUB_OWNER", "Alivenderwww")
+GITHUB_REPO = os.getenv("GITHUB_REPO", "Alivenderwww.github.io")
+GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main")
+GITHUB_API_ROOT = "https://api.github.com"
+_GITHUB_WARNING_SHOWN: Set[str] = set()
+
+
+def _format_datetime(value: datetime) -> str:
+    """格式化日期为 YYYY-MM-DD HH:MM，统一使用本地时区"""
+    if value.tzinfo is None:
+        return value.strftime("%Y-%m-%d %H:%M")
+    return value.astimezone().strftime("%Y-%m-%d %H:%M")
+
+
+def _get_repo_root() -> Path:
+    return Path(__file__).resolve().parent.parent
+
+
+@lru_cache(maxsize=None)
+def _fetch_latest_commit_datetime(relative_path: str) -> Optional[datetime]:
+    params = {
+        "path": relative_path,
+        "sha": GITHUB_BRANCH,
+        "per_page": 1,
+        "page": 1,
+    }
+    query = urllib.parse.urlencode(params)
+    url = f"{GITHUB_API_ROOT}/repos/{GITHUB_OWNER}/{GITHUB_REPO}/commits?{query}"
+
+    headers = {"Accept": "application/vnd.github+json"}
+    token = os.getenv("GITHUB_TOKEN")
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+
+    request = urllib.request.Request(url, headers=headers)
+
+    try:
+        with urllib.request.urlopen(request, timeout=10) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        key = f"http_{exc.code}"
+        if exc.code == 403 and key not in _GITHUB_WARNING_SHOWN:
+            print("Warning: GitHub API rate limit reached; falling back to local timestamps.")
+            _GITHUB_WARNING_SHOWN.add(key)
+        elif exc.code == 404 and key not in _GITHUB_WARNING_SHOWN:
+            _GITHUB_WARNING_SHOWN.add(key)
+        return None
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
+        return None
+
+    if not payload:
+        return None
+
+    commit_info = payload[0].get("commit", {})
+    date_str = commit_info.get("author", {}).get("date") or commit_info.get("committer", {}).get("date")
+    if not date_str:
+        return None
+
+    try:
+        # GitHub 返回 ISO 8601（UTC）日期，例如 2024-12-31T07:12:45Z
+        return datetime.fromisoformat(date_str.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def _get_github_commit_date(filepath: Path) -> Optional[str]:
+    try:
+        relative_path = filepath.resolve().relative_to(_get_repo_root())
+    except Exception:
+        return None
+
+    commit_datetime = _fetch_latest_commit_datetime(str(relative_path).replace(os.sep, "/"))
+    if not commit_datetime:
+        return None
+
+    return _format_datetime(commit_datetime)
 
 
 def get_file_ctime(filepath: Path) -> str:
-    """获取文件创建时间，格式化为 YYYY-MM-DD HH:MM
-    
-    Windows: os.path.getctime() 返回创建时间
-    Linux/Mac: os.path.getctime() 返回 inode 修改时间，需要用 stat
-    """
-    # Windows 上 getctime 是创建时间
-    # 为了跨平台兼容，也可以用 stat().st_birthtime (macOS) 或 st_ctime (Windows)
+    """返回文件的首选日期，优先使用 GitHub 上的提交日期，无法获取时退回到本地创建时间"""
+    github_date = _get_github_commit_date(filepath)
+    if github_date:
+        return github_date
+
+    # Windows 上 getctime 是创建时间；Linux/Mac 上需根据 stat 结果处理
     try:
         stat_info = filepath.stat()
-        # Windows 使用 st_ctime 作为创建时间
-        if hasattr(stat_info, 'st_birthtime'):
-            # macOS
+        if hasattr(stat_info, "st_birthtime"):
             ctime = stat_info.st_birthtime
         else:
-            # Windows: st_ctime 是创建时间
             ctime = stat_info.st_ctime
     except Exception:
         ctime = os.path.getctime(filepath)
-    
-    dt = datetime.fromtimestamp(ctime)
-    return dt.strftime("%Y-%m-%d %H:%M")
+
+    return datetime.fromtimestamp(ctime).strftime("%Y-%m-%d %H:%M")
 
 
 def update_date_in_frontmatter(content: str, new_date: str) -> tuple[str, bool]:

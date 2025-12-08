@@ -1,6 +1,6 @@
 ---
 title: '基础-6-HDMI显示'
-date: 2025-09-26 17:18
+date: 2025-12-08 22:14
 comment: True
 comments: true
 ---
