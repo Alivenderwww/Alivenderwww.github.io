@@ -26,6 +26,17 @@
     // 主题切换状态管理
     let currentColorScheme = 'blue'; // 'blue' 或 'purple'
     let isGiscusReady = false; // Giscus 是否已加载完成
+    const giscusCssCache = {}; // 缓存 Giscus CSS
+
+    // 预加载 Giscus CSS
+    function preloadGiscusCss() {
+        const urls = ["/stylesheets/comments_dark.css", "/stylesheets/comments_light.css"];
+        urls.forEach(url => {
+            fetch(url).then(res => res.text()).then(text => {
+                giscusCssCache[url] = text;
+            }).catch(e => console.error('Failed to preload:', url, e));
+        });
+    }
 
     // 监听 Giscus 消息
     window.addEventListener('message', function(event) {
@@ -116,8 +127,14 @@
             : "/stylesheets/comments_light.css";
             
         try {
-            const response = await fetch(cssUrl);
-            const cssText = await response.text();
+            let cssText;
+            if (giscusCssCache[cssUrl]) {
+                cssText = giscusCssCache[cssUrl];
+            } else {
+                const response = await fetch(cssUrl);
+                cssText = await response.text();
+                giscusCssCache[cssUrl] = cssText;
+            }
             
             // 将变量定义放在最后，以确保 @import 语句（如果在 cssText 开头）保持在文件最前面
             const injectedCss = `${cssText}\n:root {\n${cssVars}\n}`;
@@ -166,8 +183,10 @@
         }
 
         // 更新Giscus主题
-        // 需要稍微延迟一下，等待CSS变量生效
-        setTimeout(updateGiscusTheme, 50);
+        // 使用 requestAnimationFrame 确保在下一帧渲染前执行，减少延迟
+        requestAnimationFrame(() => {
+            updateGiscusTheme();
+        });
     }
     
     // 应用主题（带动画的包装函数）
@@ -297,9 +316,28 @@
         const paletteSwitch = document.querySelector("[data-md-component=palette]");
         if (paletteSwitch) {
             paletteSwitch.addEventListener("change", () => {
-                setTimeout(applyTheme, 100); // 稍微延迟以确保palette状态已更新
+                // 使用 requestAnimationFrame 替代 setTimeout，响应更快
+                requestAnimationFrame(() => {
+                    applyTheme();
+                });
             });
         }
+
+        // 监听 body 属性变化 (用于检测 MkDocs 的主题切换，比事件监听更可靠)
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === "attributes" && mutation.attributeName === "data-md-color-scheme") {
+                    applyTheme();
+                }
+            });
+        });
+        
+        if (document.body) {
+            observer.observe(document.body, { attributes: true });
+        }
+
+        // 预加载 CSS
+        preloadGiscusCss();
     }
     
     // 页面加载完成后应用主题
