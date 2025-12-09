@@ -143,6 +143,9 @@
 
 /* 页面加载进度监测 - 同步 MkDocs Material 内置进度条到 header 边框 */
 (function() {
+    if (window.progressMonitorInited) return;
+    window.progressMonitorInited = true;
+
     const header = document.querySelector('.md-header');
     const progressBar = document.querySelector('.md-progress[data-md-component="progress"]');
     
@@ -207,191 +210,75 @@
 
 /* 鼠标样式修改 */
 (function() {
-    // 移动端/触摸设备检测：如果设备不支持悬停（如手机/平板），则不启用自定义鼠标
-    if (window.matchMedia && window.matchMedia("(hover: none)").matches) {
-        return;
-    }
+    if (window.customCursorInited) return;
+    window.customCursorInited = true;
 
-    var wrapperId = "custom-cursor-wrapper";
-    var mouseX = -100, mouseY = -100;
-    var isVisible = false;
-    var activeLayerIndex = 0; // 当前激活的图层索引
+    // 移动端检测
+    if (window.matchMedia && window.matchMedia("(hover: none)").matches) return;
 
-    function initCursor() {
-        // 确保容器存在
-        if (!document.getElementById(wrapperId)) {
-            // 1. 创建容器 (负责位置跟随，无动画，确保跟手)
-            var wrapper = document.createElement("div");
-            wrapper.id = wrapperId;
-            Object.assign(wrapper.style, {
-                position: "fixed",
-                left: "0",
-                top: "0",
-                width: "32px", 
-                height: "32px",
-                zIndex: "2147483647",
-                pointerEvents: "none",
-                willChange: "transform, opacity", // 性能优化
-                display: "block", // 保持 block，用 opacity 控制显隐
-                opacity: "0",     // 初始透明
-                transition: "opacity 0.15s ease", // 显现/隐藏淡入淡出
-                // 270度阴影 (垂直向下)
-                filter: "drop-shadow(-1px 2px 1px rgba(39, 39, 39, 0.2))"
-            });
+    // 创建容器
+    const wrapper = document.createElement("div");
+    wrapper.id = "cursor";
+    document.body.appendChild(wrapper);
 
-            // 2. 创建两个图片图层用于双缓冲切换
-            for (var i = 0; i < 2; i++) {
-                var cursor = document.createElement("img");
-                cursor.className = "custom-cursor-layer";
-                // 默认第一个显示，第二个隐藏
-                var initialOpacity = (i === 0) ? "1" : "0";
-                Object.assign(cursor.style, {
-                    position: "absolute",
-                    left: "0",
-                    top: "0",
-                    width: "100%",
-                    height: "100%",
-                    display: "block",
-                    // 缩放动画 + 切换图标时的透明度动画
-                    transition: "transform 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67), opacity 0.15s ease",
-                    transform: "scale(1)",
-                    opacity: initialOpacity
-                });
-                // 初始化 src，避免空图
-                cursor.src = "/cursors/millennium_base.cur";
-                wrapper.appendChild(cursor);
-            }
-            
-            activeLayerIndex = 0;
-            document.body.appendChild(wrapper);
-        }
-    }
+    // 光标映射配置
+    const CURSORS = [
+        { selector: "a, .md-nav__link, button, .md-header__button, label[for], .md-search__input, .md-typeset a, .md-tabs__link, .md-footer__link, .md-nav__title, [draggable='true'], .md-resizer__handle--y, .md-resizer__handle--x, .nwse-resize, .nesw-resize, .crosshair, [data-md-component='search-query'], [title], .md-tooltip", type: "link" },
+        { selector: "input[type='text'], textarea, .md-typeset p, .md-typeset span, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6, .md-typeset li, .md-typeset td, .md-typeset th, .md-typeset code, .md-typeset pre, .highlight", type: "text" }
+    ];
 
-    function getWrapper() { return document.getElementById(wrapperId); }
-    function getLayers() { 
-        var wrapper = getWrapper();
-        return wrapper ? wrapper.getElementsByClassName("custom-cursor-layer") : []; 
-    }
+    let isVisible = false;
 
-    // 初始化
-    initCursor();
-
-    // 渲染循环 (使用 requestAnimationFrame 保证流畅度)
-    function render() {
-        var wrapper = getWrapper();
-        if (wrapper) {
-            // 使用 translate3d 移动容器，减去 12px 实现居中
-            wrapper.style.transform = `translate3d(${mouseX - 12}px, ${mouseY - 12}px, 0)`;
-            
-            // 控制显隐淡入淡出
+    // 鼠标移动事件：更新位置和状态
+    document.addEventListener("mousemove", (e) => {
+        // iframe 处理
+        if (e.target.tagName === "IFRAME") {
             if (isVisible) {
-                wrapper.style.opacity = "1";
-            } else {
-                wrapper.style.opacity = "0";
+                isVisible = false;
+                wrapper.dataset.visible = "false";
             }
-        }
-        requestAnimationFrame(render);
-    }
-    requestAnimationFrame(render);
-
-    // 监听 DOM 变化，防止页面跳转后元素丢失
-    var observer = new MutationObserver(function(mutations) {
-        if (!document.getElementById(wrapperId)) {
-            initCursor();
-        }
-    });
-    observer.observe(document.body, { childList: true, subtree: false });
-
-    // 处理 iframe 交互：进入 iframe 时隐藏自定义光标
-    document.addEventListener("mouseover", function(e) {
-        if (e.target.tagName === "IFRAME") {
-            isVisible = false;
-        }
-    });
-
-    // 触摸开始时隐藏自定义光标，防止在触摸设备上出现
-    document.addEventListener("touchstart", function() {
-        isVisible = false;
-    }, { passive: true });
-
-    // 鼠标移动
-    document.addEventListener("mousemove", function(e) {
-        // 如果目标是 iframe，隐藏自定义光标
-        if (e.target.tagName === "IFRAME") {
-            isVisible = false;
             return;
         }
 
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        isVisible = true;
-        
-        var target = e.target;
-        var cursorSrc = "/cursors/millennium_base.cur";
+        wrapper.style.left = e.clientX - 5 + 'px';
+        wrapper.style.top = e.clientY - 5 + 'px';
 
-        // 优先级判断
-        if (target.closest("a, .md-nav__link, button, .md-header__button, label[for], .md-search__input, .md-typeset a, .md-tabs__link, .md-footer__link")) {
-            cursorSrc = "/cursors/millennium_link.cur";
-        } else if (target.closest("input[type='text'], textarea, .md-typeset p, .md-typeset span, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6, .md-typeset li, .md-typeset td, .md-typeset th, .md-typeset code, .md-typeset pre, .highlight")) {
-            cursorSrc = "/cursors/millennium_text.cur";
-        } else if (target.closest(":disabled, .disabled, [aria-disabled='true']")) {
-            cursorSrc = "/cursors/millennium_block.cur";
-        } else if (target.closest(".md-nav__title, [draggable='true']")) {
-            cursorSrc = "/cursors/millennium_move.cur";
-        } else if (target.closest(".md-resizer__handle--y")) {
-            cursorSrc = "/cursors/millennium_NS.cur";
-        } else if (target.closest(".md-resizer__handle--x")) {
-            cursorSrc = "/cursors/millennium_EW.cur";
-        } else if (target.closest(".nwse-resize")) {
-            cursorSrc = "/cursors/millennium_diag1.cur";
-        } else if (target.closest(".nesw-resize")) {
-            cursorSrc = "/cursors/millennium_diag2.cur";
-        } else if (target.closest(".crosshair, [data-md-component='search-query']")) {
-            cursorSrc = "/cursors/millennium_areaselect.cur";
-        } else if (target.closest("[title], .md-tooltip")) {
-            cursorSrc = "/cursors/millennium_alternative.cur";
+        // 显隐控制
+        if (!isVisible) {
+            isVisible = true;
+            wrapper.dataset.visible = "true";
         }
 
-        var layers = getLayers();
-        if (layers.length > 0) {
-            var activeLayer = layers[activeLayerIndex];
-            // 检查是否需要切换 (使用 endsWith 匹配路径)
-            if (!activeLayer.src.endsWith(cursorSrc)) {
-                 var nextIndex = 1 - activeLayerIndex;
-                 var nextLayer = layers[nextIndex];
-                 
-                 // 设置新图标并显示
-                 nextLayer.src = cursorSrc;
-                 nextLayer.style.opacity = "1";
-                 
-                 // 隐藏旧图标
-                 activeLayer.style.opacity = "0";
-                 
-                 // 更新索引
-                 activeLayerIndex = nextIndex;
+        // 状态检测
+        let type = "base";
+        for (const map of CURSORS) {
+            if (e.target.closest(map.selector)) {
+                type = map.type;
+                break;
             }
         }
+        
+        // 只有状态改变时才更新 DOM
+        if (wrapper.dataset.type !== type) {
+            wrapper.dataset.type = type;
+        }
     });
 
-    // 鼠标离开窗口隐藏
-    document.addEventListener("mouseout", function(e) {
+    // 点击状态
+    document.addEventListener("mousedown", () => wrapper.dataset.pressed = "true");
+    document.addEventListener("mouseup", () => wrapper.dataset.pressed = "false");
+
+    // 离开窗口
+    document.addEventListener("mouseout", (e) => {
         if (!e.relatedTarget) {
             isVisible = false;
+            wrapper.dataset.visible = "false";
         }
     });
-
-    // 点击反馈 (只缩放内部图片，不影响位置)
-    document.addEventListener("mousedown", function() {
-        var layers = getLayers();
-        for (var i = 0; i < layers.length; i++) {
-            layers[i].style.transform = "scale(0.8)";
-        }
-    });
-
-    document.addEventListener("mouseup", function() {
-        var layers = getLayers();
-        for (var i = 0; i < layers.length; i++) {
-            layers[i].style.transform = "scale(1)";
-        }
-    });
+    
+    // 触摸设备隐藏
+    document.addEventListener("touchstart", () => {
+        isVisible = false;
+        wrapper.dataset.visible = "false";
+    }, { passive: true });
 })();

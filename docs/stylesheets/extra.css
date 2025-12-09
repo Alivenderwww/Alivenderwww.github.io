@@ -203,7 +203,7 @@ body[data-custom-theme="halloween"]::before {
 /* 仅在支持悬停的设备（如PC）上隐藏系统鼠标 */
 @media (hover: hover) {
     * {
-        cursor: none !important;
+        cursor: none;
     }
 }
 
@@ -217,7 +217,7 @@ body {
 
 /* 恢复 iframe 的光标，防止自定义光标在 iframe 上卡住时无法交互 */
 iframe {
-    cursor: auto !important;
+    cursor: auto;
 }
 
 /* 表格样式 */
@@ -563,3 +563,36 @@ span.filename {
   outline: none;
   border: none;
 }
+
+/* Cursor Styles */
+#cursor{
+  position: fixed;
+  width: 32px; height: 32px;
+  z-index: 2147483647;
+  pointer-events: none;
+  /* 使用 CSS 变量控制位置，默认隐藏在屏幕外 */
+  transform: scale(1);
+  /* 默认图标 */
+  background-image: url('/cursors/millennium_base.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* 过渡效果：显隐淡入淡出，位置平滑移动，点击缩放 */
+  transition: opacity 0.15s ease, transform 0.1s ease-out;
+  opacity: 0;
+  /* 阴影 */
+  filter: drop-shadow(2px 2px 1px rgba(39, 39, 39, 0.2));
+}
+
+/* 显隐控制 */
+#cursor[data-visible="true"] {
+  opacity: 1;
+}
+
+/* 点击缩放效果 */
+#cursor[data-pressed="true"] {
+  transform: scale(0.8);
+}
+
+/* 图标切换 - 根据 data-type 属性 */
+#cursor[data-type="link"] { background-image: url('/cursors/millennium_link.png'); }
+#cursor[data-type="text"] { background-image: url('/cursors/millennium_text.png'); }

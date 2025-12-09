@@ -3,6 +3,7 @@ site_description: 一个技术博客，分享编程和技术心得
 site_author: Alivender
 site_url: https://alivenderwww.github.io/
 repo_url: https://github.com/Alivenderwww/Alivenderwww.github.io/
+edit_uri: blob/main/docs/
 
 # Theme
 theme:
