@@ -3,10 +3,10 @@ import { Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTextur
 
 // kivo.wiki 禁止外域 CORS，直接请求会被拦截并拖慢加载
 const HOSTS_REQUIRE_PROXY = new Set(['api.kivo.wiki', 'static.kivo.wiki']);
-const FETCH_TIMEOUT_MS = 8000;
-const MAX_RETRY_ATTEMPTS = 3;
+const FETCH_TIMEOUT_MS = 10000; // Reduced timeout
+const MAX_RETRY_ATTEMPTS = 2;
 const fetchCache = new Map();
-const MAX_PARALLEL_LOADS = 2;
+const MAX_PARALLEL_LOADS = 4; // Increased parallel loads
 const loadQueue = [];
 let activeLoads = 0;
 
@@ -30,9 +30,8 @@ const scheduleLoad = async (task) => {
 const buildProxyTargets = (urlObj) => {
     const href = urlObj.href;
     return [
-        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(href)}`,
         `https://corsproxy.io/?${encodeURIComponent(href)}`,
-        `https://r.jina.ai/${href}`
+        `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(href)}`
     ];
 };
 
@@ -146,6 +145,12 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
     const container = document.getElementById(containerId);
     if (!container) throw new Error(`Container #${containerId} not found`);
 
+    // Cleanup existing app
+    if (container._pixiApp) {
+        container._pixiApp.destroy(true, { children: true, texture: true, baseTexture: true });
+        container._pixiApp = null;
+    }
+
     // Init App
     const app = new PIXI.Application({
         width: container.clientWidth || 800,
@@ -156,6 +161,7 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
         resizeTo: container
     });
     container.appendChild(app.view);
+    container._pixiApp = app;
 
     try {
         // 1. Resolve Source Data
@@ -166,7 +172,6 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
         }
 
         if (typeof source === 'string') {
-            console.log(`Fetching API: ${source}`);
             const apiRes = await fetchUrl(source, 'json');
             if (!apiRes.success) throw new Error(`API Error: ${apiRes.message}`);
             data = apiRes.data;
@@ -181,11 +186,14 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
 
         console.log("Skeleton URL:", skelUrl);
 
-        // 2. Fetch Assets (Skel & Atlas)
-        const [skelBuffer, atlasText] = await Promise.all([
+        // 2. Fetch Assets (Skel & Atlas & Images) in parallel
+        const fetchPromises = [
             fetchUrl(skelUrl, 'buffer'),
-            fetchUrl(atlasUrl, 'text')
-        ]);
+            fetchUrl(atlasUrl, 'text'),
+            ...imageUrls.map(url => fetchUrl(url, 'blob'))
+        ];
+
+        const [skelBuffer, atlasText, ...imageBlobs] = await Promise.all(fetchPromises);
 
         // 3. Patch Binary Header (Blue Archive Magic Bytes)
         const originalUint8 = new Uint8Array(skelBuffer);
@@ -197,9 +205,14 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
             finalBuffer = patchedBuffer;
         }
 
-        // 4. Parse Atlas & Load Textures
+        // 4. Parse Atlas & Load Textures (using pre-fetched blobs)
         const atlas = new TextureAtlas(atlasText);
         
+        const blobMap = new Map();
+        imageUrls.forEach((url, idx) => {
+            blobMap.set(url, imageBlobs[idx]);
+        });
+
         await Promise.all(atlas.pages.map(async (page) => {
             const textureUrl = imageUrls.find(url => url.endsWith(page.name));
             if (!textureUrl) {
@@ -209,7 +222,10 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
 
             console.log(`Loading texture: ${textureUrl}`);
 
-            const blob = await fetchUrl(textureUrl, 'blob');
+            const blob = blobMap.get(textureUrl);
+            if (blob.type && !blob.type.startsWith('image/')) {
+                console.warn(`[Spine] Texture blob type mismatch: ${blob.type} for ${textureUrl}. This might be a proxy error page.`);
+            }
             const blobUrl = URL.createObjectURL(blob);
 
             const usePma = options.alpha === true;
@@ -306,7 +322,11 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
 
     } catch (err) {
         console.error("Error loading spine:", err);
-        const errText = new PIXI.Text('Error: ' + err.message, {
+        let msg = err.message || String(err);
+        if (err instanceof Event) {
+            msg = `Texture loading failed (Event type: ${err.type})`;
+        }
+        const errText = new PIXI.Text('Error: ' + msg, {
             fill: 'red', 
             wordWrap: true, 
             wordWrapWidth: app.screen.width - 40,
@@ -330,6 +350,238 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
  *      data-animation="Idle_01">
  * </div>
  */
+
+
+class SpineSelector {
+    constructor(containerId) {
+        this.containerId = containerId;
+        this.container = document.getElementById(containerId);
+        this.menu = null;
+        this.cols = [];
+        this.data = { students: [] };
+        this.page = 1;
+        this.pageSize = 100;
+        this.maxPage = Infinity;
+        this.isLoading = false;
+        this.groupedStudents = new Map();
+        
+        this.init();
+    }
+
+    init() {
+        if (getComputedStyle(this.container).position === 'static') {
+            this.container.style.position = 'relative';
+        }
+
+        const btn = document.createElement('div');
+        btn.className = 'spine-selector-btn';
+        btn.textContent = '☰';
+        btn.onclick = (e) => {
+            e.stopPropagation();
+            this.toggleMenu();
+        };
+        this.container.appendChild(btn);
+
+        this.menu = document.createElement('div');
+        this.menu.className = 'spine-selector-menu';
+        this.menu.onclick = (e) => e.stopPropagation();
+        this.container.appendChild(this.menu);
+        
+        document.addEventListener('click', () => {
+            this.menu.style.display = 'none';
+        });
+    }
+
+    toggleMenu() {
+        if (this.menu.style.display === 'flex') {
+            this.menu.style.display = 'none';
+        } else {
+            this.menu.style.display = 'flex';
+            if (this.data.students.length === 0) {
+                console.log("Loading students...");
+                this.loadStudents();
+            }
+        }
+    }
+
+    async loadStudents() {
+        if (this.isLoading || this.page > this.maxPage) return;
+        this.isLoading = true;
+
+        // Show loading indicator only on first load or if needed
+        if (this.page === 1) {
+            this.renderCol(0, [{ name: 'Loading...', id: -1 }]);
+        }
+
+        try {
+            const res = await fetchUrl(`https://api.kivo.wiki/api/v1/data/students/?page=${this.page}&page_size=${this.pageSize}`, 'json');
+            if (!res.success) throw new Error(res.message);
+            
+            this.maxPage = res.data.max_page;
+            const newStudents = res.data.students;
+            
+            newStudents.forEach(s => {
+                const name = (s.family_name || '') + (s.given_name || '');
+                if (!name) return;
+                
+                if (!this.groupedStudents.has(name)) {
+                    this.groupedStudents.set(name, {
+                        name: name,
+                        defaultAvatar: s.avatar,
+                        skins: []
+                    });
+                }
+                const group = this.groupedStudents.get(name);
+                group.skins.push(s);
+                if (!s.skin) {
+                    group.defaultAvatar = s.avatar;
+                }
+            });
+            
+            this.data.students = Array.from(this.groupedStudents.values());
+            this.renderStudents();
+            
+            this.page++;
+        } catch (e) {
+            if (this.page === 1) {
+                this.renderCol(0, [{ name: 'Error: ' + e.message, id: -1 }]);
+            } else {
+                console.error("Failed to load more students:", e);
+            }
+        } finally {
+            this.isLoading = false;
+        }
+    }
+
+    renderCol(index, items, onClick) {
+        while (this.cols.length <= index) {
+            const col = document.createElement('div');
+            col.className = 'spine-selector-col';
+            this.menu.appendChild(col);
+            this.cols.push(col);
+            
+            // Add scroll listener for the first column (students list)
+            if (this.cols.length === 1) {
+                col.addEventListener('scroll', () => {
+                    if (col.scrollTop + col.clientHeight >= col.scrollHeight - 50) {
+                        this.loadStudents();
+                    }
+                });
+            }
+        }
+        while (this.cols.length > index + 1) {
+            this.menu.removeChild(this.cols.pop());
+        }
+
+        const col = this.cols[index];
+        
+        // If appending to existing list (pagination), don't clear innerHTML
+        // But here we are re-rendering the whole grouped list every time for simplicity
+        // To optimize, we could only append new items, but since we group by name, 
+        // new data might merge into existing groups. So re-rendering is safer.
+        // We just need to preserve scroll position.
+        const scrollTop = col.scrollTop;
+        col.innerHTML = '';
+        
+        items.forEach(item => {
+            const el = document.createElement('div');
+            el.className = 'spine-selector-item';
+            if (item.defaultAvatar || item.avatar) {
+                const img = document.createElement('img');
+                let src = item.defaultAvatar || item.avatar;
+                if (src.startsWith('//')) src = 'https:' + src;
+                img.src = src;
+                el.appendChild(img);
+            }
+            const span = document.createElement('span');
+            span.textContent = item.name || item.skin || '原皮';
+            el.appendChild(span);
+            
+            el.onclick = (e) => {
+                e.stopPropagation();
+                Array.from(col.children).forEach(c => c.classList.remove('active'));
+                el.classList.add('active');
+                if (onClick) onClick(item);
+            };
+            col.appendChild(el);
+        });
+
+        if (index === 0 && this.page > 1) {
+             col.scrollTop = scrollTop;
+        }
+    }
+
+    renderStudents() {
+        this.renderCol(0, this.data.students, (student) => {
+            this.renderSkins(student);
+        });
+    }
+
+    renderSkins(student) {
+        if (student.skins.length === 1) {
+            this.selectSkin(student.skins[0], 1);
+        } else {
+            const items = student.skins.map(s => ({
+                ...s,
+                name: s.skin_cn || s.skin || '原皮'
+            }));
+            this.renderCol(1, items, (skin) => {
+                this.selectSkin(skin, 2);
+            });
+        }
+    }
+
+    async selectSkin(skin, colIndex) {
+        this.renderCol(colIndex, [{ name: 'Loading...', id: -1 }]);
+        
+        try {
+            const studentRes = await fetchUrl(`https://api.kivo.wiki/api/v1/data/students/${skin.id}`, 'json');
+            if (!studentRes.success) throw new Error(studentRes.message);
+            
+            const spineIds = studentRes.data.spine || [];
+            if (spineIds.length === 0) {
+                this.renderCol(colIndex, [{ name: 'No spines', id: -1 }]);
+                return;
+            }
+
+            const validSpines = [];
+            // Fetch spines in parallel
+            await Promise.all(spineIds.map(async (sid) => {
+                try {
+                    const spineRes = await fetchUrl(`https://api.kivo.wiki/api/v1/data/spines/${sid}`, 'json');
+                    if (spineRes.success && spineRes.data.type === 'home') {
+                        validSpines.push(spineRes.data);
+                    }
+                } catch (e) {
+                    console.warn('Failed to fetch spine', sid, e);
+                }
+            }));
+
+            if (validSpines.length === 0) {
+                this.renderCol(colIndex, [{ name: 'No home spines', id: -1 }]);
+                return;
+            }
+
+            if (validSpines.length === 1) {
+                this.loadSpine(validSpines[0].id);
+                this.menu.style.display = 'none';
+            } else {
+                this.renderCol(colIndex, validSpines, (spine) => {
+                    this.loadSpine(spine.id);
+                    this.menu.style.display = 'none';
+                });
+            }
+
+        } catch (e) {
+            this.renderCol(colIndex, [{ name: 'Error: ' + e.message, id: -1 }]);
+        }
+    }
+
+    loadSpine(id) {
+        loadSpineFromApi(this.containerId, id);
+    }
+}
+
 export function initSpinePlayers() {
     const players = document.querySelectorAll('.spine-player');
     players.forEach(container => {
@@ -349,6 +601,9 @@ export function initSpinePlayers() {
 
         container.dataset.loaded = "true";
         
+        // Initialize Selector
+        new SpineSelector(container.id);
+        
         const options = {};
         if (container.dataset.scale) {
             const s = parseFloat(container.dataset.scale);
@@ -367,7 +622,10 @@ export function initSpinePlayers() {
                 }
             }
         }).catch(e => {
-            container.innerHTML = `<div style="color:red; padding:20px;">Failed to load Spine #${id}: ${e.message}</div>`;
+            const msg = e.message || (e instanceof Event ? `Texture Error (${e.type})` : String(e));
+            container.innerHTML = `<div style="color:red; padding:20px;">Failed to load Spine #${id}: ${msg}</div>`;
         });
     });
 }
+
+

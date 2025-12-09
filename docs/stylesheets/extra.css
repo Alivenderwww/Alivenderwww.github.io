@@ -183,14 +183,14 @@ body[data-custom-theme="halloween"]::before {
 }
 
 /* 隐藏滚动条的同时仍能滚动 */
-.js-focus-visible, .arithmatex, .md-sidebar__scrollwrap{
+.js-focus-visible, .arithmatex, .md-sidebar__scrollwrap, .spine-selector-col{
     overflow: auto; /* 启用滚动功能 */
     -ms-overflow-style: none; /* 适用于 Internet Explorer 和旧版 Edge */
     scrollbar-width: none; /* 适用于 Firefox */
 }
 
 /* Webkit 浏览器 */
-.js-focus-visible::-webkit-scrollbar, .arithmatex::-webkit-scrollbar, .md-sidebar__scrollwrap::-webkit-scrollbar{
+.js-focus-visible::-webkit-scrollbar, .arithmatex::-webkit-scrollbar, .md-sidebar__scrollwrap::-webkit-scrollbar, .spine-selector-col::-webkit-scrollbar{
     display: none; /* 隐藏滚动条 */
 }
 
@@ -596,3 +596,67 @@ span.filename {
 /* 图标切换 - 根据 data-type 属性 */
 #cursor[data-type="link"] { background-image: url('/cursors/millennium_link.png'); }
 #cursor[data-type="text"] { background-image: url('/cursors/millennium_text.png'); }
+
+/* Spine Selector Styles */
+.spine-selector-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: var(--md-primary-fg-color--dark);
+    color: var(--md-primary-text-light);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    user-select: none;
+    transition: background 0.2s;
+}
+.spine-selector-btn:hover {
+    background: var(--md-primary-fg-color);
+}
+
+.spine-selector-menu {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    z-index: 1000;
+    background: var(--md-primary-fg-color--light);
+    border-radius: 4px;
+    display: none;
+    flex-direction: row;
+    max-height: 80vh;
+    color: var(--md-primary-text);
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.spine-selector-col {
+    width: 200px;
+    overflow-y: auto;
+    border-right: 1px solid var(--md-primary-fg-color--dark);
+    display: flex;
+    flex-direction: column;
+}
+.spine-selector-col:last-child {
+    border-right: none;
+}
+
+.spine-selector-item {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--md-primary-fg-color--dark);
+    transition: background 0.2s;
+}
+.spine-selector-item:hover, .spine-selector-item.active {
+    background: var(--md-primary-fg-color--dark);
+    color: var(--md-primary-text-light);
+}
+
+.spine-selector-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}

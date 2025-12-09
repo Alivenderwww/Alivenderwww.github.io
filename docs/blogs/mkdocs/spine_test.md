@@ -12,55 +12,7 @@ comments: true
 ### Koyuki (ID: 799)
 
 ```html
-<div class="spine-player" data-id="799" data-alpha="true" data-scale="1" style="height: 200px; width: 100%;"></div>
+<div class="spine-player" data-id="799" data-alpha="true" data-scale="1" style="height: 600px; width: 100%;"></div>
 ```
 
-<div class="spine-player" data-id="799" data-alpha="true" data-scale="1" style="height: 200px; width: 100%;"></div>
-
-### Hoshino 中秋 (ID: 1191)
-
-```html
-<div class="spine-player" data-id="1191" data-scale="1" style="height: 300px; width: 100%;"></div>
-```
-
-<div class="spine-player" data-id="1191" data-scale="1" style="height: 300px; width: 100%;"></div>
-
-### Yutori Natsu (ID: 1006)
-
-```html
-<div class="spine-player" data-id="1006" data-scale="1" style="height: 400px; width: 100%;"></div>
-```
-
-<div class="spine-player" data-id="1006" data-scale="1" style="height: 400px; width: 100%;"></div>
-
-### mika (ID: 360)
-
-```html
-<div class="spine-player" data-id="360" data-scale="1" style="height: 500px; width: 100%;"></div>
-```
-
-<div class="spine-player" data-id="360" data-scale="1" style="height: 500px; width: 100%;"></div>
-
-### Hoshino Swimsuit (ID: 475)
-
-```html
-<div class="spine-player" data-id="475" data-scale="1" style="height: 600px; width: 100%;"></div>
-```
-
-<div class="spine-player" data-id="475" data-scale="1" style="height: 600px; width: 100%;"></div>
-
-### Koyuki (ID: 899)
-
-```html
-<div class="spine-player" data-id="899" data-scale="1" style="height: 600px; width: 100%;"></div>
-```
-
-<div class="spine-player" data-id="899" data-scale="1" style="height: 600px; width: 100%;"></div>
-
-### Tachibana Nozomi (ID: 980)
-
-```html
-<div class="spine-player" data-id="980" data-alpha="true" data-scale="1" style="height: 600px; width: 100%;"></div>
-```
-
-<div class="spine-player" data-id="980" data-alpha="true" data-scale="1" style="height: 600px; width: 100%;"></div>
+<div class="spine-player" data-id="799" data-alpha="true" data-scale="1" style="height: 600px; width: 100%;"></div>
