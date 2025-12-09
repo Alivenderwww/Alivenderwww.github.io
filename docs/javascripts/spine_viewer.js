@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import { Spine, SkeletonBinary, AtlasAttachmentLoader, TextureAtlas, SpineTexture } from '@esotericsoftware/spine-pixi-v7';
 
 // kivo.wiki 禁止外域 CORS，直接请求会被拦截并拖慢加载
-const HOSTS_REQUIRE_PROXY = new Set(['api.kivo.wiki', 'static.kivo.wiki']);
+const HOSTS_REQUIRE_PROXY = new Set([]);
 const FETCH_TIMEOUT_MS = 10000; // Reduced timeout
 const MAX_RETRY_ATTEMPTS = 2;
 const fetchCache = new Map();
