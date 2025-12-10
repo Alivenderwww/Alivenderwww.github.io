@@ -216,7 +216,9 @@ extra:
       link: /feed_rss_created.xml
 
 extra_javascript:
+  - javascripts/pixi_importmap.js # PixiJS Import Map
   - javascripts/extra.js #自定义javascript
+  
   - javascripts/spine_loader.js # Spine动画加载器
   - https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/javascripts/extra.js  # extra的cdn
   # - ckplayer/js/ckplayer.js #播放器配置

@@ -187,6 +187,19 @@
         requestAnimationFrame(() => {
             updateGiscusTheme();
         });
+
+        // 分发主题切换事件，通知其他组件（如 Spine Viewer）
+        // 使用 setTimeout 确保在样式计算更新后触发
+        requestAnimationFrame(() => {
+            setTimeout(() => {
+                window.dispatchEvent(new CustomEvent('themeChange', { 
+                    detail: { 
+                        theme: themeName,
+                        isHalloween: isHalloween()
+                    } 
+                }));
+            }, 50);
+        });
     }
     
     // 应用主题（带动画的包装函数）
