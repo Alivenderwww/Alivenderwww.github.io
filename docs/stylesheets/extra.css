@@ -472,7 +472,7 @@ span.filename {
 
 .glightbox img {
   width: 85%;
-  border: var(--md-primary-blue) 3px solid;
+  border: var(--md-primary-blue) 2.5px solid;
   /* box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2); */
 }
 
