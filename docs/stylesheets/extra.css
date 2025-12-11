@@ -471,7 +471,9 @@ span.filename {
 }
 
 .glightbox img {
-  box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2);
+  width: 85%;
+  border: var(--md-primary-blue) 3px solid;
+  /* box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2); */
 }
 
 @media screen and (min-width: 960px) {

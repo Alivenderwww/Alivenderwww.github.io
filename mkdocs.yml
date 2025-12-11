@@ -121,6 +121,7 @@ nav:
     - blogs/mkdocs/index.md
     - blogs/mkdocs/Mkdocs_Metrial_font_rendering.md
     - blogs/mkdocs/spine_test.md
+    - blogs/mkdocs/giscus_color.md
   - DJIflight:
     - blogs/DJIflight/index.md
     - blogs/DJIflight/algorithm-flow-and-problems.md
