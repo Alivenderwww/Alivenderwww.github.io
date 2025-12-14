@@ -1,59 +1,6 @@
 import { loadSpineFromApi, scheduleLoad } from './spine_core.js';
 import { SpineSelector, SpineController } from './spine_ui.js';
 
-function initThemeObserver(container) {
-    const updateFromTheme = () => {
-        const style = getComputedStyle(document.body);
-        const id = style.getPropertyValue('--spine-id').trim().replace(/^['"]|['"]$/g, '');
-        const scale = style.getPropertyValue('--spine-scale').trim();
-        const x = style.getPropertyValue('--spine-x').trim();
-        const y = style.getPropertyValue('--spine-y').trim();
-        const alpha = style.getPropertyValue('--spine-alpha').trim();
-
-        console.log(`[SpineTheme] Detected theme change. ID: ${id}, Scale: ${scale}, X: ${x}, Y: ${y}, Alpha: ${alpha}`);
-
-        // Only update if value exists in CSS
-        // Note: SpineController observes dataset changes and will trigger reload/update automatically
-        if (id && id !== container.dataset.id) {
-            console.log(`[SpineTheme] Updating ID from ${container.dataset.id} to ${id}`);
-            container.dataset.id = id;
-        }
-        if (scale) container.dataset.scale = scale;
-        if (x) container.dataset.x = x;
-        if (y) container.dataset.y = y;
-        if (alpha) container.dataset.alpha = alpha;
-    };
-
-    // Initial check
-    updateFromTheme();
-
-    // Listen for custom themeChange event
-    const onThemeChange = (e) => {
-        if (!container.isConnected) {
-            window.removeEventListener('themeChange', onThemeChange);
-            return;
-        }
-
-        console.log("[SpineTheme] Received themeChange event", e.detail);
-        
-        // Check immediately
-        updateFromTheme();
-        
-        // Check again after delays to ensure CSS is updated
-        setTimeout(updateFromTheme, 100);
-        setTimeout(updateFromTheme, 500);
-    };
-    window.addEventListener('themeChange', onThemeChange);
-
-    // Polling check for the first few seconds to handle initial load instability
-    let checkCount = 0;
-    const interval = setInterval(() => {
-        updateFromTheme();
-        checkCount++;
-        if (checkCount > 4) clearInterval(interval);
-    }, 500);
-}
-
 export function initSpinePlayers() {
     const players = document.querySelectorAll('.spine-player');
     players.forEach(container => {

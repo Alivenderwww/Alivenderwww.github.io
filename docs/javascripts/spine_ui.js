@@ -9,7 +9,7 @@ export class SpineSelector {
         this.cols = [];
         this.data = { students: [] };
         this.page = 1;
-        this.pageSize = 100;
+        this.pageSize = 500;
         this.maxPage = Infinity;
         this.isLoading = false;
         this.groupedStudents = new Map();
@@ -375,12 +375,9 @@ export class SpineController {
                     if (m.type === 'attributes' && m.attributeName.startsWith('data-')) {
                         const key = m.attributeName.replace('data-', '');
                         const val = this.container.dataset[key];
-                        
-                        console.log(`[SpineController] Attribute changed: ${key} = ${val}`);
 
                         if (key === 'id') {
                             needReload = true;
-                            console.log(`[SpineController] ID changed to ${val}, scheduling reload.`);
                         } else if (key === 'alpha') {
                             const boolVal = val === 'true';
                             if (this.options.alpha !== boolVal) {
@@ -404,7 +401,6 @@ export class SpineController {
             
             if (needReload) {
                 const id = this.container.dataset.id;
-                console.log(`[SpineController] Triggering reload for ID: ${id}`);
                 if (id) {
                     loadSpineFromApi(this.containerId, id, this.options);
                 }

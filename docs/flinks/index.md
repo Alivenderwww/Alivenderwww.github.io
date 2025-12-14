@@ -36,8 +36,8 @@ template: flinks.html
     
     Scr1w网络安全战队成员
 
-- <img src="https://smallgoodgood.top/favicon.ico" class="flink-avatar" />
-  
+- <img src="https://smallgoodgood.top/img/faction/1.png" class="flink-avatar" />
+
   __[Zenith's blog](https://smallgoodgood.top/)__
 
     未经审视的人生是不值得过的人生
@@ -57,5 +57,15 @@ template: flinks.html
     OurEDA Web组成员
 
     NAOSI网络与开源协会成员
+
+- <img src="https://www.cccxyx.com/avatar.jpg" class="flink-avatar" />
+  
+  __[cccxyx <span class="jp-char">の</span> Blog](https://www.cccxyx.com/)__
+
+    大连理工大学国际信息与软件学院在读。
+
+    湖南人。
+
+    并非二次元。
 
 </div>

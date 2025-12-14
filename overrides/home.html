@@ -25,16 +25,38 @@
         height: 0 !important;
       }
     }
-    #app {
-      position: absolute;
-      right: calc(35% - 320px / 2);
-      top: calc(50% - 445.68px / 2);
+    /* Spine Container Styling */
+    #spine-container {
+      /* 移除绝对定位，改用 Flexbox 布局在 md-grid 内部控制 */
+      width: 600px; 
+      height: 400px;
+      /* 在 Flex 容器中靠右对齐 */
+      margin-left: auto; 
+      /* 垂直居中微调，视具体情况而定 */
+      margin-top: auto;
+      margin-bottom: auto;
     }
+
+    /* 仅对 Canvas 应用矩形羽化，避免影响 UI 组件 */
+    #spine-container canvas {
+      /* 参考知乎文章实现矩形羽化：利用 mask-composite 合成水平和垂直的渐变遮罩 */
+      /* 15px 是羽化半径，您可以根据需要调整 */
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15px, black calc(100% - 15px), transparent),
+                          linear-gradient(to bottom, transparent, black 15px, black calc(100% - 15px), transparent);
+      -webkit-mask-composite: source-in;
+      
+      mask-image: linear-gradient(to right, transparent, black 15px, black calc(100% - 15px), transparent),
+                  linear-gradient(to bottom, transparent, black 15px, black calc(100% - 15px), transparent);
+      mask-composite: intersect;
+    }
+    
+    /* Hide on narrower screens */
     @media (max-width: 960px) {
-      #app {
+      #spine-container {
         display: none;
       }
     }
+
     .md-main {
       display: flex;
       flex-direction: column;
@@ -46,6 +68,15 @@
       justify-content: space-between;
       height: 100%;
       width: 100%;
+    }
+    /* 确保 md-grid 能够容纳左右布局 */
+    .home-grid-container {
+      display: flex;
+      align-items: center; /* 垂直居中 */
+      justify-content: space-between; /* 左右分布 */
+      width: 100%;
+      height: 100%;
+      position: relative;
     }
     .md-content {
       flex-grow: initial;
@@ -72,16 +103,25 @@
 {% endblock %}
 
 {% block content %}
-  <div class="spine-player" 
-       data-id="418" 
-       data-controls="false"
-       data-kivo="false"
-       style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; pointer-events: none;"></div>
-  <div id="app"></div>
   <div class="md-typeset" style="display: block; background-color: transparent; font-size: 135%;">
-    <div class="md-grid">
-      <div style="margin-left: 0.8rem;">
+    <div class="md-grid home-grid-container">
+      <!-- 左侧内容 -->
+      <div style="margin-left: 0.8rem; z-index: 1;">
         {{ page.content }}
+      </div>
+      
+      <!-- 右侧 Spine Viewer -->
+      <div id="spine-container">
+        <div
+          class="spine-player"
+          data-id="452"
+          data-alpha="false"
+          data-scale="1"
+          data-x="0"
+          data-y="0"
+          data-controls="true"
+          style="width: 100%; height: 100%;"
+        ></div>
       </div>
     </div>
   </div>

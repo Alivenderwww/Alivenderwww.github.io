@@ -151,27 +151,10 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
     if (!progressBar) {
         progressBar = document.createElement('div');
         progressBar.className = 'spine-progress-bar';
-        progressBar.style.cssText = `
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            width: 150px;
-            height: 6px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 3px;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 100;
-            display: none;
-            transition: opacity 0.3s;
-        `;
+        
         progressFill = document.createElement('div');
-        progressFill.style.cssText = `
-            width: 0%;
-            height: 100%;
-            background: #00b0ff;
-            transition: width 0.2s ease-out;
-        `;
+        progressFill.className = 'spine-progress-fill';
+        
         progressBar.appendChild(progressFill);
         container.appendChild(progressBar);
     } else {
@@ -196,13 +179,13 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
     // Reuse or Create App
     let app = container._pixiApp;
     if (!app) {
-        const resolution = 1;
+        const resolution = 2;
         app = new PIXI.Application({
             width: container.clientWidth / resolution,
             height: container.clientHeight / resolution,
-            backgroundColor: 0x333333,
+            backgroundAlpha: 0, // 设置背景透明度为 0
             antialias: true,     // 消除锯齿
-            transparent: false,  // 背景不透明
+            // transparent: true,  // PIXI v7+ 中 transparent 已被废弃，应使用 backgroundAlpha
             resolution: resolution,
             autoDensity: true,
             resizeTo: container
@@ -428,7 +411,7 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
             // First load: Fade In
             let alpha = 0;
             const fadeIn = () => {
-                alpha += 0.05;
+                alpha += 0.01;
                 if (alpha >= 1) {
                     spine.alpha = 1;
                     app.ticker.remove(fadeIn);

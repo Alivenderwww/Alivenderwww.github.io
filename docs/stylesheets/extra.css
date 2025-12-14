@@ -202,18 +202,18 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
 /* Homepage Background Images */
 body[data-custom-theme="blue"]::before,
 body:not([data-custom-theme])::before {
-  background-color: var(--md-primary-fg-color--light);
-  /* background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/arona.jpg') !important; */
+  /* background-color: var(--md-primary-fg-color--light); */
+  background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/arona.jpg') !important;
 }
 
 body[data-custom-theme="purple"]::before {
-  background-color: var(--md-primary-fg-color--light);
-  /* background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/plana.jpg') !important; */
+  /* background-color: var(--md-primary-fg-color--light); */
+  background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/plana.jpg') !important;
 }
 
 body[data-custom-theme="halloween"]::before {
-  background-color: var(--md-primary-fg-color--light);
-  /* background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/halloween-background2.jpg') !important; */
+  /* background-color: var(--md-primary-fg-color--light); */
+  background-image: url('https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/home/halloween-background2.jpg') !important;
 }
 
 /* 自定义文字选中背景色 */
@@ -813,4 +813,27 @@ span.filename {
     border-radius: .2rem;
     padding: 2px 5px;
     width: 60px;
+}
+
+/* Spine Progress Bar */
+.spine-progress-bar {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 150px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 100;
+    display: none;
+    transition: opacity 0.3s;
+}
+
+.spine-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--md-primary-blue); /* Using theme color */
+    transition: width 0.2s ease-out;
 }
