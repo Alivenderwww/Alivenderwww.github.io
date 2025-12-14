@@ -152,7 +152,7 @@ nav:
     - blogs/FPGAWeblab/13_frequency_meter.md
   - GEMM:
     - blogs/GEMM/cal_full_conv.md
-  - 画廊: https://dpp-alivender.afilmory.art/
+  - 画廊: gallery.md
   - 友链: flinks/index.md
   - Blog:
     - blog/index.md
@@ -196,6 +196,7 @@ plugins:
           - index.md
           - tags.md
           - flinks/index.md
+          - gallery.md
       enabled: true #是否启用
       strict: true
   - minify:

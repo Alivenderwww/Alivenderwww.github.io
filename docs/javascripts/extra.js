@@ -141,73 +141,6 @@
 
 /*背景end*/
 
-/* 页面加载进度监测 - 同步 MkDocs Material 内置进度条到 header 边框 */
-(function() {
-    if (window.progressMonitorInited) return;
-    window.progressMonitorInited = true;
-
-    const header = document.querySelector('.md-header');
-    const progressBar = document.querySelector('.md-progress[data-md-component="progress"]');
-    
-    if (!header) return;
-    
-    let lastProgress = 0;
-    
-    // 监听进度条变化
-    function syncProgress() {
-        if (progressBar) {
-            const progressValue = Math.min(parseFloat(progressBar.style.getPropertyValue('--md-progress-value')) || 0, 100);
-            if (progressValue) {
-                const progress = parseFloat(progressValue);
-                
-                if (progress < lastProgress) {
-                    // 降低：移除动画，瞬间更新
-                    header.style.transition = 'none';
-                    header.style.setProperty('--load-progress', `${progress}`);
-                    // 强制重排以应用无动画更新
-                    header.offsetHeight;
-                } else {
-                    // 升高：添加缓动动画
-                    header.style.transition = '--load-progress 0.3s ease-out';
-                    header.style.setProperty('--load-progress', `${progress}`);
-                }
-                
-                lastProgress = progress;
-            }
-        }
-    }
-    
-    // 使用 MutationObserver 监听进度条的 style 变化
-    if (progressBar) {
-        const observer = new MutationObserver(() => {
-            syncProgress();
-        });
-        
-        observer.observe(progressBar, {
-            attributes: true,
-            attributeFilter: ['style']
-        });
-        
-        // 初始同步
-        syncProgress();
-    }
-    
-    // 也可以使用定时器轮询(备用方案)
-    const intervalId = setInterval(() => {
-        syncProgress();
-    }, 500);
-    
-    // 页面加载完成后清理定时器
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            clearInterval(intervalId);
-            header.style.setProperty('--load-progress', '100');
-            header.style.setProperty('--load-progress_noanime', '100');
-        }, 500);
-    });
-})();
-
-
 /* 鼠标样式修改 */
 (function() {
     if (window.customCursorInited) return;
@@ -282,3 +215,14 @@
         wrapper.dataset.visible = "false";
     }, { passive: true });
 })();
+
+// 页面滚动进度条
+document.addEventListener("scroll", function() {
+  var header = document.querySelector(".md-header");
+  if (header) {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+    header.style.setProperty("--load-progress", scrolled);
+  }
+});

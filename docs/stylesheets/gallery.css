@@ -1,0 +1,44 @@
+@import url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css");
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline.ttf");
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: 400;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Italic.ttf");
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: 700;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf");
+}
+
+/*! MIT License
+ * Copyright (c) 2018 GitHub Inc.
+ * https://github.com/primer/primitives/blob/main/LICENSE
+ */
+main {
+    --color-base-100: var(--md-primary-blue--light);
+}
+
+:host,
+html {
+    --font-family-sans: "FZLanTY";
+    --font-family-monospace: "Ubuntu Mono derivative Powerline";
+    --font-family-default: var(--font-family-sans);
+}
