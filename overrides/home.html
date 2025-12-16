@@ -91,8 +91,8 @@
 {% endblock %}
 
 {% block site_nav %}
-  <div style="flex-grow: 1;">
-    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+  <div style="display: none; flex-grow: 1;">
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" style="top: 0;">
       <div class="md-sidebar__scrollwrap sidebar_nav">
         <div class="md-sidebar__inner">
           {% include "partials/nav.html" %}
@@ -103,7 +103,7 @@
 {% endblock %}
 
 {% block content %}
-  <div class="md-typeset" style="display: block; background-color: transparent; font-size: 135%;">
+  <div class="md-typeset" style="display: block; background-color: transparent;">
     <div class="md-grid home-grid-container">
       <!-- 左侧内容 -->
       <div style="margin-left: 0.8rem; z-index: 1;">

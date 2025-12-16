@@ -837,3 +837,12 @@ span.filename {
     background: var(--md-primary-blue); /* Using theme color */
     transition: width 0.2s ease-out;
 }
+
+.md-post--excerpt .md-post__content>:first-child {
+    --md-scroll-margin: 6rem;
+    margin-top: .2rem;
+}
+
+.md-button--primary {
+  color: var(--md-primary-text-reverse) !important;
+}

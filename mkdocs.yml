@@ -10,9 +10,10 @@ theme:
   name: material
   custom_dir: overrides
   language: zh
+  logo: images/logo.jfif
+  favicon: images/logo.jfif
   icon:
     repo: fontawesome/brands/github #右上角图标
-    logo: logo
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -111,12 +112,8 @@ markdown_extensions: #详见https://squidfunk.github.io/mkdocs-material/setup/ex
 # Navigation
 nav:
   - 首页: index.md
-  # - 社会实践:
-  #     - blogs/Shehuishijian/1.md
-  #     - blogs/Shehuishijian/2.md
-  #     - blogs/Shehuishijian/3.md
-  #     - blogs/Shehuishijian/4.md
-  #     - blogs/Shehuishijian/5.md
+  - Blog: blog/index.md
+  - 关于: about.md
   - mkdocs:
     - blogs/mkdocs/index.md
     - blogs/mkdocs/Mkdocs_Metrial_font_rendering.md
@@ -152,14 +149,19 @@ nav:
     - blogs/FPGAWeblab/13_frequency_meter.md
   - GEMM:
     - blogs/GEMM/cal_full_conv.md
-  - 画廊: gallery.md
-  - 友链: flinks/index.md
-  - Blog:
-    - blog/index.md
+  - 画廊: 
+    - gallery.md
+  - 友链: 
+    - flinks/index.md
 
 
 # Plugins
 plugins:
+  - blog:
+      post_excerpt: optional
+      authors_profiles_name: Authors
+      categories: true
+      archive: true
   - heti:
       disable_serve: true
   - statistics:
@@ -205,6 +207,8 @@ plugins:
       minify_css: true
       htmlmin_opts:
         remove_comments: false
+  - optimize:
+      optimize_jpg: false
 
 # Extra
 extra:

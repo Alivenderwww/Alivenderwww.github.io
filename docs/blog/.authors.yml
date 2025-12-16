@@ -1,0 +1,7 @@
+authors:
+  Alivender:
+    name: Alivender        # Author name
+    description: 硬件设计牛马一位 # Author description
+    avatar: https://avatars.githubusercontent.com/u/129584860?s=400&u=a6211caada441de2c26e22f6af0a76913d3192fd&v=4         # Author avatar
+    slug: alivender        # Author profile slug
+    url: blog.alivender.life            # Author website URL

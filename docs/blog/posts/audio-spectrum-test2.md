@@ -1,12 +1,21 @@
 ---
-date: 2025-12-08 22:14
+title: "音频频谱捕获 - 兼容方案2"
+date: 2025-12-15
+authors:
+  - Alivender
+categories:
+  - JavaScript
+comment: false
+comments: true
 ---
-
-# 音频频谱捕获 - 兼容方案
 
 > 使用 Web Audio API 实现音频频谱实时分析，支持多种音频源
 
-## 🚀 快速开始
+只是一篇AI生成的文章，测试一下博客blog插件功能。2222
+
+<!-- more -->
+
+### 🚀 快速开始
 
 在浏览器控制台中输入以下命令，系统会自动选择最合适的音频源：
 
@@ -14,9 +23,9 @@ date: 2025-12-08 22:14
 await window.initAudioSpectrumV2()
 ```
 
-## 📋 主要功能
+### 📋 主要功能
 
-### 方案 1️⃣: 自动选择最佳方案
+#### 方案 1️⃣: 自动选择最佳方案
 
 ```javascript
 await window.initAudioSpectrumV2()
@@ -27,7 +36,7 @@ await window.initAudioSpectrumV2()
 2. **🎤 麦克风** - 获取麦克风输入
 3. **📝 提示用户** - 如果以上都不可用
 
-### 方案 2️⃣: 音频文件分析
+#### 方案 2️⃣: 音频文件分析
 
 ```javascript
 // 使用 URL
@@ -40,7 +49,7 @@ await window.testAudioFile(audioFileInput.files[0])
 await window.testAudioFile(document.querySelector('audio'))
 ```
 
-### 方案 3️⃣: 手动连接麦克风
+#### 方案 3️⃣: 手动连接麦克风
 
 ```javascript
 const capture = new AudioSpectrumCaptureV2();
@@ -51,7 +60,7 @@ capture.startCapture((data) => {
 });
 ```
 
-### 方案 4️⃣: 手动连接桌面音频
+#### 方案 4️⃣: 手动连接桌面音频
 
 ```javascript
 const capture = new AudioSpectrumCaptureV2();
@@ -62,7 +71,7 @@ capture.startCapture((data) => {
 });
 ```
 
-## 🎮 控制命令
+### 🎮 控制命令
 
 | 命令 | 说明 |
 |------|------|
@@ -73,7 +82,7 @@ capture.startCapture((data) => {
 | `window.audioSpectrumHelp()` | 查看使用帮助 |
 | `AudioSpectrumCaptureV2.checkCompatibility()` | 检查浏览器兼容性 |
 
-## 🔍 兼容性检查
+### 🔍 兼容性检查
 
 运行以下命令查看浏览器支持情况：
 
@@ -92,9 +101,9 @@ AudioSpectrumCaptureV2.checkCompatibility()
   ✓ requestAnimationFrame: true
 ```
 
-## 📊 频谱数据结构
+### 📊 频谱数据结构
 
-### frequencyData
+#### frequencyData
 ```
 frequencyData: Uint8Array(128)
   - 128 个频率 Bin（256 FFT 的一半）
@@ -103,7 +112,7 @@ frequencyData: Uint8Array(128)
   - 频率范围: 0 ~ 22.05kHz
 ```
 
-### stats（统计数据）
+#### stats（统计数据）
 ```javascript
 {
   average: 45,        // 平均幅度
@@ -117,9 +126,9 @@ frequencyData: Uint8Array(128)
 }
 ```
 
-## 💡 实际例子
+### 💡 实际例子
 
-### 例子 1: 实时麦克风分析
+#### 例子 1: 实时麦克风分析
 
 ```javascript
 // 启动
@@ -142,7 +151,7 @@ window.spectrum.stopCapture();
 window.spectrum.cleanup();
 ```
 
-### 例子 2: 分析音乐文件
+#### 例子 2: 分析音乐文件
 
 ```javascript
 // 方法1: 使用 URL
@@ -152,7 +161,7 @@ await window.testAudioFile('https://example.com/song.mp3');
 // 音频会自动播放并开始分析
 ```
 
-### 例子 3: 创建简单的音量指示器
+#### 例子 3: 创建简单的音量指示器
 
 ```javascript
 let lastEnergy = 0;
@@ -175,26 +184,26 @@ window.spectrum.startCapture((data) => {
 });
 ```
 
-## 🌐 浏览器兼容性
+### 🌐 浏览器兼容性
 
-### 完全支持（所有功能可用）
+#### 完全支持（所有功能可用）
 - ✅ Chrome 90+
 - ✅ Edge 90+
 - ✅ Firefox 90+
 - ✅ Safari 14.1+
 - ✅ Opera 76+
 
-### 部分支持（某些功能可用）
+#### 部分支持（某些功能可用）
 - ⚠️ Safari on iOS（某些限制）
 - ⚠️ Firefox Android（某些限制）
 
-### 不支持
+#### 不支持
 - ❌ IE 11 及更早版本
 - ❌ 超旧的手机浏览器
 
-## ⚠️ 常见问题
+### ⚠️ 常见问题
 
-### Q: 为什么看不到频谱数据？
+#### Q: 为什么看不到频谱数据？
 
 A: 可能的原因和解决方案：
 1. **没有音频输入** - 播放音乐、视频或说话到麦克风
@@ -202,7 +211,7 @@ A: 可能的原因和解决方案：
 3. **权限被拒绝** - 检查浏览器权限设置，重新授予麦克风或屏幕共享权限
 4. **浏览器不支持** - 升级浏览器到最新版本
 
-### Q: 桌面音频无法获取？
+#### Q: 桌面音频无法获取？
 
 A: 这取决于您的浏览器和操作系统：
 - **Chrome/Edge on Windows/Mac** - 应该支持
@@ -210,7 +219,7 @@ A: 这取决于您的浏览器和操作系统：
 - **Safari** - 可能不支持
 - **移动浏览器** - 通常不支持屏幕共享音频
 
-### Q: 如何分析本地音乐文件？
+#### Q: 如何分析本地音乐文件？
 
 A: 两种方法：
 
@@ -230,7 +239,7 @@ document.addEventListener('drop', (e) => {
 });
 ```
 
-### Q: 数据更新太快或太慢？
+#### Q: 数据更新太快或太慢？
 
 A: 可以调整 FFT 大小和平滑系数（修改源代码）：
 ```javascript
@@ -239,7 +248,7 @@ this.analyser.fftSize = 512;          // 增加分辨率
 this.analyser.smoothingTimeConstant = 0.9;  // 增加平滑
 ```
 
-### Q: 能否同时分析多个音源？
+#### Q: 能否同时分析多个音源？
 
 A: 可以创建多个 `AudioSpectrumCaptureV2` 实例，但需要谨慎：
 ```javascript
@@ -250,16 +259,16 @@ const capture2 = new AudioSpectrumCaptureV2();
 // ...
 ```
 
-## 🔧 开发者选项
+### 🔧 开发者选项
 
-### 获取原始频率数据
+#### 获取原始频率数据
 
 ```javascript
 window.spectrum.analyser.getByteFrequencyData(window.spectrum.frequencyData);
 console.log(window.spectrum.frequencyData);
 ```
 
-### 修改分析器参数
+#### 修改分析器参数
 
 ```javascript
 // FFT 大小（128、256、512、1024、2048、4096、8192、16384、32768）
@@ -273,7 +282,7 @@ window.spectrum.analyser.minDecibels = -100;
 window.spectrum.analyser.maxDecibels = -10;
 ```
 
-### 自定义回调处理
+#### 自定义回调处理
 
 ```javascript
 window.spectrum.stopCapture();
@@ -285,7 +294,7 @@ window.spectrum.startCapture((data) => {
 });
 ```
 
-## 📝 后续计划
+### 📝 后续计划
 
 - [ ] Canvas 频谱可视化
 - [ ] 实时波形显示
