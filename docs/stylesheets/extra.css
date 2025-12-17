@@ -8,6 +8,7 @@ body:not([data-custom-theme])[data-md-color-scheme="default"] {
   --md-primary-fg-color--dark: #282e46;
   --md-primary-blue: #5fbeeb;
   --md-primary-blue--light: #ffffff;
+  --md-primary-blue--light--grid: #f0f8ff;
   --md-primary-blue--dark: #166d96;
   --md-primary-text: #4C5866;
   --md-primary-text-light: #e0eaf5;
@@ -42,6 +43,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-fg-color--dark: #283346;
   --md-primary-blue: #5bb7e2;
   --md-primary-blue--light: #1E2129;
+  --md-primary-blue--light--grid: #212535;
   --md-primary-blue--dark: #2C3A4F;
   --md-primary-text: #e0eaf5;
   --md-primary-text-light: #e0eaf5;
@@ -76,6 +78,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-fg-color--dark: #3a2846;
   --md-primary-blue: #a569bd;
   --md-primary-blue--light: #ffffff;
+  --md-primary-blue--light--grid: #f5f0fa;
   --md-primary-blue--dark: #6a4c93;
   --md-primary-text: #594e5f;
   --md-primary-text-light: #ebe0f5;
@@ -109,6 +112,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-fg-color--dark: #3a2846;
   --md-primary-blue: #bb7ae2;
   --md-primary-blue--light: #161320;
+  --md-primary-blue--light--grid: #211a2c;
   --md-primary-blue--dark: #3a2a4f;
   --md-primary-text: #f1ecf7;
   --md-primary-text-light: #ebe0f5;
@@ -143,6 +147,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-fg-color--dark: #1a0d00;
   --md-primary-blue: #ff8c00;
   --md-primary-blue--light: #fff0e0;
+  --md-primary-blue--light--grid: #fff5e6;
   --md-primary-blue--dark: #cc7000;
   --md-primary-text: #4a2c0a;
   --md-primary-text-light: #ffe4b3;
@@ -175,6 +180,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-fg-color--dark: #2d1b00;
   --md-primary-blue: #ff8c00;
   --md-primary-blue--light: #1a0d00;
+  --md-primary-blue--light--grid: #0d0600;
   --md-primary-blue--dark: #4a2c0a;
   --md-primary-text: #ffe4b3;
   --md-primary-text-light: #ffe4b3;
@@ -256,8 +262,11 @@ body[data-custom-theme="halloween"]::before {
     box-sizing: border-box;
 }
 
-body {
-  background-color: var(--md-primary-blue--light);
+body{
+  background: var(--md-primary-blue--light);
+  background-image: linear-gradient(to right, var(--md-primary-blue--light--grid) 1px, transparent 1px), 
+                    linear-gradient(to bottom, var(--md-primary-blue--light--grid) 1px, transparent 1px);
+  background-size: 45px 45px;
 }
 
 /* 恢复 iframe 的光标，防止自定义光标在 iframe 上卡住时无法交互 */
@@ -522,7 +531,7 @@ span.filename {
   }
 }
 
-.md-nav .md-nav__title:not(.md-nav--secondary .md-nav__title) {
+.md-nav .md-nav__title {
   background: transparent;
   color: var(--md-primary-text);
 }
