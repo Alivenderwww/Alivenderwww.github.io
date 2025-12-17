@@ -279,7 +279,7 @@ iframe {
   border-radius: .2rem;
   overflow: hidden;
   color: var(--md-primary-text);
-  box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
+  box-shadow: var(--md-shadow-z1);
 }
 
 .md-typeset table:not([class]) td:not([align]),.md-typeset table:not([class]) th:not([align]) {
@@ -486,7 +486,7 @@ span.filename {
   width: 85%;
   border: var(--md-primary-blue) 2.5px solid;
   border-radius: .4rem;
-  /* box-shadow: 0 .2rem .5rem rgba(var(--md-primary-text-rgb),.2); */
+  box-shadow: var(--md-shadow-z1);
 }
 
 @media screen and (min-width: 960px) {
@@ -531,7 +531,7 @@ span.filename {
   }
 }
 
-.md-nav .md-nav__title {
+.md-nav .md-nav__title .md-nav__item .md-nav__link {
   background: transparent;
   color: var(--md-primary-text);
 }
@@ -601,7 +601,7 @@ span.filename {
   left: 50%;
   transform: translateX(-50%) translateY(-10px);
   background: var(--md-primary-top-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--md-shadow-z1);
   border-radius: .2rem;
   padding: 10px;
   z-index: 100;
@@ -722,7 +722,7 @@ span.filename {
     display: flex;
     flex-direction: column;
     background: var(--md-primary-fg-color--light);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    box-shadow: var(--md-shadow-z2);
     position: relative; /* For z-index */
     
     /* Animation for appearing */
@@ -789,7 +789,7 @@ span.filename {
     z-index: 1000;
     font-size: 12px;
     min-width: 180px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    box-shadow: var(--md-shadow-z2);
 
     /* Animation */
     transform: scale(0);
