@@ -523,8 +523,8 @@ span.filename {
 }
 
 .md-nav .md-nav__title:not(.md-nav--secondary .md-nav__title) {
-  background-color: var(--md-primary-top-color);
-  color: var(--md-primary-text-light);
+  background: transparent;
+  color: var(--md-primary-text);
 }
 
 .md-typeset pre {

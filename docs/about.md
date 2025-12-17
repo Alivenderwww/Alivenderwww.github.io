@@ -7,7 +7,7 @@ hide:
 
 # 关于
 
-我是Alivender。常用id：`dpp`、`dppp`、`Alivender`。生日是**6月26日**。
+我是Alivender。常用id：`dpp`、`dppp`、`Alivender`。生日是 **6月26日**。
 
 硬件设计牛马，业余摄影爱好者，业余vibe-coding程序员。学生。
 

@@ -10,8 +10,8 @@ theme:
   name: material
   custom_dir: overrides
   language: zh
-  logo: img/logo.jfif
-  favicon: img/logo.jfif
+  logo: img/logo.png
+  favicon: img/logo.png
   icon:
     repo: fontawesome/brands/github #右上角图标
   palette:
