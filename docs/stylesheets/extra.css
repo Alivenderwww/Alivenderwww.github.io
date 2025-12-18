@@ -264,7 +264,9 @@ body[data-custom-theme="halloween"]::before {
 
 body{
   background: var(--md-primary-blue--light);
-  background-image: linear-gradient(to right, var(--md-primary-blue--light--grid) 1px, transparent 1px), 
+  background-image: linear-gradient(45deg, var(--md-primary-blue--light), var(--md-primary-blue--light) 5%, transparent 10%, transparent 90%, var(--md-primary-blue--light) 95%, var(--md-primary-blue--light)),
+                    linear-gradient(135deg, var(--md-primary-blue--light), var(--md-primary-blue--light) 5%, transparent 10%, transparent 90%, var(--md-primary-blue--light) 95%, var(--md-primary-blue--light)),
+                    linear-gradient(to right, var(--md-primary-blue--light--grid) 1px, transparent 1px), 
                     linear-gradient(to bottom, var(--md-primary-blue--light--grid) 1px, transparent 1px);
   background-size: 45px 45px;
 }
