@@ -263,14 +263,23 @@ body[data-custom-theme="halloween"]::before {
 }
 
 body{
+  --grid-size-x: 45;
+  --grid-size-y: 45;
+  --grid-pos-x: 0;
+  --grid-pos-y: 0;
+  --grid-size-x-px: calc(var(--grid-size-x) * 1px);
+  --grid-size-y-px: calc(var(--grid-size-y) * 1px);
+  --grid-pos-x-px: calc(var(--grid-pos-x) * 1px);
+  --grid-pos-y-px: calc(var(--grid-pos-y) * 1px);
   background: var(--md-primary-blue--light);
-  background-image: radial-gradient(at   0%   0%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    radial-gradient(at   0% 100%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    radial-gradient(at 100%   0%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    radial-gradient(at 100% 100%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    linear-gradient(to right, var(--md-primary-blue--light--grid) 0.5px, transparent 0.5px, transparent 44.5px, var(--md-primary-blue--light--grid) 44.5px), 
-                    linear-gradient(to bottom, var(--md-primary-blue--light--grid) 0.5px, transparent 0.5px, transparent 44.5px, var(--md-primary-blue--light--grid) 44.5px);
-  background-size: 45px 45px;
+  background-image: radial-gradient(circle at   0%   0%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
+                    radial-gradient(circle at   0% 100%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
+                    radial-gradient(circle at 100%   0%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
+                    radial-gradient(circle at 100% 100%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
+                    linear-gradient(to right, var(--md-primary-blue--light--grid) 0.5px, transparent 0.5px, transparent calc(var(--grid-size-x-px) - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-x-px) - 0.5px)), 
+                    linear-gradient(to bottom, var(--md-primary-blue--light--grid) 0.5px, transparent 0.5px, transparent calc(var(--grid-size-y-px) - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-y-px) - 0.5px));
+  background-size: var(--grid-size-x-px) var(--grid-size-y-px);
+  background-position:left calc(100% - var(--grid-pos-x-px)) top calc(100% - var(--grid-pos-y-px));
 }
 
 /* 恢复 iframe 的光标，防止自定义光标在 iframe 上卡住时无法交互 */
