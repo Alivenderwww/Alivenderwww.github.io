@@ -16,55 +16,55 @@ comments: true
 
 <!-- more -->
 
-![alt text](../../img/yhc/IMG_9433.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9433.jpg)
 
 /// figure-caption
 wc，圆
 ///
 
-![alt text](../../img/yhc/IMG_9578.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9578.jpg)
 
 /// figure-caption
 不认识，疑似某个二游
 ///
 
-![alt text](../../img/yhc/IMG_9592.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9592.jpg)
 
 /// figure-caption
 希罗❤艾玛，话说没看到蓝发小女孩
 ///
 
-![alt text](../../img/yhc/IMG_9595.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9595.jpg)
 
 /// figure-caption
 还有魔女化希罗
 ///
 
-![alt text](../../img/yhc/IMG_9646.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9646.jpg)
 
 /// figure-caption
 我称之为全场最还原coser
 ///
 
-![alt text](../../img/yhc/IMG_9651.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9651.jpg)
 
 /// figure-caption
 鬼灭之刃炭治郎，打光绝了，刀还冒烟
 ///
 
-![alt text](../../img/yhc/IMG_9748.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9748.jpg)
 
 /// figure-caption
 是抖音up主
 ///
 
-![alt text](../../img/yhc/IMG_9759.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9759.jpg)
 
 /// figure-caption
 我去，oooo！
 ///
 
-![alt text](../../img/yhc/IMG_9767.jpg)
+![alt text](https://alivender-assets.oss-cn-beijing.aliyuncs.com/photos/%E6%BC%AB%E5%B1%95_%E8%90%A4%E7%81%AB%E8%99%AB/IMG_9767.jpg)
 
 /// figure-caption
 星野
