@@ -178,9 +178,9 @@ plugins:
       shadow: true
       manual: false
   - search:
-      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      separator: '[\s\-,:!=\[\]()"/`]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - rss:
-      match_path: "^(?:blogs/[^/]+/(?!index\.md$).+\.md$|blog/posts/.+\.md$)"
+      match_path: '^(?:blogs/[^/]+/(?!index\.md$).+\.md$|blog/posts/.+\.md$)'
       date_from_meta:
         as_creation: date
       comments_path: "#__comments"
