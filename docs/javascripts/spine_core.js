@@ -206,11 +206,7 @@ export async function loadSpineFromApi(containerId, source, options = {}) {
         let data;
         if (typeof source === 'number' || (typeof source === 'string' && /^\d+$/.test(source))) {
             // If ID provided, construct URL
-            if(container.dataset.kivo==="false"){
-                source = `https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/ba/${source}.json`;
-            }else{
-                source = `https://api.kivo.wiki/api/v1/data/spines/${source}`;
-            }
+            source = `https://api.kivo.wiki/api/v1/data/spines/${source}`;
         }
 
         if (typeof source === 'string') {

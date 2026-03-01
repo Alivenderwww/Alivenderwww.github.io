@@ -7,7 +7,7 @@ template: home.html
 
 <div class="toc-disable" markdown>
 
-# 欢迎来到我的博客
+# 欢迎！
 
 这里是Alivender的个人博客。
 

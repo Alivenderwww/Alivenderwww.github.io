@@ -258,6 +258,10 @@ body[data-custom-theme="halloween"]::before {
     }
 }
 
+href, .md-typeset .md-button {
+  cursor: none !important;
+}
+
 *,:after,:before {
     box-sizing: border-box;
 }
@@ -530,6 +534,14 @@ span.filename {
 
 .md-nav {
   font-size: .65rem;
+}
+
+article .md-post__content div {
+  margin-top: -5px !important;
+}
+
+.md-post--excerpt .md-post__action {
+    display: none;
 }
 
 @media screen and (max-width: 59.9375em) {

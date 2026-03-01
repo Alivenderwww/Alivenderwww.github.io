@@ -162,6 +162,7 @@ plugins:
       authors_profiles_name: Authors
       categories: true
       archive: true
+      post_readtime: false
   - heti:
       disable_serve: true
   - statistics:

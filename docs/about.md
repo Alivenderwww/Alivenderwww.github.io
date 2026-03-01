@@ -11,9 +11,7 @@ hide:
 
 硬件设计牛马，业余摄影爱好者，业余vibe-coding程序员。学生。
 
-爱好：计算机、摄影、音游、二次元。
-
-游戏《[蔚蓝档案](https://bluearchive-cn.com/)》[元宫千明](https://kivo.wiki/data/character/347)厨。
+爱好：计算机、摄影、音游。
 
 <!-- #### [:fontawesome-solid-blog:]( ) [My Homepage]( ) -->
 
