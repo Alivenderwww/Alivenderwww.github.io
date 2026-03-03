@@ -204,7 +204,7 @@ export class SpineSelector {
             await Promise.all(spineIds.map(async (sid) => {
                 try {
                     const spineRes = await fetchUrl(`https://api.kivo.wiki/api/v1/data/spines/${sid}`, 'json');
-                    if (spineRes.success && spineRes.data.type === 'home') {
+                    if (spineRes.success && (spineRes.data.type === 'home' || spineRes.data.type === 'spr')) {
                         validSpines.push(spineRes.data);
                     }
                 } catch (e) {
