@@ -208,8 +208,8 @@ plugins:
       minify_css: true
       htmlmin_opts:
         remove_comments: false
-  - optimize:
-      optimize_jpg: false
+  # - optimize:
+  #     optimize_jpg: false
 
 # Extra
 extra:
@@ -223,6 +223,7 @@ extra:
       link: /feed_rss_created.xml
 
 extra_javascript:
+  - https://cdn.jsdelivr.net/npm/@phucbm/cursorjs@latest/dist/cursorjs.min.js # Cursor.js 库
   - javascripts/pixi_importmap.js # PixiJS Import Map
   - javascripts/extra.js #自定义javascript
   
@@ -240,7 +241,6 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/add-html-label-6e56ed67.min.js #忘了
 
 extra_css:
-  - stylesheets/font.css # 自定义CSS
   - stylesheets/extra.css # 自定义CSS
   - stylesheets/toc.css # 目录CSS
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css
@@ -250,6 +250,8 @@ extra_css:
   - https://font.kivo.wiki/Blueaka_Bold/Blueaka_Bold.css
   - https://blog.dpp-alivender.life/stylesheets/comments_light.css
   - https://blog.dpp-alivender.life/stylesheets/comments_dark.css
+  - https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css
+  - https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-SemiBold/result.min.css
   # - assets/stylesheets/portfolio.css
   # - stylesheets/video.css #播放器可选配置
   # - https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.css #gitalk支持

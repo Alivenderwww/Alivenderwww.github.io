@@ -5,21 +5,22 @@ comment: True
 comments: true
 ---
 
-[这个网站](https://wcowin.work/blog/websitebeauty/mkdocsfont/)讲了自定义字体使用的一种方式，[这个网站](https://ronaldln.github.io/MyPamphlet-Blog/2023/10/23/mkdocs-material/)讲的更加详细，介绍了多种方法。
+[wcowin的博客](https://wcowin.work/blog/websitebeauty/mkdocsfont/)讲了自定义字体使用的一种方式，[ronaldln的博客](https://ronaldln.github.io/MyPamphlet-Blog/2023/10/23/mkdocs-material/)讲的更加详细，介绍了多种方法。
 
 但如果你想要用的字体不是Google Fonts上有的，手头只有`.ttf`或者`.otf`格式的文件，或者你想要更好的字体渲染效果，可以参考下面的做法。
 
 ## 准备自定义字体
 
-本网站在普通文本中使用的中英文字体均为**方正兰亭圆GBK**，有*纤、细、准、中、中粗、粗、大、特*8个字重，由方正字库提供，模仿了游戏Blue Archive的字体风格；在inner代码块内使用英文字体为**Ubuntu Mono derivative Powerline**，中文字体默认；在代码块内使用的中文字体为**方正兰亭圆GBK**，英文字体为**Ubuntu Mono derivative Powerline**。
+本网站在普通文本中使用的中英文字体均为**方正兰亭圆GBK**，有*纤、细、准、中、中粗、粗、大、特*8个字重，由方正字库提供，模仿了游戏Blue Archive的字体风格；代码块内使用字体为**Maple Mono CN SemiBold**。
 
-方正兰亭圆字体文件和`FZLanT.font.css`一同保存在我自己的阿里云OSS中，使用时仅需调取该css文件即可；Ubuntu Mono derivative Powerline字体文件本体也在OSS中，但我把css文件写在了本地`font.css`中。
+方正兰亭圆字体文件和`FZLanT.font.css`一同保存在我自己的阿里云OSS中，使用时仅需调取该css文件即可；Maple Mono CN SemiBold字体文件本体在jsDelivr上，在`mkdocs.yml`中`extra_css`栏引用即可使用。
 
 除此以外，对于日文、韩文字体，方正兰亭圆GBK并不支持，所以调取了[基沃托斯古书馆](https://kivo.wiki)提供的Blueake字体。
 
 综上所述，自定义字体需要准备`css`文件和`字体文件`两部分：
-: `css`文件可以放在本地`docs/stylesheets/`目录下，也可以放到服务器上，在`mkdocs.yml`中调取；
-: `字体文件`最好放在服务器上，在`css`文件中调取。
+
+- `css`文件可以放在本地`docs/stylesheets/`目录下，也可以放到服务器上，在`mkdocs.yml`中调取；
+- `字体文件`最好放在服务器上，在`css`文件中调取。
 
 > mkdocs.yml
 
@@ -45,30 +46,30 @@ extra_css:
 @import url("./FZLanTYK_Te/font.css");
 ```
 
-> font.css (Ubuntu Mono derivative Powerline)
-
-```css
-@font-face {
-    font-family: 'Ubuntu Mono derivative Powerline';
-    font-style: italic;
-    font-weight: 700;
-    src: url("https://xxx/Ubuntu%20Mono%20derivative%20Powerline%20Bold%20Italic.ttf");
-}
-```
-
 ## 自定义字体的引用
 
-网站不要设计太多的字体，因此直接在`extra.css`中修改`root`，指定正文和代码块的字体族即可。
+网站不要设计太多的字体，直接在`extra.css`中修改`root`，指定正文和代码块的字体族即可。
 
 ``` css
 :root {
   --md-text-font: "FZLanTY", "Blueaka";
-  --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTY";
+  --md-code-font: "Maple Mono CN SemiBold";
 }
 ```
 
 !!! info
-    排在后面的字体会作为备选字体使用，当前面的字体无法显示时会使用后面的字体。Ubuntu Mono字体不支持中文，因此把中文字体排在后面可以保证英文显示Ubuntu Mono，中文显示FZLanTY。
+    排在后面的字体会作为备选字体使用，当前面的字体无法显示时会使用后面的字体。
+
+!!! warning
+    有一个坑点，方正兰亭圆GBK虽然说是支持GBK字符集，但它字符库里的日文和韩文字符是宋体，真尼玛逆天，所以直接这么写会导致日文和韩文字符显示成宋体。因此需要使用FontCreater工具将ttf字体文件中的日文和韩文字体切片删除掉。
+
+    ![FontCreater界面](https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/blogs/PixPin_2026-03-08_15-35-08.png)
+
+    /// figure-caption
+    FontCreater界面
+    ///
+
+    有人会问为什么不直接用Blueaka，因为Blueaka的字重只有Regular和Bold两种，无法满足不同层级标题和正文的需求。
 
 FZLanTY字体有8个字重，可以根据需要在`extra.css`中指定不同的字重：
 
@@ -138,6 +139,6 @@ WOFF2(Web Open Font Format 2)是专门为网页设计的字体格式，具有更
 }
 ```
 
-每个子集字体文件仅几KB到几十KB，根据网站实际使用的字符范围，加载所需的子集文件即可，大大减少了字体文件的总大小。
+每个子集字体文件仅几KB到几十KB，网页需要渲染什么字符，就加载字符所在的子集文件，这样大大减少了字体传输总大小。
 
 字体切片推荐使用[font-slice](https://github.com/voderl/font-slice)这个工具，它是根据Google Fonts的切片方式设计的，输入ttf或者otf字体文件自动导出woff2子集和对应的css引用。

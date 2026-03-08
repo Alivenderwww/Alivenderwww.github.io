@@ -48,9 +48,9 @@ template: flinks.html
 
     查无此人
 
-- <img src="https://blog.linyang.ink/images/avatar.jpg" class="flink-avatar" />
+- <img src="https://blog.ylin314.cn/images/avatar.jpg" class="flink-avatar" />
   
-  __[你不定积分没加C <span class="jp-char">の</span> Blog](https://blog.linyang.ink/)__
+  __[你不定积分没加CのBlog](https://blog.ylin314.cn/)__
 
     大连理工大学软件工程本科在读
 
@@ -60,7 +60,7 @@ template: flinks.html
 
 - <img src="https://www.cccxyx.com/avatar.jpg" class="flink-avatar" />
   
-  __[cccxyx <span class="jp-char">の</span> Blog](https://www.cccxyx.com/)__
+  __[cccxyxのBlog](https://www.cccxyx.com/)__
 
     大连理工大学国际信息与软件学院在读。
 

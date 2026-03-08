@@ -139,81 +139,70 @@
 
 // }
 
-/*背景end*/
+/* 背景end */
 
-/* 鼠标样式修改 */
+/* 鼠标样式修改 - 使用 Cursor.js */
 (function() {
-    if (window.customCursorInited) return;
-    window.customCursorInited = true;
-
     // 移动端检测
     if (window.matchMedia && window.matchMedia("(hover: none)").matches) return;
 
-    // 创建容器
-    const wrapper = document.createElement("div");
-    wrapper.id = "cursor";
-    document.body.appendChild(wrapper);
-
-    // 光标映射配置
-    const CURSORS = [
-        { selector: "a, .md-nav__link, button, .md-header__button, label[for], .md-search__input, .md-typeset a, .md-tabs__link, .md-footer__link, .md-nav__title, [draggable='true'], .md-resizer__handle--y, .md-resizer__handle--x, .nwse-resize, .nesw-resize, .crosshair, [data-md-component='search-query'], [title], .md-tooltip", type: "link" },
-        { selector: "input[type='text'], textarea, .md-typeset p, .md-typeset span, .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6, .md-typeset li, .md-typeset td, .md-typeset th, .md-typeset code, .md-typeset pre, .highlight", type: "text" }
-    ];
-
-    let isVisible = false;
-
-    // 鼠标移动事件：更新位置和状态
-    document.addEventListener("mousemove", (e) => {
-        // iframe 处理
-        if (e.target.tagName === "IFRAME") {
-            if (isVisible) {
-                isVisible = false;
-                wrapper.dataset.visible = "false";
-            }
-            return;
-        }
-
-        wrapper.style.left = e.clientX - 5 + 'px';
-        wrapper.style.top = e.clientY - 5 + 'px';
-
-        // 显隐控制
-        if (!isVisible) {
-            isVisible = true;
-            wrapper.dataset.visible = "true";
-        }
-
-        // 状态检测
-        let type = "base";
-        for (const map of CURSORS) {
-            if (e.target.closest(map.selector)) {
-                type = map.type;
-                break;
-            }
-        }
-        
-        // 只有状态改变时才更新 DOM
-        if (wrapper.dataset.type !== type) {
-            wrapper.dataset.type = type;
-        }
-    });
-
     // 点击状态
-    document.addEventListener("mousedown", () => wrapper.dataset.pressed = "true");
-    document.addEventListener("mouseup", () => wrapper.dataset.pressed = "false");
-
-    // 离开窗口
-    document.addEventListener("mouseout", (e) => {
-        if (!e.relatedTarget) {
-            isVisible = false;
-            wrapper.dataset.visible = "false";
-        }
+    document.addEventListener("mousedown", () => {
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) cursor.dataset.pressed = "true";
     });
-    
-    // 触摸设备隐藏
-    document.addEventListener("touchstart", () => {
-        isVisible = false;
-        wrapper.dataset.visible = "false";
-    }, { passive: true });
+    document.addEventListener("mouseup", () => {
+        const cursor = document.getElementById('custom-cursor');
+        if (cursor) cursor.dataset.pressed = "false";
+    });
+
+    // 确保 Cursorjs 已加载
+    if (typeof Cursorjs !== 'undefined') {
+        const cursorInstance = Cursorjs.create({
+            id: 'custom-cursor',
+            speed: 1,
+            wrapperCSS: {
+                pointerEvents: 'none',
+                zIndex: '2147483647'
+            },
+            cursorCSS: {
+                width: '32px',
+                height: '32px',
+                background: 'transparent',
+                boxShadow: 'none',        /* 遵循官方示例：去除灰圈在这里设置 */
+                border: 'none',
+                borderRadius: '0',
+                backgroundImage: "url('/cursors/millennium_base.png')",
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                filter: 'drop-shadow(2px 2px 1px rgba(39, 39, 39, 0.2))',
+                transform: 'translate(-5px, -5px)',
+                transition: 'transform 0.1s',
+            },
+            hover: [
+                {
+                    selectors: 'a, .md-nav__link, button, .md-header__button, label[for], .md-search__input, .md-typeset a, .md-tabs__link, .md-footer__link, .md-nav__title, [draggable="true"], .md-resizer__handle--y, .md-resizer__handle--x, .nwse-resize, .nesw-resize, .crosshair, [data-md-component="search-query"], [title], .md-tooltip',
+                    className: 'link'
+                }
+            ]
+        });
+
+        // 适配 MkDocs Material 瞬时加载 (SPA导航) 导致的失效与黏滞状态问题
+        if (typeof document$ !== 'undefined') {
+            document$.subscribe(function() {
+                // 1. 切换页面时，清除卡住的 hover 状态
+                let cw = document.getElementById('custom-cursor');
+                if (cw) {
+                    cw.classList.remove('link', 'text', 'is-hover');
+                }
+                // 2. 重新为新加载的 DOM 元素绑定 mouseenter/mouseleave 事件
+                if (window.CursorjsController) {
+                    let instance = window.CursorjsController.get('custom-cursor');
+                    if (instance) instance.refresh();
+                }
+            });
+        }
+    }
 })();
 
 // 页面滚动进度条

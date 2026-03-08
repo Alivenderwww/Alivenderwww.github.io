@@ -9,6 +9,7 @@ body:not([data-custom-theme])[data-md-color-scheme="default"] {
   --md-primary-blue: #5fbeeb;
   --md-primary-blue--light: #ffffff;
   --md-primary-blue--light--grid: #f0f8ff;
+  --md-primary-blue--light--grid--extreme: #d7ecff;
   --md-primary-blue--dark: #166d96;
   --md-primary-text: #4C5866;
   --md-primary-text-light: #e0eaf5;
@@ -44,6 +45,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-blue: #5bb7e2;
   --md-primary-blue--light: #1E2129;
   --md-primary-blue--light--grid: #212535;
+  --md-primary-blue--light--grid--extreme: #22273d;
   --md-primary-blue--dark: #2C3A4F;
   --md-primary-text: #e0eaf5;
   --md-primary-text-light: #e0eaf5;
@@ -79,6 +81,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-blue: #a569bd;
   --md-primary-blue--light: #ffffff;
   --md-primary-blue--light--grid: #f5f0fa;
+  --md-primary-blue--light--grid--extreme: #eee1fc;
   --md-primary-blue--dark: #6a4c93;
   --md-primary-text: #594e5f;
   --md-primary-text-light: #ebe0f5;
@@ -113,6 +116,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-blue: #bb7ae2;
   --md-primary-blue--light: #161320;
   --md-primary-blue--light--grid: #211a2c;
+  --md-primary-blue--light--grid--extreme: #281e38;
   --md-primary-blue--dark: #3a2a4f;
   --md-primary-text: #f1ecf7;
   --md-primary-text-light: #ebe0f5;
@@ -148,6 +152,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-blue: #ff8c00;
   --md-primary-blue--light: #fff0e0;
   --md-primary-blue--light--grid: #fff5e6;
+  --md-primary-blue--light--grid--extreme: #fdeed6;
   --md-primary-blue--dark: #cc7000;
   --md-primary-text: #4a2c0a;
   --md-primary-text-light: #ffe4b3;
@@ -181,6 +186,7 @@ body:not([data-custom-theme])[data-md-color-scheme="slate"] {
   --md-primary-blue: #ff8c00;
   --md-primary-blue--light: #1a0d00;
   --md-primary-blue--light--grid: #0d0600;
+  --md-primary-blue--light--grid--extreme: #241304;
   --md-primary-blue--dark: #4a2c0a;
   --md-primary-text: #ffe4b3;
   --md-primary-text-light: #ffe4b3;
@@ -267,8 +273,8 @@ href, .md-typeset .md-button {
 }
 
 body{
-  --grid-size-x: 45;
-  --grid-size-y: 45;
+  --grid-size-x: 120;
+  --grid-size-y: 120;
   --grid-pos-x: 0;
   --grid-pos-y: 0;
   --grid-size-x-px: calc(var(--grid-size-x) * 1px);
@@ -276,12 +282,14 @@ body{
   --grid-pos-x-px: calc(var(--grid-pos-x) * 1px);
   --grid-pos-y-px: calc(var(--grid-pos-y) * 1px);
   background: var(--md-primary-blue--light);
-  background-image: radial-gradient(circle at   0%   0%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    radial-gradient(circle at   0% 100%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    radial-gradient(circle at 100%   0%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    radial-gradient(circle at 100% 100%, var(--md-primary-blue--light--grid) 2.5px, transparent 2.5px),
-                    linear-gradient(to right, var(--md-primary-blue--light--grid) 0.5px, transparent 0.5px, transparent calc(var(--grid-size-x-px) - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-x-px) - 0.5px)), 
-                    linear-gradient(to bottom, var(--md-primary-blue--light--grid) 0.5px, transparent 0.5px, transparent calc(var(--grid-size-y-px) - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-y-px) - 0.5px));
+  background-image: radial-gradient(circle at   0%   0%, var(--md-primary-blue--light--grid--extreme) 2.5px, transparent 2.5px),
+                    radial-gradient(circle at   0% 100%, var(--md-primary-blue--light--grid--extreme) 2.5px, transparent 2.5px),
+                    radial-gradient(circle at 100%   0%, var(--md-primary-blue--light--grid--extreme) 2.5px, transparent 2.5px),
+                    radial-gradient(circle at 100% 100%, var(--md-primary-blue--light--grid--extreme) 2.5px, transparent 2.5px),
+                    linear-gradient(to right, var(--md-primary-blue--light--grid) 1px, transparent 1px, transparent calc(var(--grid-size-x-px) - 1px), var(--md-primary-blue--light--grid) calc(var(--grid-size-x-px) - 1px)), 
+                    linear-gradient(to right, transparent calc(var(--grid-size-x-px)/2 - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-x-px)/2 - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-x-px)/2 + 0.5px), transparent calc(var(--grid-size-x-px)/2 + 0.5px)), 
+                    linear-gradient(to bottom, var(--md-primary-blue--light--grid) 1px, transparent 1px, transparent calc(var(--grid-size-y-px) - 1px), var(--md-primary-blue--light--grid) calc(var(--grid-size-y-px) - 1px)),
+                    linear-gradient(to bottom, transparent calc(var(--grid-size-y-px)/2 - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-y-px)/2 - 0.5px), var(--md-primary-blue--light--grid) calc(var(--grid-size-y-px)/2 + 0.5px), transparent calc(var(--grid-size-y-px)/2 + 0.5px));
   background-size: var(--grid-size-x-px) var(--grid-size-y-px);
   background-position:left calc(100% - var(--grid-pos-x-px)) top calc(100% - var(--grid-pos-y-px));
 }
@@ -314,7 +322,7 @@ td {
 }
 
 ul:not(.md-source__facts) {
-  color: var(--md-primary-text--color);
+  color: var(--md-primary-text);
 }
 
 /* 链接样式 */
@@ -337,7 +345,7 @@ ul:not(.md-source__facts) {
 
 :root {
   --md-text-font: "FZLanTY", "Blueaka";
-  --md-code-font: "Ubuntu Mono derivative Powerline", "FZLanTY";
+  --md-code-font: "Maple Mono CN SemiBold", "FZLanTY";
 }
 
 /* 注册自定义属性以支持动画 */
@@ -348,9 +356,9 @@ ul:not(.md-source__facts) {
 }
 
 /* 日文字符字体 */
-.jp-char {
+/* .jp-char {
   font-family: "Blueaka", sans-serif;
-}
+} */
 
 p, ol, dt, dd{
       color: var(--md-primary-text);
@@ -473,7 +481,7 @@ span.filename {
 }
 
 .md-typeset code:not(pre code) {
-    font-family: "Ubuntu Mono derivative Powerline";
+    font-family: "Maple Mono CN SemiBold";
     color: var(--md-primary-text);
     border-radius: .2rem;
     padding: .1rem .3rem;
@@ -481,7 +489,7 @@ span.filename {
 }
 
 .md-typeset pre code {
-    font-family: "Ubuntu Mono derivative Powerline", "FZLanTY";
+    font-family: "Maple Mono CN SemiBold";
     font-weight: 400;
 }
 
@@ -649,38 +657,14 @@ article .md-post__content div {
   border: none;
 }
 
-/* Cursor Styles */
-#cursor{
-  position: fixed;
-  width: 32px; height: 32px;
-  z-index: 2147483647;
-  pointer-events: none;
-  /* 使用 CSS 变量控制位置，默认隐藏在屏幕外 */
-  transform: scale(1);
-  /* 默认图标 */
-  background-image: url('/cursors/millennium_base.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  /* 过渡效果：显隐淡入淡出，位置平滑移动，点击缩放 */
-  transition: opacity 0.15s ease, transform 0.1s ease-out;
-  opacity: 0;
-  /* 阴影 */
-  filter: drop-shadow(2px 2px 1px rgba(39, 39, 39, 0.2));
+/* Cursor.js Styles - Override specific to library */
+#custom-cursor.link .css-cursor-inner {
+  background-image: url('/cursors/millennium_link.png') !important;
 }
 
-/* 显隐控制 */
-#cursor[data-visible="true"] {
-  opacity: 1;
+#custom-cursor[data-pressed="true"] .css-cursor-inner {
+  transform: translate(-5px, -5px) scale(0.8) !important;
 }
-
-/* 点击缩放效果 */
-#cursor[data-pressed="true"] {
-  transform: scale(0.8);
-}
-
-/* 图标切换 - 根据 data-type 属性 */
-#cursor[data-type="link"] { background-image: url('/cursors/millennium_link.png'); }
-#cursor[data-type="text"] { background-image: url('/cursors/millennium_text.png'); }
 
 /* Spine Selector Styles */
 .spine-selector-btn, .spine-controls-btn {
