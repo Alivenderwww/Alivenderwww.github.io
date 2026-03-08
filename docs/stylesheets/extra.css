@@ -552,21 +552,22 @@ article .md-post__content div {
     display: none;
 }
 
-@media screen and (max-width: 59.9375em) {
+@media screen and (max-width: 76.2344em) {
   .md-nav__source {
     background-color: var(--md-primary-text);
   }
 }
 
-@media screen and (max-width: 76.1875em) {
+@media screen and (max-width: 76.2344em) {
   .md-nav--primary .md-nav__title {
-    background-color: var(--md-primary-top-color);
+    background-color: var(--md-primary-top-color) !important;
+    color: var(--md-primary-text-light) !important;
   }
 }
 
 .md-nav .md-nav__title .md-nav__item .md-nav__link {
   background: transparent;
-  color: var(--md-primary-text);
+  color: var(--md-primary-text-light) !important;
 }
 
 .md-typeset pre {
