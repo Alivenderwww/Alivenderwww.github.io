@@ -294,9 +294,10 @@ body{
   background-position:left calc(100% - var(--grid-pos-x-px)) top calc(100% - var(--grid-pos-y-px));
 }
 
-/* 恢复 iframe 的光标，防止自定义光标在 iframe 上卡住时无法交互 */
-iframe {
-    cursor: auto;
+.md-grid {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 72rem;
 }
 
 /* 表格样式 */
@@ -555,6 +556,7 @@ article .md-post__content div {
 @media screen and (max-width: 76.2344em) {
   .md-nav__source {
     background-color: var(--md-primary-text);
+    color: var(--md-primary-text-reverse);
   }
 }
 

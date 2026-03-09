@@ -86,7 +86,7 @@ markdown_extensions: #详见https://squidfunk.github.io/mkdocs-material/setup/ex
   - pymdownx.arithmatex: # latex支持
       generic: true
   - toc:
-      permalink: true # 固定标题位置为当前位置
+      permalink: false
       toc_depth: 4
   - pymdownx.highlight:    # 代码高亮
       anchor_linenums: true
@@ -221,6 +221,21 @@ extra:
       link: mailto:dppp@mail.dlut.edu.cn
     - icon: fontawesome/solid/rss
       link: /feed_rss_created.xml
+  analytics:
+    provider: google
+    property: G-2VXH419B21
+    feedback:
+      ratings:
+        - icon: material/thumb-up-outline
+          name: 有用
+          data: 1
+          note: >-
+            谢谢您的反馈
+        - icon: material/thumb-down-outline
+          name: 无用
+          data: 0
+          note: >- 
+            谢谢您的反馈
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/@phucbm/cursorjs@latest/dist/cursorjs.min.js # Cursor.js 库
