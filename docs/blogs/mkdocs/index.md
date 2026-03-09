@@ -1,5 +1,7 @@
 ---
 title: 'mkdocs for metrial博客搭建技巧'
+hide:
+    - feedback
 date: 2025-12-08 22:14
 ---
 

@@ -2,6 +2,7 @@
 title: Blog
 hide:
     - date
+    - feedback
 comment: false
 comments: false
 ---

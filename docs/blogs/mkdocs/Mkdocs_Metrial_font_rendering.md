@@ -128,7 +128,7 @@ WOFF2(Web Open Font Format 2)是专门为网页设计的字体格式，具有更
 
 但如果删除了想要渲染的字符就完蛋了，因此更好的办法是使用css的`unicode-range`参数，将原始字体文件拆分为数个（甚至几十上百个）woff2子集文件，每个子集文件只包含特定范围的字符，然后在css中使用`@font-face`分别引用这些子集文件，并通过`unicode-range`指定每个子集文件对应的字符范围。
 
-```css
+```css hl_lines="7"
 @font-face {
   font-family: FZLanTY;
   src: url("./FZLanTYK_Cu.74.woff2") format("woff2");

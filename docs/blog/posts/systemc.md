@@ -3,6 +3,8 @@ title: "SystemC学习笔记"
 date: 2026-01-03
 authors:
   - Alivender
+hide:
+    - feedback
 categories:
   - 编程
 comment: true

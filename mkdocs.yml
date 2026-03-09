@@ -53,6 +53,7 @@ theme:
     - content.tooltips
     - content.code.copy #代码复制
     - content.code.annotate
+    - content.code.select #代码块内选定行高亮
     - content.action.edit
     - content.action.view
 
