@@ -40,3 +40,63 @@ h6:not(.toc-disable h6, .md-post h6)::before {
     color: #8e44ad;
     margin-right: .5rem;
 }
+
+.md-container {
+    font-weight: 500;
+}
+
+.md-typeset h1{
+  font-weight: 700;
+}
+
+.md-typeset h2 {
+  font-weight: 700;
+}
+
+.md-typeset h3 {
+  font-weight: 600;
+}
+
+:root {
+  --md-text-font: "FZLanTY", "Blueaka";
+  --md-code-font: "Maple Mono CN SemiBold", "FZLanTY";
+}
+
+.md-typeset li, header{
+      font-weight: 400;
+    }
+
+.poetry{
+      font-family: "LXGW WenKai Screen";
+}
+
+.md-header{
+    font-weight: 600;
+}
+
+.md-tabs{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.md-tabs__item--active {
+    font-weight: 800;
+}
+
+.md-typeset code:not(pre code) {
+    font-family: "Maple Mono CN SemiBold";
+    font-weight: 600;
+}
+
+.md-typeset pre code {
+    font-family: "Maple Mono CN SemiBold";
+    font-weight: 300;
+}
+
+.md-typeset {
+  font-size: .85rem;
+}
+
+.md-nav__link--active {
+  font-weight: 600 !important;
+}

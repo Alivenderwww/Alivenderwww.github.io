@@ -9,25 +9,21 @@ template: flinks.html
 <div class="grid cards flinks" markdown>
 
 - <img src="https://avatars.githubusercontent.com/u/138760562?v=4" class="flink-avatar" />
-  
   __[Hitorikoishi's blog](https://hitorikoishi.github.io/)__
 
     芝士哈基曼波
 
 - <img src="https://avatars.githubusercontent.com/u/49343742?v=4" class="flink-avatar" />
-  
   __[Saurlax's blog](https://saurlax.com/)__
 
     Web, IoT, ML, Cybersecurity and Graphics developer.
 
 - <img src="https://briteny-pwn.github.io/img/cat.jpg" class="flink-avatar" />
-  
   __[Briteny's blog](https://briteny-pwn.github.io/)__
 
     Briteny-pwn.
 
 - <img src="https://avatars.githubusercontent.com/u/113000289?v=4" class="flink-avatar" />
-  
   __[Lentinel's blog](https://lentinel.link/)__
 
     网络工程专业本科在读
@@ -37,19 +33,16 @@ template: flinks.html
     Scr1w网络安全战队成员
 
 - <img src="https://smallgoodgood.top/img/faction/1.png" class="flink-avatar" />
-
   __[Zenith's blog](https://smallgoodgood.top/)__
 
     未经审视的人生是不值得过的人生
 
 - <img src="https://avatars.githubusercontent.com/u/121593203?v=4" class="flink-avatar" />
-  
   __[Aliveriver's blog](https://aliveriver.xyz/)__
 
     查无此人
 
 - <img src="https://blog.ylin314.cn/images/avatar.jpg" class="flink-avatar" />
-  
   __[你不定积分没加CのBlog](https://blog.ylin314.cn/)__
 
     大连理工大学软件工程本科在读
@@ -59,7 +52,6 @@ template: flinks.html
     NAOSI网络与开源协会成员
 
 - <img src="https://www.cccxyx.com/avatar.jpg" class="flink-avatar" />
-  
   __[cccxyxのBlog](https://www.cccxyx.com/)__
 
     大连理工大学国际信息与软件学院在读。

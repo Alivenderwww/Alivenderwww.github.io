@@ -6,5 +6,9 @@ document$.subscribe(({ body }) => {
       { left: "\\(", right: "\\)", display: false },
       { left: "\\[", right: "\\]", display: true }
     ],
+    strict: "ignore",
+    macros: {
+      "\\hfill": ""
+    }
   })
 })

@@ -1,0 +1,488 @@
+# ============================================================================
+#
+# The configuration produced by default is meant to highlight the features
+# that Zensical provides and to serve as a starting point for your own
+# projects.
+#
+# ============================================================================
+
+[project]
+
+# The site_name is shown in the page header and the browser window title
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_name
+site_name = "Alivender's Blog"
+
+# The site_description is included in the HTML head and should contain a
+# meaningful description of the site content for use by search engines.
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_description
+site_description = "一个技术博客，分享编程和技术心得"
+
+# The site_author attribute. This is used in the HTML head element.
+#
+# Read more: https://zensical.org/docs/setup/basics/#site_author
+site_author = "Alivender"
+
+# The site_url is the canonical URL for your site. When building online
+# documentation you should set this.
+# Read more: https://zensical.org/docs/setup/basics/#site_url
+site_url = "https://alivenderwww.github.io/"
+
+#要在文档中显示项目仓库的链接，请repo_url在配置中将其设置为仓库的公共 URL
+# Read more: https://zensical.org/docs/setup/repository/
+repo_url = "https://github.com/Alivenderwww/Alivenderwww.github.io/"
+
+# The copyright notice appears in the page footer and can contain an HTML
+# fragment.
+#
+# Read more: https://zensical.org/docs/setup/basics/#copyright
+copyright = """
+Copyright &copy; 2026 Alivender
+"""
+
+# Zensical supports both implicit navigation and explicitly defined navigation.
+# If you decide not to define a navigation here then Zensical will simply
+# derive the navigation structure from the directory structure of your
+# "docs_dir". The definition below demonstrates how a navigation structure
+# can be defined using TOML syntax.
+#
+# Read more: https://zensical.org/docs/setup/navigation/
+nav = [
+    { "首页" = "index.md" },
+    { "Blog" = "blog/index.md" },
+    { "关于" = "about.md" },
+    { "DJIflight" = [
+        "blogs/DJIflight/index.md",
+        "blogs/DJIflight/algorithm-flow-and-problems.md",
+    ] },
+    { "MathNote" = [
+        "blogs/MathNote/index.md",
+        { "大学物理" = [
+            "blogs/MathNote/Daxuewuli/1.md",
+            "blogs/MathNote/Daxuewuli/2.md",
+            "blogs/MathNote/Daxuewuli/3.md",
+        ] },
+        { "高等数学" = [
+            "blogs/MathNote/Gaodengshuxue/1.md",
+            "blogs/MathNote/Gaodengshuxue/2.md",
+            "blogs/MathNote/Gaodengshuxue/3.md",
+            "blogs/MathNote/Gaodengshuxue/4.md",
+        ] },
+        { "电路理论" = [
+            "blogs/MathNote/Dianlulilun/1.md",
+        ] },
+    ] },
+    { "FPGAWeblab" = [
+        "blogs/FPGAWeblab/index.md",
+        "blogs/FPGAWeblab/document.md",
+        "blogs/FPGAWeblab/01water_led.md",
+        "blogs/FPGAWeblab/02key.md",
+        "blogs/FPGAWeblab/03led_display.md",
+        "blogs/FPGAWeblab/04matrixkey.md",
+        "blogs/FPGAWeblab/05pwm.md",
+        "blogs/FPGAWeblab/06hdmi.md",
+        "blogs/FPGAWeblab/11_password_lock.md",
+        "blogs/FPGAWeblab/12_sfp.md",
+        "blogs/FPGAWeblab/13_frequency_meter.md",
+    ] },
+    { "GEMM" = [
+        "blogs/GEMM/cal_full_conv.md",
+    ] },
+    { "画廊" = [
+        "gallery.md",
+    ] },
+    { "友链" = [
+        "flinks/index.md",
+    ] },
+]
+
+
+# With the "extra_css" option you can add your own CSS styling to customize
+# your Zensical project according to your needs. You can add any number of
+# CSS files.
+#
+# The path provided should be relative to the "docs_dir".
+#
+# Read more: https://zensical.org/docs/customization/#additional-css
+#
+extra_css = [
+    "stylesheets/extra.css",
+    "stylesheets/extra.css",
+    "stylesheets/toc.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css",
+    "https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css",
+    "https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css",
+    "https://font.kivo.wiki/Blueaka/Blueaka.css",
+    "https://font.kivo.wiki/Blueaka_Bold/Blueaka_Bold.css",
+    "https://blog.dpp-alivender.life/stylesheets/comments_light.css",
+    "https://blog.dpp-alivender.life/stylesheets/comments_dark.css",
+    "https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css",
+    "https://cdn.jsdelivr.net/npm/@chinese-fonts/maple-mono-cn@2.0.0/dist/MapleMono-CN-SemiBold/result.min.css",
+]
+
+# With the `extra_javascript` option you can add your own JavaScript to your
+# project to customize the behavior according to your needs.
+#
+# The path provided should be relative to the "docs_dir".
+#
+# Read more: https://zensical.org/docs/customization/#additional-javascript
+extra_javascript = [
+    {path = "javascripts/custom_cursor.js", type = "module"},
+    "javascripts/pixi_importmap.js",
+    "javascripts/extra.js",
+    "javascripts/spine_loader.js",
+    "https://cdn.jsdelivr.net/gh/Wcowin/Wcowin.github.io@main/docs/javascripts/extra.js",
+    "javascripts/theme-switch-animation.js",
+    "javascripts/theme.js",
+    "javascripts/audio-spectrum.js",
+    "javascripts/katex.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/copy-tex.min.js",
+    "https://cdn.jsdelivr.net/npm/mermaid@10.0.2/dist/add-html-label-6e56ed67.min.js",
+]
+
+# ----------------------------------------------------------------------------
+# Section for configuring theme options
+# ----------------------------------------------------------------------------
+[project.theme]
+
+# change this to "classic" to use the traditional Material for MkDocs look.
+# variant = "classic"
+
+# Zensical allows you to override specific blocks, partials, or whole
+# templates as well as to define your own templates. To do this, uncomment
+# the custom_dir setting below and set it to a directory in which you
+# keep your template overrides.
+#
+# Read more:
+# - https://zensical.org/docs/customization/#extending-the-theme
+#
+custom_dir = "overrides"
+
+# With the "favicon" option you can set your own image to use as the icon
+# browsers will use in the browser title bar or tab bar. The path provided
+# must be relative to the "docs_dir".
+#
+# Read more:
+# - https://zensical.org/docs/setup/logo-and-icons/#favicon
+# - https://developer.mozilla.org/en-US/docs/Glossary/Favicon
+#
+favicon = "img/logo.png"
+
+# Zensical supports more than 60 different languages. This means that the
+# labels and tooltips that Zensical's templates produce are translated.
+# The "language" option allows you to set the language used. This language
+# is also indicated in the HTML head element to help with accessibility
+# and guide search engines and translation tools.
+#
+# The default language is "en" (English). It is possible to create
+# sites with multiple languages and configure a language selector. See
+# the documentation for details.
+#
+# Read more:
+# - https://zensical.org/docs/setup/language/
+#
+language = "zh"
+
+# Zensical provides a number of feature toggles that change the behavior
+# of the documentation site.
+features = [
+    # Zensical includes an announcement bar. This feature allows users to
+    # dismiss it when they have read the announcement.
+    # https://zensical.org/docs/setup/header/#announcement-bar
+    "announce.dismiss",
+
+    # If you have a repository configured and turn on this feature, Zensical
+    # will generate an edit button for the page. This works for common
+    # repository hosting services.
+    # https://zensical.org/docs/setup/repository/#content-actions
+    "content.action.edit",
+
+    # If you have a repository configured and turn on this feature, Zensical
+    # will generate a button that allows the user to view the Markdown
+    # code for the current page.
+    # https://zensical.org/docs/setup/repository/#content-actions
+    "content.action.view",
+
+    # Code annotations allow you to add an icon with a tooltip to your
+    # code blocks to provide explanations at crucial points.
+    # https://zensical.org/docs/authoring/code-blocks/#code-annotations
+    "content.code.annotate",
+
+    # This feature turns on a button in code blocks that allow users to
+    # copy the content to their clipboard without first selecting it.
+    # https://zensical.org/docs/authoring/code-blocks/#code-copy-button
+    "content.code.copy",
+
+    # Code blocks can include a button to allow for the selection of line
+    # ranges by the user.
+    # https://zensical.org/docs/authoring/code-blocks/#code-selection-button
+    "content.code.select",
+
+    # Zensical can render footnotes as inline tooltips, so the user can read
+    # the footnote without leaving the context of the document.
+    # https://zensical.org/docs/authoring/footnotes/#footnote-tooltips
+    "content.footnote.tooltips",
+
+    # If you have many content tabs that have the same titles (e.g., "Python",
+    # "JavaScript", "Cobol"), this feature causes all of them to switch to
+    # at the same time when the user chooses their language in one.
+    # https://zensical.org/docs/authoring/content-tabs/#linked-content-tabs
+    "content.tabs.link",
+
+    # With this feature enabled users can add tooltips to links that will be
+    # displayed when the mouse pointer hovers the link.
+    # https://zensical.org/docs/authoring/tooltips/#improved-tooltips
+    "content.tooltips",
+
+    # With this feature enabled, Zensical will automatically hide parts
+    # of the header when the user scrolls past a certain point.
+    # https://zensical.org/docs/setup/header/#automatic-hiding
+    "header.autohide",
+
+    # Turn on this feature to expand all collapsible sections in the
+    # navigation sidebar by default.
+    # https://zensical.org/docs/setup/navigation/#navigation-expansion
+    # "navigation.expand",
+
+    # This feature turns on navigation elements in the footer that allow the
+    # user to navigate to a next or previous page.
+    # https://zensical.org/docs/setup/footer/#navigation
+    # "navigation.footer",
+
+    # When section index pages are enabled, documents can be directly attached
+    # to sections, which is particularly useful for providing overview pages.
+    # https://zensical.org/docs/setup/navigation/#section-index-pages
+    "navigation.indexes",
+
+    # When instant navigation is enabled, clicks on all internal links will be
+    # intercepted and dispatched via XHR without fully reloading the page.
+    # https://zensical.org/docs/setup/navigation/#instant-navigation
+    "navigation.instant",
+
+    # With instant prefetching, your site will start to fetch a page once the
+    # user hovers over a link. This will reduce the perceived loading time
+    # for the user.
+    # https://zensical.org/docs/setup/navigation/#instant-prefetching
+    "navigation.instant.prefetch",
+
+    # In order to provide a better user experience on slow connections when
+    # using instant navigation, a progress indicator can be enabled.
+    # https://zensical.org/docs/setup/navigation/#progress-indicator
+    "navigation.instant.progress",
+
+    # When navigation paths are activated, a breadcrumb navigation is rendered
+    # above the title of each page
+    # https://zensical.org/docs/setup/navigation/#navigation-path
+    # "navigation.path",
+
+    # When pruning is enabled, only the visible navigation items are included
+    # in the rendered HTML, reducing the size of the built site by 33% or more.
+    # https://zensical.org/docs/setup/navigation/#navigation-pruning
+    "navigation.prune",
+
+    # When sections are enabled, top-level sections are rendered as groups in
+    # the sidebar for viewports above 1220px, but remain as-is on mobile.
+    # https://zensical.org/docs/setup/navigation/#navigation-sections
+    "navigation.sections",
+
+    # When tabs are enabled, top-level sections are rendered in a menu layer
+    # below the header for viewports above 1220px, but remain as-is on mobile.
+    # https://zensical.org/docs/setup/navigation/#navigation-tabs
+    "navigation.tabs",
+
+    # When sticky tabs are enabled, navigation tabs will lock below the header
+    # and always remain visible when scrolling down.
+    # https://zensical.org/docs/setup/navigation/#sticky-navigation-tabs
+    #"navigation.tabs.sticky",
+
+    # A back-to-top button can be shown when the user, after scrolling down,
+    # starts to scroll up again.
+    # https://zensical.org/docs/setup/navigation/#back-to-top-button
+    "navigation.top",
+
+    # When anchor tracking is enabled, the URL in the address bar is
+    # automatically updated with the active anchor as highlighted in the table
+    # of contents.
+    # https://zensical.org/docs/setup/navigation/#anchor-tracking
+    "navigation.tracking",
+
+    # When search highlighting is enabled and a user clicks on a search result,
+    # Zensical will highlight all occurrences after following the link.
+    # https://zensical.org/docs/setup/search/#search-highlighting
+    # "search.highlight",
+
+    # When anchor following for the table of contents is enabled, the sidebar
+    # is automatically scrolled so that the active anchor is always visible.
+    # https://zensical.org/docs/setup/navigation/#anchor-following
+    "toc.follow",
+
+    # When navigation integration for the table of contents is enabled, it is
+    # always rendered as part of the navigation sidebar on the left.
+    # https://zensical.org/docs/setup/navigation/#navigation-integration
+    #"toc.integrate",
+]
+
+# ----------------------------------------------------------------------------
+# In the "palette" subsection you can configure options for the color scheme.
+# You can configure different color # schemes, e.g., to turn on dark mode,
+# that the user can switch between. Each color scheme can be further
+# customized.
+#
+# Read more:
+# - https://zensical.org/docs/setup/colors/
+# ----------------------------------------------------------------------------
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "mycolor_light"
+accent = "mycolor_light"
+toggle.icon = "lucide/sun"
+toggle.name = "切换到深色模式"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "mycolor_dark"
+accent = "mycolor_dark"
+toggle.icon = "lucide/moon"
+toggle.name = "切换到浅色模式"
+
+# ----------------------------------------------------------------------------
+# In the "font" subsection you can configure the fonts used. By default, fonts
+# are loaded from Google Fonts, giving you a wide range of choices from a set
+# of suitably licensed fonts. There are options for a normal text font and for
+# a monospaced font used in code blocks.
+# ----------------------------------------------------------------------------
+#[project.theme.font]
+#text = "Inter"
+#code = "Jetbrains Mono"
+
+# ----------------------------------------------------------------------------
+# You can configure your own logo to be shown in the header using the "logo"
+# option in the "icons" subsection. The logo can be a path to a file in your
+# "docs_dir" or it can be a path to an icon.
+#
+# Likewise, you can customize the logo used for the repository section of the
+# header. Zensical derives the default logo for this from the repository URL.
+# See below...
+#
+# There are other icons you can customize. See the documentation for details.
+#
+# Read more:
+# - https://zensical.org/docs/setup/logo-and-icons
+# - https://zensical.org/docs/authoring/icons-emojis/#search
+# ----------------------------------------------------------------------------
+[project.theme.icon]
+# logo = "img/logo.png"
+repo = "fontawesome/brands/github"
+
+# ----------------------------------------------------------------------------
+# The "extra" section contains miscellaneous settings.
+# ----------------------------------------------------------------------------
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/Alivenderwww"
+[[project.extra.social]]
+icon = "fontawesome/solid/envelope"
+link = "mailto:dppp@mail.dlut.edu.cn"
+[[project.extra.social]]
+icon = "fontawesome/solid/rss"
+link = "/feed_rss_created.xml"
+
+[project.markdown_extensions.abbr]
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.def_list]
+[project.markdown_extensions.footnotes]
+[project.markdown_extensions.md_in_html]
+[project.markdown_extensions.toc]
+toc_depth = 4
+# 即时预览允许用户无需跳转到相应页面即可预览文档的其他部分
+[project.markdown_extensions.zensical.extensions.preview]
+configurations = [
+    { targets.include = [
+        "customization.md",
+        "setup/extensions/*"
+    ]}
+]
+
+[project.markdown_extensions.pymdownx.arithmatex]
+generic = true
+[project.markdown_extensions.pymdownx.caret]
+[project.markdown_extensions.pymdownx.mark]
+[project.markdown_extensions.pymdownx.tilde]
+[project.markdown_extensions.pymdownx.blocks.caption]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.emoji]
+emoji_index = "zensical.extensions.emoji.twemoji" 
+emoji_generator = "zensical.extensions.emoji.to_svg"
+[project.markdown_extensions.pymdownx.highlight]
+pygments_lang_class = true
+auto_title = true
+linenums = true
+linenums_style = "pymdownx-inline"
+line_spans = "__span"
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" }
+]
+[project.markdown_extensions.pymdownx.keys]
+[project.markdown_extensions.pymdownx.smartsymbols]
+[project.markdown_extensions.pymdownx.snippets]
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+[project.markdown_extensions.pymdownx.tasklist]
+custom_checkbox = true
+
+[project.extra.analytics]
+provider = "google"
+property = "G-2VXH419B21"
+
+[project.extra.analytics.feedback]
+
+[[project.extra.analytics.feedback.ratings]]
+icon = "material/thumb-up-outline"
+name = "有用"
+data = 1
+note = "谢谢您的反馈"
+
+[[project.extra.analytics.feedback.ratings]]
+icon = "material/thumb-down-outline"
+name = "无用"
+data = 0
+note = "谢谢您的反馈"
+
+[[project.plugins.heti]]
+[[project.plugins.blog]]
+post_excerpt = "optional"
+authors_profiles_name = "Authors"
+categories = "true"
+archive = "true"
+post_readtime = "false"
+[[project.plugins.statistics]]
+page_check_metadata = "comment"
+[[project.plugins.glightbox]]
+touchNavigation = "true"
+loop = "false"
+effect = "zoom"
+slide_effect = "slide"
+width = "100%"
+height = "auto"
+zoomable = "true"
+draggable = "true"
+shadow = "true"
+manual = "false"
+[[project.plugins.rss]]
+match_path = '^(?:blogs/[^/]+/(?!index\.md$).+\.md$|blog/posts/.+\.md$)'
+date_from_meta = [
+    {as_creation = "date"}
+]
+comments_path = "#__comments"
+categories = [
+    {name = "categories"},
+    {name = "tags"},
+]

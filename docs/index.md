@@ -11,13 +11,13 @@ template: home.html
 
 这里是Alivender的个人博客。
 
+##  
+
 [:material-information: 关于](about.md "关于此网站"){ .md-button }
 [:fontawesome-solid-camera: 相册](gallery.md "相册"){ .md-button }
 [:material-link: 友链](flinks/index.md "友情链接"){ .md-button }
 
-##  
-
-本站基于 [:simple-materialformkdocs: Material for MkDocs](https://github.com/squidfunk/mkdocs-material/ "View on GitHub") 构建，托管于 [:fontawesome-brands-github: GitHub Pages](https://pages.github.com/).
+本站基于 <a href="https://zensical.org/"><img src="https://zensical.org/docs/assets/zensical.svg" alt="Zensical" style="height: 1em; vertical-align: -0.12em;"> Zensical</a> 构建，托管于 [:fontawesome-brands-github: GitHub Pages](https://pages.github.com/).
 
 <!-- [:simple-cloudflarepages: Cloudflare Pages](https://pages.cloudflare.com/) -->
 
