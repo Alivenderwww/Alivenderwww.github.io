@@ -15,6 +15,9 @@ class AudioSpectrumCapture {
         this.container = null;
         this.canvas = null;
         
+        // 观察器
+        this.layoutObserver = null;
+        
         // 历史帧数据：存储最近三帧的频谱数据用于变化检测
         this.bandValuesHistory = [];  // 存储最近三帧的 bandValues
         
@@ -388,6 +391,11 @@ class AudioSpectrumCapture {
             this.resizeHandler = null;
         }
 
+        if (this.layoutObserver) {
+            this.layoutObserver.disconnect();
+            this.layoutObserver = null;
+        }
+
         if (this.sourceNode) {
             this.sourceNode.disconnect();
             this.sourceNode = null;
@@ -416,6 +424,33 @@ class AudioSpectrumCapture {
         // 获取布局信息
         const header = document.querySelector('.md-header');
         const mainInner = document.querySelector('.md-main__inner');
+        
+        // 布局更新函数
+        const updateLayout = () => {
+            if (!this.container || !this.canvas) return;
+            
+            // 检查 header 是否隐藏
+            // 用户提到 md-header[hidden]，mkdocs-material 也可能使用 data-md-state="hidden"
+            const isHidden = header && (header.hasAttribute('hidden') || header.getAttribute('data-md-state') === 'hidden');
+            const currentHeaderHeight = (header && !isHidden) ? header.offsetHeight : 0;
+            
+            let newWidth = 0;
+            if (mainInner) {
+                const rect = mainInner.getBoundingClientRect();
+                newWidth = rect.left;
+            } else {
+                newWidth = window.innerWidth * 0.15;
+            }
+            
+            // 限制最大宽度
+            if (newWidth > 400) newWidth = 400;
+            if (newWidth < 50) newWidth = 50;
+
+            this.container.style.top = `${currentHeaderHeight}px`;
+            this.container.style.width = `${newWidth}px`;
+            this.canvas.width = newWidth;
+            this.canvas.height = window.innerHeight - currentHeaderHeight;
+        };
         
         const headerHeight = header ? header.offsetHeight : 0;
         
@@ -459,29 +494,23 @@ class AudioSpectrumCapture {
         this.container.appendChild(this.canvas);
         document.body.appendChild(this.container);
         
-        // 监听窗口大小变化以调整 canvas
-        this.resizeHandler = () => {
-            if (!this.container || !this.canvas) return;
-            
-            const newHeaderHeight = header ? header.offsetHeight : 0;
-            let newWidth = 0;
-            if (mainInner) {
-                const rect = mainInner.getBoundingClientRect();
-                newWidth = rect.left;
-            } else {
-                newWidth = window.innerWidth * 0.15;
-            }
-            
-            if (newWidth > 300) newWidth = 300;
-            if (newWidth < 50) newWidth = 50;
-
-            this.container.style.top = `${newHeaderHeight}px`;
-            this.container.style.width = `${newWidth}px`;
-            this.canvas.width = newWidth;
-            this.canvas.height = window.innerHeight - newHeaderHeight;
-        };
+        // 初始调用一次以修正状态（如 header 初始就是隐藏的）
+        updateLayout();
         
+        // 监听窗口大小变化以调整 canvas
+        this.resizeHandler = () => updateLayout();
         window.addEventListener('resize', this.resizeHandler);
+        
+        // 监听 Header 变化 (针对自动隐藏功能)
+        if (header) {
+            this.headerObserver = new MutationObserver((mutations) => {
+                updateLayout();
+            });
+            this.headerObserver.observe(header, { 
+                attributes: true, 
+                attributeFilter: ['hidden', 'data-md-state'] 
+            });
+        }
     }
 
     /**
