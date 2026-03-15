@@ -56,6 +56,7 @@ theme:
     - content.code.select #代码块内选定行高亮
     - content.action.edit
     - content.action.view
+    - header.autohide # 向下滚动时自动隐藏标题
 
 # Extensions
 markdown_extensions: #详见https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/ 和 https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/
