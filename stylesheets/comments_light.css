@@ -1,0 +1,135 @@
+@import url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/FZLanTY/FZLanTY.font.css");
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline.ttf");
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: 400;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Italic.ttf");
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: normal;
+    font-weight: 700;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Ubuntu Mono derivative Powerline';
+    font-style: italic;
+    font-weight: 700;
+    src: url("https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/fonts/Ubuntu Mono derivative Powerline Bold Italic.ttf");
+}
+
+/*! MIT License
+ * Copyright (c) 2018 GitHub Inc.
+ * https://github.com/primer/primitives/blob/main/LICENSE
+ */
+main {
+    --color-prettylights-syntax-comment: var(--md-primary-text-dark);
+    --color-prettylights-syntax-constant: var(--md-primary-blue);
+    --color-prettylights-syntax-entity: var(--md-primary-blue);
+    --color-prettylights-syntax-storage-modifier-import: var(--md-primary-text);
+    --color-prettylights-syntax-entity-tag: var(--md-primary-blue);
+    --color-prettylights-syntax-keyword: var(--md-accent-fg-color);
+    --color-prettylights-syntax-string: var(--md-primary-blue--dark);
+    --color-prettylights-syntax-variable: var(--md-accent-fg-color);
+    --color-prettylights-syntax-brackethighlighter-unmatched: var(--md-accent-fg-color);
+    --color-prettylights-syntax-invalid-illegal-text: var(--md-primary-fg-color--light);
+    --color-prettylights-syntax-invalid-illegal-bg: var(--md-accent-fg-color);
+    --color-prettylights-syntax-carriage-return-text: var(--md-primary-fg-color--light);
+    --color-prettylights-syntax-carriage-return-bg: var(--md-accent-fg-color);
+    --color-prettylights-syntax-string-regexp: var(--md-primary-blue);
+    --color-prettylights-syntax-markup-list: var(--md-primary-text);
+    --color-prettylights-syntax-markup-heading: var(--md-primary-blue);
+    --color-prettylights-syntax-markup-italic: var(--md-primary-text--color);
+    --color-prettylights-syntax-markup-bold: var(--md-primary-text--color);
+    --color-prettylights-syntax-markup-deleted-text: var(--md-accent-fg-color);
+    --color-prettylights-syntax-markup-deleted-bg: color-mix(in srgb, var(--md-accent-fg-color), transparent 85%);
+    --color-prettylights-syntax-markup-inserted-text: var(--md-primary-blue);
+    --color-prettylights-syntax-markup-inserted-bg: color-mix(in srgb, var(--md-primary-blue), transparent 85%);
+    --color-prettylights-syntax-markup-changed-text: var(--md-accent-fg-color);
+    --color-prettylights-syntax-markup-changed-bg: color-mix(in srgb, var(--md-accent-fg-color), transparent 75%);
+    --color-prettylights-syntax-markup-ignored-text: var(--md-primary-text-light);
+    --color-prettylights-syntax-markup-ignored-bg: var(--md-primary-blue);
+    --color-prettylights-syntax-meta-diff-range: var(--md-primary-blue);
+    --color-prettylights-syntax-brackethighlighter-angle: var(--md-primary-text-dark);
+    --color-prettylights-syntax-sublimelinter-gutter-mark: var(--md-primary-text-dark);
+    --color-prettylights-syntax-constant-other-reference-link: var(--md-primary-blue--dark);
+    --color-btn-text: var(--md-primary-text--color);
+    --color-btn-bg: var(--md-primary-fg-color--light);
+    --color-btn-border: color-mix(in srgb, var(--md-primary-text), transparent 85%);
+    --color-btn-shadow: 0 1px 0 #1b1f240a;
+    --color-btn-inset-shadow: inset 0 1px 0 #ffffff40;
+    --color-btn-hover-bg: var(--md-primary-fg-color--light);
+    --color-btn-hover-border: color-mix(in srgb, var(--md-primary-text), transparent 85%);
+    --color-btn-active-bg: var(--md-primary-fg-color--light);
+    --color-btn-active-border: color-mix(in srgb, var(--md-primary-text), transparent 85%);
+    --color-btn-selected-bg: var(--md-primary-fg-color--light);
+    --color-btn-primary-text: var(--md-primary-blue--light);
+    --color-btn-primary-bg: var(--md-primary-blue--dark);
+    --color-btn-primary-border: color-mix(in srgb, var(--md-primary-text), transparent 85%);
+    --color-btn-primary-shadow: 0 1px 0 #1b1f241a;
+    --color-btn-primary-inset-shadow: inset 0 1px 0 #ffffff08;
+    --color-btn-primary-hover-bg: var(--md-primary-blue--dark);
+    --color-btn-primary-hover-border: color-mix(in srgb, var(--md-primary-text), transparent 85%);
+    --color-btn-primary-selected-bg: var(--md-primary-blue);
+    --color-btn-primary-selected-shadow: inset 0 1px 0 #00215533;
+    --color-btn-primary-disabled-text: color-mix(in srgb, var(--md-primary-blue--light), transparent 20%);
+    --color-btn-primary-disabled-bg: color-mix(in srgb, var(--md-primary-blue), transparent 50%);
+    --color-btn-primary-disabled-border: color-mix(in srgb, var(--md-primary-text), transparent 85%);
+    --color-action-list-item-default-hover-bg: color-mix(in srgb, var(--md-primary-text-light), transparent 70%);
+    --color-segmented-control-bg: var(--md-primary-fg-color--light);
+    --color-segmented-control-button-bg: var(--md-primary-blue--light);
+    --color-segmented-control-button-selected-border: var(--md-primary-text-dark);
+    --color-fg-default: var(--md-primary-text--color);
+    --color-fg-muted: var(--md-primary-text-dark);
+    --color-fg-subtle: var(--md-primary-text-dark);
+    --color-canvas-default: var(--md-primary-blue--light);
+    --color-canvas-overlay: var(--md-primary-blue--light);
+    --color-canvas-inset: var(--md-primary-fg-color--light);
+    --color-canvas-subtle: var(--md-primary-fg-color--light);
+    --color-border-default: var(--md-primary-text-light);
+    --color-border-muted: var(--md-primary-text-light);
+    --color-neutral-muted: color-mix(in srgb, var(--md-primary-text-light), transparent 80%);
+    --color-accent-fg: var(--md-primary-blue--dark);
+    --color-accent-emphasis: var(--md-primary-blue--dark);
+    --color-accent-muted: color-mix(in srgb, var(--md-primary-blue), transparent 60%);
+    --color-accent-subtle: color-mix(in srgb, var(--md-primary-blue), transparent 85%);
+    --color-success-fg: var(--md-primary-blue--dark);
+    --color-attention-fg: var(--md-accent-fg-color);
+    --color-attention-muted: color-mix(in srgb, var(--md-accent-fg-color), transparent 60%);
+    --color-attention-subtle: color-mix(in srgb, var(--md-accent-fg-color), transparent 85%);
+    --color-danger-fg: var(--md-accent-fg-color);
+    --color-danger-muted: color-mix(in srgb, var(--md-accent-fg-color), transparent 60%);
+    --color-danger-subtle: color-mix(in srgb, var(--md-accent-fg-color), transparent 85%);
+    --color-primer-shadow-inset: inset 0 1px 0 #d0d7de33;
+    --color-scale-gray-1: var(--md-primary-fg-color--light);
+    --color-scale-blue-1: var(--md-primary-blue);
+
+    /*! Extensions from @primer/css/alerts/flash.scss */
+    --color-social-reaction-bg-hover: var(--color-scale-gray-1);
+    --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-1)
+}
+
+main .pagination-loader-container {
+    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/icons/loading.gif)
+}
+
+main .gsc-loading-image {
+    background-image: url(https://alivender-assets.oss-cn-beijing.aliyuncs.com/alivenderwww_github_io/asstes/icons/loading.gif)
+}
+
+:host,
+html {
+    --font-family-sans: "FZLanTY";
+    --font-family-monospace: "Ubuntu Mono derivative Powerline";
+    --font-family-default: var(--font-family-sans);
+}
