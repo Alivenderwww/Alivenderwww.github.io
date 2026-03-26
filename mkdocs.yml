@@ -151,6 +151,7 @@ nav:
     - blogs/FPGAWeblab/13_frequency_meter.md
   - GEMM:
     - blogs/GEMM/cal_full_conv.md
+    - blogs/GEMM/TurboQuant.md
   - 画廊: 
     - gallery.md
   - 友链: 
@@ -166,7 +167,7 @@ plugins:
       archive: true
       post_readtime: false
   - heti:
-      disable_serve: true
+      disable_serve: false
   - statistics:
       page_check_metadata: comment
   - glightbox:
