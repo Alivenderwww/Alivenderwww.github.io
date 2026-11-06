@@ -152,6 +152,19 @@ nav:
   - GEMM:
     - blogs/GEMM/cal_full_conv.md
     - blogs/GEMM/TurboQuant.md
+  - 时间序列分析:
+    - blogs/TimeSeries/index.md
+    - 第 1 章 基础与平稳性理论:
+      - blogs/TimeSeries/01_intro.md
+      - blogs/TimeSeries/02_stationarity.md
+    - 第 2 章 ARMA 模型核心理论:
+      - blogs/TimeSeries/03_ar_model.md
+      - blogs/TimeSeries/04_ar_properties.md
+      - blogs/TimeSeries/05_ma_model.md
+  - 计算机体系结构:
+    - blogs/ComputerAchitecture/index.md
+    - 量化研究方法 (7th Ed.):
+      - blogs/ComputerAchitecture/01.md
   - 画廊: 
     - gallery.md
   - 友链: 
