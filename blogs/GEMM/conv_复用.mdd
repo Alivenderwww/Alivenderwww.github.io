@@ -1,0 +1,51 @@
+# 卷积运算硬件加速中的数据复用
+
+卷积计算计算量大，内存访问频繁，如果纯用CPU计算效率非常低。
+
+记卷积层输入特征图为$C_{in} \times H_{in} \times W_{in}$，卷积核为$C_{out} \times C_{in} \times K_H \times K_W$，输出特征图为$C_{out} \times H_{out} \times W_{out}$。
+
+在$Stride=S, Padding=P$的情况下,有：
+
+$$
+H_{out} = \frac{H_{in} + 2P - K_H}{S} + 1 \\
+W_{out} = \frac{W_{in} + 2P - K_W}{S} + 1
+$$
+
+输出特征图的每一个像素点都对应了输入特征图的$C_{in} \times K_H \times K_W$个像素点和卷积核的$C_{in} \times K_H \times K_W$个权重值进行乘加运算，因此卷积层的总计算量（MACs）为：
+
+$$
+\begin{aligned}
+MACs &= C_{out} \times H_{out} \times W_{out} \times C_{in} \times K_H \times K_W \\
+&= C_{out} \times \left( \frac{H_{in} + 2P - K_H}{S} + 1 \right) \times \left( \frac{W_{in} + 2P - K_W}{S} + 1 \right) \times C_{in} \times K_H \times K_W
+\end{aligned}
+$$
+
+如果我们完全不考虑任何数据复用，即每一次乘加运算都从内存中取数，进行乘加操作后再送回内存，那么卷积层的内存访问量（Memory Accesses）为：
+
+$$
+\begin{aligned}
+Memory Accesses &= 2 \times MACs \\
+&= 2 \times C_{out} \times \left( \frac{H_{in} + 2P - K_H}{S} + 1 \right) \times \left( \frac{W_{in} + 2P - K_W}{S} + 1 \right) \times C_{in} \times K_H \times K_W
+\end{aligned}
+$$
+
+接下来，我们考虑各种类型的数据复用对内存访问量的影响。
+
+## 输入复用
+
+关注输入特征图的单个像素点，需要其参与的乘加运算有：
+
+1. 该像素点被$C_{out}$个卷积核使用，输出的部分和指向不同输出通道的相同位置输出特征图像素点；
+2. 该像素点被同一个卷积核使用$K_H \times K_W$次，输出的部分和指向同一输出通道的不同位置输出特征图像素点。
+
+### 沿$C_{out}$方向复用
+
+输入特征图的某一个像素点会被$C_{out}$个卷积核共享使用，输出给各个$C_{out}$个输出通道的特征图。因此，如果我们沿$C_{out}$方向复用输入特征图的像素点，那么每个像素点只需要被访问一次，而不是被访问$C_{out}$次。
+
+因此，沿$C_{out}$方向复用输入特征图的像素点可以将内存访问量减少：
+
+$$
+\begin{aligned}
+Memory Accesses_{input\_reuse\_C_{out}} &= 2 \times C_{out} \times H_{out} \times W_{out} \times C_{in} \times K_H \times K_W / C_{out} \\
+\end{aligned}
+$$
